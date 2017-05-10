@@ -1,0 +1,232 @@
+a {
+  font-family: "Roboto Regular", "Times New Roman";
+  text-decoration: none;
+  &:hover {
+    color: rgb(256, 256, 256);
+  }
+}
+
+input {
+  border-width: 0;
+  outline: none;
+  letter-spacing: normal;
+}
+
+span {
+  display: block;
+  height: 3px;
+  width: 27px;
+  margin-bottom: 5px;
+  background: rgb(111, 111, 111);
+}
+
+.icon {
+  &_close {
+    width: 16px;
+    height: 2px;
+
+  }
+  &_open {
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    top: -86%;
+    left: 46%;
+  }
+}
+
+.header {
+  width: 100%;
+  padding: 23px 0;
+
+  &__container {
+
+    display: flex;
+    @media (max-width: 991px) {
+
+      justify-content: space-between;
+      margin: 0 50px 0 10px;
+    }
+    @media (min-width: 992px) {
+      margin: 0 50px;
+      justify-content: flex-start;
+    }
+
+  }
+  &__logo {
+    margin: 0 30px;
+    align-items: center;
+  }
+  &__nav {
+    &__large {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+  }
+  &_mobile {
+    align-items: center;
+    @media (min-width: 992px) {
+      display: none;
+      position: relative;
+    }
+  }
+  &__form {
+    display: flex;
+  }
+  &__login {
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 10px 20px;
+    text-align: center;
+    background-color: rgb(35, 35, 35);
+    color: rgb(136, 136, 136);
+    border-radius: 4px;
+  }
+  &__search {
+    margin-right: 30px;
+    &_btn {
+      display: inline-block;
+      width: 18px;
+      height: 100%;
+      margin: 0;
+      position: relative;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 18px;
+        height: 100%;
+        background: url("../../assets/images/search_icon.svg") no-repeat 50%;
+        background-size: 18px auto;
+        opacity: .435;
+      }
+    }
+  }
+}
+
+.nav {
+  &__link {
+    display: inline-block;
+    list-style: none;
+    padding: 9px 15px;
+    &-item {
+      color: rgb(136, 136, 136);
+      font-size: 18px;
+      font-weight: 400;
+      position: relative;
+    }
+    &_mobile {
+      display: block;
+      border-bottom: 1px solid rgb(39, 39, 39);
+      padding: 13px 0;
+      position: relative;
+    }
+  }
+  &__list {
+    background-color: rgb(33, 33, 33);
+    height: auto;
+    position: absolute;
+    width: 13%;
+    top: 11%;
+    padding: 10px;
+    &-link {
+      list-style: none;
+    }
+    &-item {
+      display: block;
+      color: rgb(136, 136, 136);
+      padding: 5px 0;
+      font-size: 16px;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+  &__mobile {
+    display: block;
+    margin: 10px 0;
+    position: absolute;
+    &_close {
+    display: block;
+      position: absolute;
+      top: 25%;
+      left: 0;
+      width: 18px;
+      height: 18px;
+      background: url("../../assets/images/close_icon.svg") no-repeat 50%;
+      background-size: 18px auto;
+      opacity: .435;
+    }
+    &__block {
+      width: 100vw;
+      background-color: rgb(33, 33, 33);
+      height: 300px;
+      padding: 0 25px;
+      position: absolute;
+      top: 86px;
+      left: 0;
+    }
+    &__list {
+      padding-top: 15px;
+      margin: 0;
+      &_open {
+        position: absolute;
+        top: 50%;
+        right: 0;
+      }
+    }
+  }
+}
+
+.search {
+  position: relative;
+  &__block {
+    margin: 0 35px;
+  }
+  &-field {
+    width: 150%;
+    height: 50px;
+    background-color: rgb(30, 30, 30);
+    color: rgb(256, 256, 256);
+    font-family: "Roboto Medium";
+    font-size: 19px;
+    padding: 0 50px;
+    @media (min-width: 1200px) {
+      width: 200%;
+    }
+
+  }
+  &:before {
+    content: ' ';
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    background: url("../../assets/images/search_icon.svg") no-repeat;
+    background-size: 18px auto;
+    width: 18px;
+    height: 18px;
+    opacity: .435;
+
+  }
+  &-close {
+    display: block;
+    height: 30px;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 25%;
+      left: 0;
+      width: 18px;
+      height: 100%;
+      background: url("../../assets/images/close_icon.svg") no-repeat 50%;
+      background-size: 18px auto;
+      opacity: .435;
+    }
+  }
+}

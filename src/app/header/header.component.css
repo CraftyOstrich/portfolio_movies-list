@@ -1,0 +1,188 @@
+a {
+  font-family: "Roboto Regular", "Times New Roman";
+  text-decoration: none; }
+  a:hover {
+    color: white; }
+
+input {
+  border-width: 0;
+  outline: none;
+  letter-spacing: normal; }
+
+span {
+  display: block;
+  height: 3px;
+  width: 27px;
+  margin-bottom: 5px;
+  background: #6f6f6f; }
+
+.icon_close {
+  width: 16px;
+  height: 2px; }
+.icon_open {
+  width: 2px;
+  height: 16px;
+  position: absolute;
+  top: -86%;
+  left: 46%; }
+
+.header {
+  width: 100%;
+  padding: 23px 0; }
+  .header__container {
+    display: flex; }
+    @media (max-width: 991px) {
+      .header__container {
+        justify-content: space-between;
+        margin: 0 50px 0 10px; } }
+    @media (min-width: 992px) {
+      .header__container {
+        margin: 0 50px;
+        justify-content: flex-start; } }
+  .header__logo {
+    margin: 0 30px;
+    align-items: center; }
+  .header__nav__large {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; }
+    @media (max-width: 991px) {
+      .header__nav__large {
+        display: none; } }
+  .header_mobile {
+    align-items: center; }
+    @media (min-width: 992px) {
+      .header_mobile {
+        display: none;
+        position: relative; } }
+  .header__form {
+    display: flex; }
+  .header__login {
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 10px 20px;
+    text-align: center;
+    background-color: #232323;
+    color: #888888;
+    border-radius: 4px; }
+  .header__search {
+    margin-right: 30px; }
+    .header__search_btn {
+      display: inline-block;
+      width: 18px;
+      height: 100%;
+      margin: 0;
+      position: relative; }
+      .header__search_btn:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 18px;
+        height: 100%;
+        background: url("../../assets/images/search_icon.svg") no-repeat 50%;
+        background-size: 18px auto;
+        opacity: .435; }
+
+.nav__link {
+  display: inline-block;
+  list-style: none;
+  padding: 9px 15px; }
+  .nav__link-item {
+    color: #888888;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative; }
+  .nav__link_mobile {
+    display: block;
+    border-bottom: 1px solid #272727;
+    padding: 13px 0;
+    position: relative; }
+.nav__list {
+  background-color: #212121;
+  height: auto;
+  position: absolute;
+  width: 13%;
+  top: 11%;
+  padding: 10px; }
+  .nav__list-link {
+    list-style: none; }
+  .nav__list-item {
+    display: block;
+    color: #888888;
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased; }
+.nav__mobile {
+  display: block;
+  margin: 10px 0;
+  position: absolute; }
+  .nav__mobile_close {
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background: url("../../assets/images/close_icon.svg") no-repeat 50%;
+    background-size: 18px auto;
+    opacity: .435; }
+  .nav__mobile__block {
+    width: 100vw;
+    background-color: #212121;
+    height: 300px;
+    padding: 0 25px;
+    position: absolute;
+    top: 86px;
+    left: 0; }
+  .nav__mobile__list {
+    padding-top: 15px;
+    margin: 0; }
+    .nav__mobile__list_open {
+      position: absolute;
+      top: 50%;
+      right: 0; }
+
+.search {
+  position: relative; }
+  .search__block {
+    margin: 0 35px; }
+  .search-field {
+    width: 150%;
+    height: 50px;
+    background-color: #1e1e1e;
+    color: white;
+    font-family: "Roboto Medium";
+    font-size: 19px;
+    padding: 0 50px; }
+    @media (min-width: 1200px) {
+      .search-field {
+        width: 200%; } }
+  .search:before {
+    content: ' ';
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    background: url("../../assets/images/search_icon.svg") no-repeat;
+    background-size: 18px auto;
+    width: 18px;
+    height: 18px;
+    opacity: .435; }
+  .search-close {
+    display: block;
+    height: 30px;
+    position: relative; }
+    .search-close:before {
+      content: '';
+      position: absolute;
+      top: 25%;
+      left: 0;
+      width: 18px;
+      height: 100%;
+      background: url("../../assets/images/close_icon.svg") no-repeat 50%;
+      background-size: 18px auto;
+      opacity: .435; }
+
+/*# sourceMappingURL=header.component.css.map */
