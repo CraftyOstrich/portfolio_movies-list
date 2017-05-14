@@ -16,16 +16,6 @@ span {
   margin-bottom: 5px;
   background: #6f6f6f; }
 
-.icon_close {
-  width: 16px;
-  height: 2px; }
-.icon_open {
-  width: 2px;
-  height: 16px;
-  position: absolute;
-  top: -86%;
-  left: 46%; }
-
 .header {
   width: 100%;
   padding: 23px 0; }

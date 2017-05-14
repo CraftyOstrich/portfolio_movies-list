@@ -20,20 +20,21 @@ span {
   background: rgb(111, 111, 111);
 }
 
-.icon {
-  &_close {
-    width: 16px;
-    height: 2px;
-
-  }
-  &_open {
-    width: 2px;
-    height: 16px;
-    position: absolute;
-    top: -86%;
-    left: 46%;
-  }
-}
+//.icon {
+//  margin-bottom: 0;
+//  &_close {
+//    width: 16px;
+//    height: 2px;
+//
+//  }
+//  &_open {
+//    width: 2px;
+//    height: 16px;
+//    position: absolute;
+//    top: -86%;
+//    left: 46%;
+//  }
+//}
 
 .header {
   width: 100%;

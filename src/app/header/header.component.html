@@ -29,16 +29,17 @@
           </form>
         </div>
         <div>
-          <a href="" class="search-close" (click)="closeSearchField()"></a>
+          <a class="search-close" (click)="closeSearchField()"></a>
         </div>
       </div>
       <div class="header__form" *ngIf="hiddenSearch">
         <div  class="header__search" >
-          <a href="#" (click)="showSearchField()" class="header__search_btn"></a>
+          <a (click)="showSearchField()" class="header__search_btn"></a>
         </div>
         <div *ngIf="hiddenSearch" >
-          <a href="#" class="header__login">LOG IN</a>
+          <a [routerLink]="['/login']" class="header__login">LOG IN</a>
         </div>
+
       </div>
   </div>
     <div class="header_mobile">
@@ -53,13 +54,9 @@
       <div class="nav__mobile__block" *ngIf="hiddenMobileNav">
         <ul class="nav__mobile__list">
           <li class="nav__link nav__link_mobile" *ngFor="let navBarItem of navbar">
-            <a class="nav__link-item">
+            <a class="nav__link-item"  >
               {{navBarItem.name}}
             </a>
-            <div class="nav__mobile__list_open" (click)="dropDownList(navBarItem)">
-              <span class="icon icon_close"></span>
-              <span class="icon icon_open"></span>
-            </div>
           </li>
         </ul>
      </div>

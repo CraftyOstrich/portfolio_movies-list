@@ -5,17 +5,26 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {HeaderComponent} from "./header/header.component";
+import {LoginComponent} from "./login/login.component";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      {path: 'login' , component: LoginComponent},
+      {path: '' , redirectTo: 'home', pathMatch: 'full'},
+      {path: '**', redirectTo: 'home', pathMatch: 'full'}
+
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
