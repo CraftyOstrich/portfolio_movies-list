@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import {HeaderComponent} from "./header/header.component";
 import {LoginComponent} from "./login/login.component";
 import {RouterModule} from "@angular/router";
+import { OverviewComponent } from './overview/overview.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +23,7 @@ import {RouterModule} from "@angular/router";
     HttpModule,
     RouterModule.forRoot([
       {path: 'login' , component: LoginComponent},
+      {path: 'overview', component: OverviewComponent},
       {path: '' , redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home', pathMatch: 'full'}
 
