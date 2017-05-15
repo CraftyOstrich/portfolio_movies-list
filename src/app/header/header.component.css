@@ -45,6 +45,13 @@ span {
       .header_mobile {
         display: none;
         position: relative; } }
+    .header_mobile__login {
+      position: absolute;
+      top: 3%;
+      right: 7%; }
+      @media (max-width: 768px) {
+        .header_mobile__login {
+          right: 12%; } }
   .header__form {
     display: flex; }
   .header__login {
@@ -132,13 +139,15 @@ span {
     margin: 0; }
     .nav__mobile__list_open {
       position: absolute;
-      top: 50%;
       right: 0; }
 
 .search {
   position: relative; }
   .search__block {
     margin: 0 35px; }
+    @media (max-width: 991px) {
+      .search__block {
+        margin: 10px 10px; } }
   .search-field {
     width: 150%;
     height: 50px;
@@ -150,6 +159,11 @@ span {
     @media (min-width: 1200px) {
       .search-field {
         width: 200%; } }
+    @media (max-width: 991px) {
+      .search-field {
+        width: 100%;
+        background-color: #212121;
+        padding: 0 25px; } }
   .search:before {
     content: ' ';
     position: absolute;
@@ -160,6 +174,9 @@ span {
     width: 18px;
     height: 18px;
     opacity: .435; }
+    @media (max-width: 991px) {
+      .search:before {
+        left: 0%; } }
   .search-close {
     display: block;
     height: 30px;

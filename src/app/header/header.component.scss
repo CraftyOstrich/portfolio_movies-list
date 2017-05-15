@@ -20,22 +20,6 @@ span {
   background: rgb(111, 111, 111);
 }
 
-//.icon {
-//  margin-bottom: 0;
-//  &_close {
-//    width: 16px;
-//    height: 2px;
-//
-//  }
-//  &_open {
-//    width: 2px;
-//    height: 16px;
-//    position: absolute;
-//    top: -86%;
-//    left: 46%;
-//  }
-//}
-
 .header {
   width: 100%;
   padding: 23px 0;
@@ -73,6 +57,15 @@ span {
     @media (min-width: 992px) {
       display: none;
       position: relative;
+    }
+    &__login {
+      position: absolute;
+      top: 3%;
+      right: 7%;
+      @media (max-width: 768px) {
+        right: 12%;
+      }
+
     }
   }
   &__form {
@@ -177,7 +170,6 @@ span {
       margin: 0;
       &_open {
         position: absolute;
-        top: 50%;
         right: 0;
       }
     }
@@ -188,6 +180,9 @@ span {
   position: relative;
   &__block {
     margin: 0 35px;
+    @media (max-width: 991px) {
+      margin: 10px 10px;
+    }
   }
   &-field {
     width: 150%;
@@ -199,6 +194,11 @@ span {
     padding: 0 50px;
     @media (min-width: 1200px) {
       width: 200%;
+    }
+    @media (max-width: 991px) {
+      width: 100%;
+      background-color: rgb(33, 33, 33);
+    padding: 0 25px;
     }
 
   }
@@ -212,6 +212,9 @@ span {
     width: 18px;
     height: 18px;
     opacity: .435;
+    @media (max-width: 991px) {
+      left: 0%;
+    }
 
   }
   &-close {
