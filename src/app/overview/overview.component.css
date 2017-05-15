@@ -1,0 +1,31 @@
+a {
+  text-decoration: none;
+  color: #888888; }
+
+h2 {
+  color: #888888; }
+
+.flex_between {
+  display: flex;
+  justify-content: space-between; }
+
+.movies {
+  margin: 50px 5%;
+  font-family: "Roboto Regular", "Times New Roman";
+  color: #888888; }
+  .movies__item {
+    padding: 10px 0;
+    height: 300px;
+    border: 1px solid #888888; }
+  .movies__info {
+    padding: 0 10px; }
+  .movies-title {
+    font-size: 16px; }
+  .movies-name {
+    font-weight: bold; }
+  .movies-star :before {
+    content: '\E050'; }
+  .movies-category {
+    font-style: italic; }
+
+/*# sourceMappingURL=overview.component.css.map */

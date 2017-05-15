@@ -1,0 +1,40 @@
+a {
+  text-decoration: none;
+  color: rgb(136, 136, 136);
+}
+h2 {
+  color: rgb(136, 136, 136);
+}
+
+.flex_between {
+  display: flex;
+  justify-content: space-between;
+}
+.movies {
+  margin: 50px 5%;
+  font-family: "Roboto Regular", "Times New Roman";
+  color: rgb(136, 136, 136);
+  &__item {
+    padding: 10px 0;
+    height: 300px;
+    border: 1px solid rgb(136, 136, 136);
+  }
+  &__info {
+    padding: 0 10px;
+  }
+  &-title {
+    font-size: 16px;
+
+  }
+  &-name {
+    font-weight: bold;
+  }
+  &-star {
+    :before {
+      content: '\E050';
+    }
+  }
+  &-category {
+    font-style: italic;
+  }
+}
