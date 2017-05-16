@@ -23,7 +23,7 @@ import { OverviewComponent } from './overview/overview.component';
     HttpModule,
     RouterModule.forRoot([
       {path: 'login' , component: LoginComponent},
-      {path: 'overview', component: OverviewComponent},
+      {path: 'Overview', component: OverviewComponent},
       {path: '' , redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home', pathMatch: 'full'}
 

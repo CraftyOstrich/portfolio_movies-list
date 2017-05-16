@@ -12,7 +12,7 @@ export class HeaderComponent {
   hiddenSearch: boolean = true;
   hiddenNav: boolean = false;
   hiddenMobileNav: boolean = false;
-  hiddenMobileNavList: boolean = false;
+
 
   dropDownList(navItem: INavItem) {
     navItem.collapsed = !navItem.collapsed;
@@ -20,10 +20,6 @@ export class HeaderComponent {
 
   dropDownMobileList() {
     this.hiddenMobileNav = !this.hiddenMobileNav;
-  }
-
-  dropDownMobileListChildren() {
-    this.hiddenMobileNavList = !this.hiddenMobileNavList;
   }
 
   showSearchField() {

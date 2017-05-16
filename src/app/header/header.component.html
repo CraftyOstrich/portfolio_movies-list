@@ -7,7 +7,7 @@
       <div class="header__nav" *ngIf="hiddenSearch">
         <ul class="header__nav">
           <li class="nav__link" *ngFor="let navBarItem of navbar">
-            <a href="#" class="nav__link-item"
+            <a [routerLink]="['/'+ navBarItem.name]" class="nav__link-item"
                (click)="dropDownList(navBarItem)">
               {{navBarItem.name}}
             </a>

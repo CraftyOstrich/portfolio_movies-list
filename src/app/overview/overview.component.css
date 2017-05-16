@@ -2,6 +2,10 @@ a {
   text-decoration: none;
   color: #888888; }
 
+p {
+  margin: 0;
+  padding: 10px 0; }
+
 h2 {
   color: #888888; }
 
@@ -15,17 +19,30 @@ h2 {
   color: #888888; }
   .movies__item {
     padding: 10px 0;
-    height: 300px;
+    height: auto;
     border: 1px solid #888888; }
+    @media (max-width: 991px) {
+      .movies__item {
+        margin-bottom: 50px; } }
   .movies__info {
     padding: 0 10px; }
   .movies-title {
-    font-size: 16px; }
+    font-size: 20px; }
   .movies-name {
     font-weight: bold; }
   .movies-star :before {
     content: '\E050'; }
   .movies-category {
     font-style: italic; }
+  .movies-description {
+    padding: 10px 0; }
+  .movies-line {
+    margin-top: 40px;
+    color: #888888;
+    border: none;
+    background-color: #888888;
+    height: 1px; }
+  .movies-link {
+    font-size: 18px; }
 
 /*# sourceMappingURL=overview.component.css.map */

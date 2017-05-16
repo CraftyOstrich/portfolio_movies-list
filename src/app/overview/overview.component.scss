@@ -2,9 +2,14 @@ a {
   text-decoration: none;
   color: rgb(136, 136, 136);
 }
+p {
+  margin: 0;
+  padding: 10px 0;
+}
 h2 {
   color: rgb(136, 136, 136);
 }
+
 
 .flex_between {
   display: flex;
@@ -16,15 +21,17 @@ h2 {
   color: rgb(136, 136, 136);
   &__item {
     padding: 10px 0;
-    height: 300px;
+    height: auto;
     border: 1px solid rgb(136, 136, 136);
+    @media (max-width: 991px) {
+      margin-bottom: 50px;
+    }
   }
   &__info {
     padding: 0 10px;
   }
   &-title {
-    font-size: 16px;
-
+    font-size: 20px;
   }
   &-name {
     font-weight: bold;
@@ -36,5 +43,18 @@ h2 {
   }
   &-category {
     font-style: italic;
+  }
+  &-description {
+    padding: 10px 0;
+  }
+  &-line {
+    margin-top: 40px;
+    color: rgb(136, 136, 136);
+    border: none;
+    background-color: rgb(136, 136, 136);
+    height: 1px;
+  }
+  &-link {
+    font-size: 18px;
   }
 }
