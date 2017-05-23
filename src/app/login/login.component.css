@@ -52,5 +52,9 @@ body {
     .login__btn:hover {
       background: #888;
       color: #ffffff; }
+  .login-link {
+    margin-top: 20px; }
+    .login-link a {
+      color: #888; }
 
 /*# sourceMappingURL=login.component.css.map */

@@ -7,7 +7,7 @@
       <div class="header__nav" *ngIf="hiddenSearch">
         <ul class="header__nav">
           <li class="nav__link" *ngFor="let navBarItem of navbar">
-            <a [routerLink]="['/'+ navBarItem.name]" class="nav__link-item"
+            <a [routerLink]="[navBarItem.link]" class="nav__link-item"
                (click)="dropDownList(navBarItem)">
               {{navBarItem.name}}
             </a>
@@ -56,7 +56,8 @@
       <div class="nav__mobile__block" *ngIf="hiddenMobileNav">
         <ul class="nav__mobile__list">
           <li class="nav__link nav__link_mobile" *ngFor="let navBarItem of navbar">
-            <a class="nav__link-item"  >
+            <a [routerLink]="['/' + navBarItem.name]"
+               class="nav__link-item"  >
               {{navBarItem.name}}
             </a>
           </li>

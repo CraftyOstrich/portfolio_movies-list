@@ -3,6 +3,7 @@ export interface INavItem {
   name: string;
   collapsed?: boolean;
   collapsedChildren?: boolean;
+  link: string;
   children?: INavItem[];
 }
 
@@ -13,14 +14,17 @@ export const NavItems = <INavItem[]>
       name: 'Overview',
       collapsed: false,
       collapsedChildren: true,
+      link: '/overview',
       children: [
         {
           id: 1.1,
-          name: 'Movie'
+          name: 'Movie',
+          link:'/movie'
         },
         {
           id: 1.2,
-          name: 'Serials'
+          name: 'Serials',
+          link: '/serials'
         }
       ]
     },
@@ -29,22 +33,27 @@ export const NavItems = <INavItem[]>
         collapsed: false,
         collapsedChildren: false,
         name: 'Movies',
+        link: '/movies',
         children: [
         {
           id: 2.1,
-          name: 'Popular'
+          name: 'Popular',
+          link: '/popular'
         },
         {
           id: 2.2,
-          name: 'Top'
+          name: 'Top',
+          link: '/top'
         },
         {
           id: 2.3,
-          name: 'Soon'
+          name: 'Soon',
+          link: '/soon'
         },
         {
           id: 2.4,
-          name: 'Now on screen'
+          name: 'Now on screen',
+          link: '/now on screen'
         }
         ]
      },
@@ -53,22 +62,27 @@ export const NavItems = <INavItem[]>
       name: 'Serials',
       collapsed: false,
       collapsedChildren: false,
+      link: '/serials',
       children: [
       {
         id: 3.1,
-        name: 'Popular'
+        name: 'Popular',
+        link: '/popular'
       },
       {
         id: 3.2,
-        name: 'Top'
+        name: 'Top',
+        link: '/top'
       },
       {
         id: 3.3,
-        name: 'On TV'
+        name: 'On TV',
+        link: '/on TV'
       },
       {
         id: 3.4,
-        name: 'Today on TV'
+        name: 'Today on TV',
+        link: '/today'
       }
       ]
     },
@@ -77,10 +91,12 @@ export const NavItems = <INavItem[]>
       name: 'Actors',
       collapsed: false,
       collapsedChildren: false,
+      link: '/actors',
       children: [
       {
         id: 4.1,
-        name: 'Celebrities'
+        name: 'Celebrities',
+        link: '/celebrities'
       }
     ]
     },

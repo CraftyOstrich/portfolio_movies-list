@@ -13,6 +13,10 @@ export class HeaderComponent {
   hiddenNav: boolean = false;
   hiddenMobileNav: boolean = false;
 
+  constructor() {
+
+  }
+
 
   dropDownList(navItem: INavItem) {
     navItem.collapsed = !navItem.collapsed;
@@ -31,4 +35,5 @@ export class HeaderComponent {
     this.hiddenSearch = true;
     this.hiddenNav = false;
   }
+
 }

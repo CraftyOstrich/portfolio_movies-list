@@ -8,6 +8,7 @@ import {HeaderComponent} from "./header/header.component";
 import {LoginComponent} from "./login/login.component";
 import {RouterModule} from "@angular/router";
 import { OverviewComponent } from './overview/overview.component';
+import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { OverviewComponent } from './overview/overview.component';
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    OverviewComponent
+    OverviewComponent,
+    MoviesDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,7 @@ import { OverviewComponent } from './overview/overview.component';
     HttpModule,
     RouterModule.forRoot([
       {path: 'login' , component: LoginComponent},
-      {path: 'Overview', component: OverviewComponent},
+      {path: 'overview', component: OverviewComponent},
       {path: '' , redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home', pathMatch: 'full'}
 
