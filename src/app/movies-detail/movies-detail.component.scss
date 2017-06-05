@@ -16,12 +16,6 @@ a {
   }
 }
 
-.image {
-  &__content {
-
-  }
-}
-
 .rating {
   display: inline-flex;
   align-items: center;
@@ -70,3 +64,22 @@ a {
     left: 35%;
   }
 }
+
+.creator{
+  &__list {
+    display: block;
+  }
+  &__item {
+    display: inline-block;
+    width: 150px;
+    margin: 10px;
+  }
+  &-name {
+    font-size: 16px;
+  }
+  &-role {
+    font-size: 14px;
+    font-style: italic;
+  }
+}
+

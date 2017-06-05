@@ -52,4 +52,16 @@ a {
     top: 35%;
     left: 35%; }
 
+.creator__list {
+  display: block; }
+.creator__item {
+  display: inline-block;
+  width: 150px;
+  margin: 10px; }
+.creator-name {
+  font-size: 16px; }
+.creator-role {
+  font-size: 14px;
+  font-style: italic; }
+
 /*# sourceMappingURL=movies-detail.component.css.map */

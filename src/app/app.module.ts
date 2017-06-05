@@ -6,10 +6,10 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import {HeaderComponent} from "./header/header.component";
 import {LoginComponent} from "./login/login.component";
-import {RouterModule} from "@angular/router";
 import { OverviewComponent } from './overview/overview.component';
 import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
 import {MoviesService} from "./overview/movies.service";
+import {AppRouterModule} from "./app-routing.module";
 
 
 @NgModule({
@@ -24,13 +24,7 @@ import {MoviesService} from "./overview/movies.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([
-      {path: 'login' , component: LoginComponent},
-      {path: 'overview', component: OverviewComponent},
-      {path: '' , redirectTo: 'home', pathMatch: 'full'},
-      {path: '**', redirectTo: 'home', pathMatch: 'full'}
-
-    ]),
+    AppRouterModule
   ],
   providers: [MoviesService],
   bootstrap: [AppComponent]

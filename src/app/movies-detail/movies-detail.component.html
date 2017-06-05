@@ -1,7 +1,7 @@
-<div class="container poster">
+<div class="container poster " *ngIf = 'movie'>
   <div class="poster__image">
     <div class="image__content">
-      <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/bmBCZoh6Vm0DgMIWJMAfNVu60CA.jpg" alt="Сплит">
+      <img [src]='movie.poster' alt="Сплит">
     </div>
     <div class="image__zoom">
 
@@ -10,8 +10,8 @@
   <div class="poster__info">
     <div class="poster__title">
       <h2>
-        <a>Сплит
-          <span>(2016)</span>
+        <a> {{ movie.name }}
+          <span>({{ movie.year }})</span>
         </a>
       </h2>
     </div>
@@ -21,7 +21,7 @@
           <div class="rating__circle">
             <div class="rating__percent">
               <span class="rating-value">
-                68%
+                {{ movie.rating * 10}}%
               </span>
             </div>
           </div>
@@ -63,19 +63,16 @@
       <h3>Сюжет</h3>
       <div>
         <p>
-          Кевин, человек, в котором живет не менее двадцати трех личностей,
-          вынужден похитить трех девочек подросткового возраста. Тем
-          временем, пока они находятся в заточении, самая главная личность
-          Кевина — Чудовище — материализуется.
+          {{ movie.topic}}
         </p>
       </div>
       <h3>Создатели</h3>
-      <ol>
-        <li>
+      <ol  class="creator__list ">
+        <li class="creator__item" *ngFor="let creator of movie.creators" >
           <p>
-            <a>M. Night Shyamalan</a>
+            <a class="creator-name">{{ creator.name }}</a>
           </p>
-          <p>Director, Writer</p>
+          <p class="creator-role">{{ creator.role }}</p>
         </li>
       </ol>
     </div>

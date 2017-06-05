@@ -8,7 +8,10 @@
         </div>
         <div class="movies__info">
           <p class="flex_between movies-title">
-            <a class="text_short movies-name">{{ movie.name }}</a>
+            <a [routerLink]="['/overview', movie.id]"
+              class="text_short movies-name">
+              {{ movie.name }}
+            </a>
             <span class="movies-rating">
               {{movie.rating}}
               <span class="glyphicon glyphicon-star movies-star"></span>
@@ -23,7 +26,10 @@
           </p>
           <hr class="movies-line">
           <p class="movies-more">
-           <a class="movies-link">More</a>
+           <a [routerLink]="['/overview', movie.id]"
+             class="movies-link">
+             More
+           </a>
           </p>
         </div>
       </div>
