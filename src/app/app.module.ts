@@ -9,6 +9,7 @@ import {LoginComponent} from "./login/login.component";
 import {RouterModule} from "@angular/router";
 import { OverviewComponent } from './overview/overview.component';
 import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
+import {MoviesService} from "./overview/movies.service";
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
 
     ]),
   ],
-  providers: [],
+  providers: [MoviesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,31 +13,47 @@ h2 {
   display: flex;
   justify-content: space-between; }
 
+.text_short {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 .movies {
   margin: 50px 5%;
   font-family: "Roboto Regular", "Times New Roman";
   color: #888888; }
   .movies__item {
-    padding: 10px 0;
-    height: auto;
-    border: 1px solid #888888; }
-    @media (max-width: 991px) {
-      .movies__item {
-        margin-bottom: 50px; } }
+    padding-bottom: 50px; }
+    .movies__item:nth-child(odd) {
+      padding-right: 15px; }
+    .movies__item:nth-child(even) {
+      padding-left: 15px; }
+    .movies__item-wrapper {
+      border: 1px solid #888888; }
+  .movies__image {
+    height: 290px; }
   .movies__info {
     padding: 0 10px; }
   .movies-title {
     font-size: 20px; }
   .movies-name {
-    font-weight: bold; }
+    font-weight: bold;
+    width: 150px; }
   .movies-star :before {
     content: '\E050'; }
   .movies-category {
+    width: 160px;
+    text-align: right;
     font-style: italic; }
+    @media (min-width: 991px) and (max-width: 1200px) {
+      .movies-category {
+        width: 120px; } }
   .movies-description {
-    padding: 10px 0; }
+    padding: 10px 0;
+    max-height: 90px;
+    overflow: hidden; }
   .movies-line {
-    margin-top: 40px;
+    margin-top: 30px;
     color: #888888;
     border: none;
     background-color: #888888;

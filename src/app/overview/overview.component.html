@@ -1,57 +1,31 @@
 <div class="container">
   <h2>Discover new movies and series</h2>
   <div class="row movies">
-    <div class=" col-xs-12 col-sm-12 col-md-5 flex_between movies__item">
-      <div class="movies__image">
-        <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/bmBCZoh6Vm0DgMIWJMAfNVu60CA.jpg" alt="">
-      </div>
-      <div class="movies__info">
-        <p class="flex_between movies-title">
-          <a class="movies-name">Сплит</a>
-          <span class="movies-rating">
-            6.8
-            <span class="glyphicon glyphicon-star movies-star"></span>
-          </span>
-        </p>
-        <p class="flex_between">
-          <span class="glyphicon glyphicon-calendar">2016</span>
-          <span class="movies-category">ужасы, триллер</span>
-        </p>
-        <p class="movies-description">
-          Кевин, человек, в котором живет не менее двадцати трех личностей,
-          вынужден похитить трех девочек подросткового возраста.
-          Тем временем, пока они находятся в зато…
-        </p>
-        <hr class="movies-line">
-        <p class="movies-more">
-          <a class="movies-link">More</a>
-        </p>
-      </div>
-    </div>
-    <div class=" col-xs-12 col-sm-12 col-md-5 col-md-offset-2 flex_between movies__item">
-      <div class="movies__image">
-        <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/oaypKdH3YW0d7ARyOJo0WBtTgx4.jpg" alt="">
-      </div>
-      <div class="movies__info">
-        <p class="flex_between movies-title">
-          <a class="movies-name">Зверопой</a>
-          <span class="movies-rating">
-            6.8
-            <span class="glyphicon glyphicon-star movies-star"></span>
-          </span>
-        </p>
-        <p class="flex_between">
-          <span class="glyphicon glyphicon-calendar">2016</span>
-          <span class="movies-category">ужасы, триллер</span>
-        </p>
-        <p class="movies-description">
-          Коала по имени Бастер нанимает своего лучшего друга
-          для помощи в организации конкурса пения.
-        </p>
-        <hr class="movies-line">
-        <p class="movies-more">
-          <a class="movies-link">More</a>
-        </p>
+    <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 movies__item" *ngFor="let movie of movies">
+      <div class="movies__item-wrapper flex_between">
+        <div>
+          <img [src]='movie.poster' [alt]='movie.name' class="movies__image">
+        </div>
+        <div class="movies__info">
+          <p class="flex_between movies-title">
+            <a class="text_short movies-name">{{ movie.name }}</a>
+            <span class="movies-rating">
+              {{movie.rating}}
+              <span class="glyphicon glyphicon-star movies-star"></span>
+            </span>
+          </p>
+          <p class="flex_between">
+            <span class="glyphicon glyphicon-calendar">{{ movie.year }}</span>
+            <span class="text_short movies-category">{{movie.categories}}</span>
+          </p>
+          <p class="movies-description">
+           {{movie.topic}}
+          </p>
+          <hr class="movies-line">
+          <p class="movies-more">
+           <a class="movies-link">More</a>
+          </p>
+        </div>
       </div>
     </div>
   </div>
