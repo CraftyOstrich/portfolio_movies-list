@@ -11,6 +11,8 @@ import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
 import {MoviesService} from "./overview/movies.service";
 import {AppRouterModule} from "./app-routing.module";
 
+import { RegistrationComponent } from './registration/registration.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import {AppRouterModule} from "./app-routing.module";
     HeaderComponent,
     LoginComponent,
     OverviewComponent,
-    MoviesDetailComponent
+    MoviesDetailComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import {AppRouterModule} from "./app-routing.module";
     HttpModule,
     AppRouterModule
   ],
-  providers: [MoviesService],
+  providers: [MoviesService
+              ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

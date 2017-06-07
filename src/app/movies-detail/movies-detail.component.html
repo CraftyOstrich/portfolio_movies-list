@@ -1,7 +1,7 @@
 <div class="container poster " *ngIf = 'movie'>
   <div class="poster__image">
     <div class="image__content">
-      <img [src]='movie.poster' alt="Сплит">
+      <img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ movie.poster_path }}' [alt]='movie.title'>
     </div>
     <div class="image__zoom">
 
@@ -10,8 +10,8 @@
   <div class="poster__info">
     <div class="poster__title">
       <h2>
-        <a> {{ movie.name }}
-          <span>({{ movie.year }})</span>
+        <a> {{ movie.title }}
+          <span>({{ movie.release_date.slice(0,4) }})</span>
         </a>
       </h2>
     </div>
@@ -21,7 +21,7 @@
           <div class="rating__circle">
             <div class="rating__percent">
               <span class="rating-value">
-                {{ movie.rating * 10}}%
+                {{ movie.vote_average * 10 }}%
               </span>
             </div>
           </div>
@@ -63,7 +63,7 @@
       <h3>Сюжет</h3>
       <div>
         <p>
-          {{ movie.topic}}
+          {{ movie.overview }}
         </p>
       </div>
       <h3>Создатели</h3>

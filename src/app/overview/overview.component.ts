@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
 
 import {IMovie} from "../movies-detail/movie";
 import { MoviesService} from "./movies.service";
@@ -13,13 +12,15 @@ import { MoviesService} from "./movies.service";
 export class OverviewComponent implements OnInit {
   errorMessage: string;
   movies: IMovie[];
+  link: string = '/movie/upcoming';
 
   constructor(private _moviesService: MoviesService) { }
 
   ngOnInit(): void {
-    this._moviesService.getMovies()
-      .subscribe(movies => this.movies = movies,
-                  error => this.errorMessage = <any>error);
+    this._moviesService.getMovies(this.link)
+      .subscribe(response => {
+        this.movies = response.results || [];
+        },
+        error => this.errorMessage = <any>error);
   }
-
 }

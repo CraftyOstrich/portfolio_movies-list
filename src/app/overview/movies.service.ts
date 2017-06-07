@@ -6,43 +6,41 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import {API_CONFIG} from "../app-config";
+
+
+
 
 @Injectable()
 export class MoviesService {
-  private _moviesUrl = "assets/api/movies.json";
-
-  movies: any[] = [];
-
+  //private _moviesUrl = "assets/api/movies.json";
   constructor(private _http: Http) {}
 
-  getMovies(): Observable<IMovie[]> {
-    return this._http.get(this._moviesUrl)
-      .map((response: Response) => {
-          this.movies = <IMovie[]>response.json();
-        return this.movies
-      })
+  getMovies(route): Observable<any>  {
+    return this._http.get(this.getRequestUrl(route))
+      .map((response: Response) =>  response.json())
       .do(data => console.log('All:' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
-  getMovie(id): Observable<any> {
-    const foundMovie = this.findMovie(id);
-    if (foundMovie) {
-      return Observable.of(foundMovie);
-    }
 
-    return this.getMovies()
-      .map(() => {
-        return this.findMovie(id);
-      })
-  }
 
-  findMovie(id):IMovie {
-    return this.movies.find((movie: IMovie) => movie.id === id);
+  getMovie(route, id): Observable<any> {
+    return this._http.get(this.getRequestUrl(route, id))
+      .map((response: Response) =>  response.json())
+      .catch(this.handleError);
   }
 
   private handleError( error: Response) {
     console.log(error);
     return Observable.throw(error.json().error || 'Server error');
   }
+
+  private getRequestUrl(link: string, id?: number) {
+    if (id) {
+      return API_CONFIG.Url + link + id + API_CONFIG.Key
+    } else
+    return API_CONFIG.Url + link + API_CONFIG.Key
+  }
+
 }
