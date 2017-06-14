@@ -4,33 +4,37 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {HeaderComponent} from "./header/header.component";
-import {LoginComponent} from "./login/login.component";
-import { OverviewComponent } from './overview/overview.component';
-import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
-import {MoviesService} from "./overview/movies.service";
+import {HeaderComponent} from "./shared/components/header/header.component";
+import {LoginComponent} from "./shared/components/login/login.component";
+import { DiscoverComponent } from './components/discover/discover.component';
+import { MoviesDetailComponent } from './components/movies-detail/movies-detail.component';
+
 import {AppRouterModule} from "./app-routing.module";
 
-import { RegistrationComponent } from './registration/registration.component';
+import { RegistrationComponent } from './shared/components/registration/registration.component';
+import { ItemBlockComponent } from './shared/components/item-block/item-block.component';
+import {MoviesService} from "./shared/services/movies.service";
+import { MoviesComponent } from './components/movies/movies.component';
+import {SharedModule} from "./shared/shared.module";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    LoginComponent,
-    OverviewComponent,
+
+    DiscoverComponent,
     MoviesDetailComponent,
-    RegistrationComponent
+
+
+    MoviesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRouterModule
+    AppRouterModule,
+    SharedModule
   ],
-  providers: [MoviesService
-              ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

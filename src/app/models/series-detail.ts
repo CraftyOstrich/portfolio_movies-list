@@ -1,0 +1,91 @@
+import {Creator} from "./creator";
+import {Genre} from "./genre";
+import {Company} from "./production-companie";
+import {Season} from "./season";
+import {Network} from "./network";
+export interface ISeriesDetail {
+  backdrop_path: string;
+  created_by: Creator[];
+  episode_run_time: number[];
+  first_air_date: string;
+  genres: Genre[];
+  homepage: string;
+  id: number;
+  in_production: boolean;
+  languages: string[];
+  last_air_date: string;
+  name: string;
+  networks: Network[];
+  number_of_episodes: number;
+  number_of_seasons: number;
+  origin_country: string[];
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  production_companies: Company[];
+  seasons: Season[];
+  status: string;
+  type: string;
+  vote_average: number;
+  vote_count: number;
+}
+
+export class SeriesDetail implements ISeriesDetail {
+  public backdrop_path: string;
+  public created_by: Creator[];
+  public episode_run_time: number[];
+  public first_air_date: string;
+  public genres: Genre[];
+  public homepage: string;
+  public id: number;
+  public in_production: boolean;
+  public languages: string[];
+  public last_air_date: string;
+  public name: string;
+  public networks: Network[];
+  public number_of_episodes: number;
+  public number_of_seasons: number;
+  public origin_country: string[];
+  public original_language: string;
+  public original_name: string;
+  public overview: string;
+  public popularity: number;
+  public poster_path: string;
+  public production_companies: Company[];
+  public seasons: Season[];
+  public status: string;
+  public type: string;
+  public vote_average: number;
+  public vote_count: number;
+
+  constructor (series: SeriesDetail) {
+    this.backdrop_path = series.backdrop_path;
+    this.created_by = series.created_by;
+    this.episode_run_time = series.episode_run_time;
+    this.first_air_date = series.first_air_date;
+    this.genres = series.genres;
+    this.homepage = series.homepage;
+    this.id = series.id;
+    this.in_production = series.in_production;
+    this.languages = series.languages;
+    this.last_air_date = series.last_air_date;
+    this.name = series.name;
+    this.networks = series.networks;
+    this.number_of_episodes = series.number_of_episodes;
+    this.number_of_seasons = series.number_of_seasons;
+    this.origin_country = series.origin_country;
+    this.original_language = series.original_language;
+    this.original_name = series.original_name;
+    this.overview = series.overview;
+    this.popularity = series.popularity;
+    this.poster_path = series.poster_path;
+    this.production_companies = series.production_companies;
+    this.seasons = series.seasons;
+    this.status = series.status;
+    this.type = series.type;
+    this.vote_average = series.vote_average;
+    this.vote_count = series.vote_count;
+  }
+}

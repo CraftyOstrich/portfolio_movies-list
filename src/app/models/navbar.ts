@@ -1,0 +1,120 @@
+export interface INavItem {
+  id: number;
+  name: string;
+  collapsed?: boolean;
+  collapsedChildren?: boolean;
+  link: string;
+  path: string;
+  children?: INavItem[];
+}
+
+export const NavItems = <INavItem[]>
+  [
+    {
+      id: 1,
+      name: 'Overview',
+      //collapsed: true,
+      collapsedChildren: true,
+      link: '/overview',
+      path: '',
+      children: [
+        {
+          id: 1.1,
+          name: 'Movie',
+          link:'/overview/movie',
+          path: ''
+        },
+        {
+          id: 1.2,
+          name: 'Serials',
+          link: '/overview/serials',
+          path: ''
+        }
+      ]
+    },
+    {
+      id: 2,
+        //collapsed: false,
+        collapsedChildren: false,
+        name: 'Movies',
+        link: '/movies',
+        path: '',
+        children: [
+        {
+          id: 2.1,
+          name: 'Popular',
+          link: '/movies/popular',
+          path: '/movie/popular'
+        },
+        {
+          id: 2.2,
+          name: 'Top',
+          link: '/movies/top',
+          path: '/movie/top_rated'
+        },
+        {
+          id: 2.3,
+          name: 'Soon',
+          link: '/movies/soon',
+          path: '/movie/upcoming'
+        },
+        {
+          id: 2.4,
+          name: 'Now on screen',
+          link: '/movies/now on screen',
+          path: '/movie/now_playing'
+        }
+        ]
+     },
+      {
+      id: 3,
+      name: 'Serials',
+      //collapsed: false,
+      collapsedChildren: false,
+      link: '/serials',
+        path: '',
+      children: [
+      {
+        id: 3.1,
+        name: 'Popular',
+        link: '/serials/popular',
+        path: ''
+      },
+      {
+        id: 3.2,
+        name: 'Top',
+        link: '/serials/top',
+        path: ''
+      },
+      {
+        id: 3.3,
+        name: 'On TV',
+        link: '/serials/on TV',
+        path: ''
+      },
+      {
+        id: 3.4,
+        name: 'Today on TV',
+        link: '/serials/today',
+        path: ''
+      }
+      ]
+    },
+    {
+      id: 4,
+      name: 'Actors',
+      //collapsed: false,
+      collapsedChildren: false,
+      link: '/actors',
+      path: '',
+      children: [
+      {
+        id: 4.1,
+        name: 'Celebrities',
+        link: '/actors/celebrities',
+        path: ''
+      }
+    ]
+    },
+  ];
+

@@ -1,0 +1,71 @@
+<div class="header">
+  <div class="flex header__container">
+    <div class="header__logo">
+      <img src="../../../../assets/images/logo.svg" alt="Cute Tube">
+    </div>
+    <div class="flex flex-between header__large">
+      <div class="header__nav" *ngIf="hiddenSearch">
+        <ul>
+          <li class="nav__item" *ngFor="let navBarItem of navbar">
+            <a [routerLink]="[navBarItem.link]" class="nav__item-link">
+              {{navBarItem.name}}
+            </a>
+            <div class="nav__list">
+              <ul>
+                <li class="list__item" *ngFor="let listItem of navBarItem.children">
+                  <a [routerLink]="[listItem.link]"  class="list__item-link">{{listItem.name}} </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="flex flex-between header__large"  *ngIf="hiddenNav">
+        <div>
+          <form action="#" class="search__form">
+            <input type="text" placeholder="Search movies" class="search-field">
+          </form>
+        </div>
+        <div>
+          <a class="search-close" (click)="closeSearchField()"></a>
+        </div>
+      </div>
+      <div class="flex" *ngIf="hiddenSearch">
+        <div  class="header__search" >
+          <a (click)="showSearchField()" class="search-btn"></a>
+        </div>
+        <div *ngIf="hiddenSearch" >
+        <a [routerLink]="['/login']" class="login-btn">LOG IN</a>
+      </div>
+      </div>
+  </div>
+    <div class="header_mobile">
+      <a class="mobile__nav-link" (click)="dropDownMobileList()" >
+        <span *ngIf="!hiddenMobileNav"></span>
+        <span *ngIf="!hiddenMobileNav"></span>
+        <span *ngIf="!hiddenMobileNav"></span>
+        <span class="mobile__nav-close" *ngIf="hiddenMobileNav" >
+          <a (click)="dropDownMobileList()"></a>
+        </span>
+      </a>
+      <div class="mobile__login" *ngIf="hiddenSearch" >
+        <a [routerLink]="['/login']" class="login-btn">LOG IN</a>
+      </div>
+      <div class="mobile__nav" *ngIf="hiddenMobileNav">
+        <ul class="mobile__nav__list">
+          <li class="nav__item mobile__nav__item" *ngFor="let navBarItem of navbar">
+            <a [routerLink]="[navBarItem.link]"
+               class="nav__item-link" >
+              {{navBarItem.name}}
+            </a>
+          </li>
+        </ul>
+        <div class=".mobile__search">
+          <form action="#" class="search__form">
+            <input type="text" placeholder="Search movies" class="search-field">
+          </form>
+        </div>
+     </div>
+    </div>
+  </div>
+</div>
