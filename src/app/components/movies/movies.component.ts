@@ -15,9 +15,14 @@ export class MoviesComponent implements OnInit {
   constructor(public _moviesService: MoviesService) { }
 
   ngOnInit() {
-    this._moviesService.getMovies(this.link)
+    let href = window.location.href.slice(21);
+    if (href === '/movie') {
+      href = this.link;
+    }
+    this._moviesService.getMovies(href)
       .subscribe(response => this.movies = response.results || [],
         error => this.errorMessage = <any>error);
+
   }
 
 }

@@ -12,9 +12,13 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'overview', component: DiscoverComponent},
   {path: 'overview/movie', component: DiscoverComponent},
+  {path: 'movie', component: MoviesComponent},
+  {path: 'movie/popular', component: MoviesComponent},
+  {path: 'movie/top_rated', component: MoviesComponent},
+  {path: 'movie/upcoming', component: MoviesComponent},
+  {path: 'movie/now_playing', component: MoviesComponent},
   {path: 'movie/:id', component: MovieDetailComponent},
-  {path: 'movies', component: MoviesComponent},
-  {path: 'movies/popular', component: MoviesComponent},
+
   {path: '' , redirectTo: 'home', pathMatch: 'full'},
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];

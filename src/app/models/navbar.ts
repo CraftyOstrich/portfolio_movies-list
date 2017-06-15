@@ -37,32 +37,32 @@ export const NavItems = <INavItem[]>
         //collapsed: false,
         collapsedChildren: false,
         name: 'Movies',
-        link: '/movies',
-        path: '',
+        link: '/movie',
+        //path: '',
         children: [
         {
           id: 2.1,
           name: 'Popular',
-          link: '/movies/popular',
-          path: '/movie/popular'
+          link: '/movie/popular',
+          //path: '/movie/popular'
         },
         {
           id: 2.2,
           name: 'Top',
-          link: '/movies/top',
-          path: '/movie/top_rated'
+          link: '/movie/top_rated',
+          //path: '/movie/top_rated'
         },
         {
           id: 2.3,
           name: 'Soon',
-          link: '/movies/soon',
-          path: '/movie/upcoming'
+          link: '/movie/upcoming',
+          //path: '/movie/upcoming'
         },
         {
           id: 2.4,
           name: 'Now on screen',
-          link: '/movies/now on screen',
-          path: '/movie/now_playing'
+          link: '/movie/now_playing',
+          //path: '/movie/now_playing'
         }
         ]
      },
