@@ -13,31 +13,22 @@ require("rxjs/add/operator/map");
 require("rxjs/add/operator/mergeMap");
 require("rxjs/add/operator/do");
 require("rxjs/add/operator/catch");
-var app_config_1 = require("../app-config");
-var counter = 5;
-var Genre = (function () {
-    function Genre(id, name) {
-        this.id = id;
-        this.name = name;
-    }
-    return Genre;
-}());
-exports.Genre = Genre;
+var app_config_1 = require("../../app-config");
 var MoviesService = (function () {
     function MoviesService(_http) {
         this._http = _http;
     }
-    MoviesService.prototype.getMovies = function () {
-        return this._http.get(this.getRequestUrl('/movie/popular'))
+    MoviesService.prototype.getMovies = function (link) {
+        return this._http.get(this.getRequestUrl(link))
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     MoviesService.prototype.getMovie = function (route, id) {
         return this._http.get(this.getRequestUrl(route, id))
             .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('All:' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    //
     MoviesService.prototype.handleError = function (error) {
         console.log(error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');

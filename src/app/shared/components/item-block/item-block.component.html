@@ -5,10 +5,10 @@
     </div>
     <div class="item__info">
       <p class="flex_between item-title">
-        <a [routerLink]="['/overview', item.id]"
-           class="text_short item-link">
-          {{ item.title }}
-        </a>
+        <a (click)="goTo(item.id)"
+                class="text_short item-link">
+        {{ item.title }}
+      </a>
         <span class="item-rating">
               {{ item.vote_average }}
               <span class="glyphicon glyphicon-star item-star"></span>
@@ -20,7 +20,7 @@
         <!--<span> {{(_moviesService.getGenres(movie.genre_ids) | async) }} </span>-->
       </p>
       <p class="item-description">
-        {{item.overview }}
+        {{ item.overview }}
       </p>
       <hr class="line">
       <p class="item-more">

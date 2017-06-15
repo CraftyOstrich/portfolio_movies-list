@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-item-block',
@@ -8,9 +9,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ItemBlockComponent implements OnInit {
   @Input() item: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  goTo(id) {
+    this.router.navigate(['movie', id]);
+  }
 }

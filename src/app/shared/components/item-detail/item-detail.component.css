@@ -1,0 +1,28 @@
+a {
+  color: #888888;
+  text-decoration: none; }
+
+.poster {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 35px;
+  font-family: "Roboto Medium", "Times New Roman";
+  color: #888888; }
+  .poster__image {
+    width: 300px; }
+  .poster__info {
+    margin: 0 5%; }
+
+.creator__list {
+  display: block; }
+.creator__item {
+  display: inline-block;
+  width: 150px;
+  margin: 10px; }
+.creator-name {
+  font-size: 16px; }
+.creator-role {
+  font-size: 14px;
+  font-style: italic; }
+
+/*# sourceMappingURL=item-detail.component.css.map */

@@ -8,13 +8,17 @@ import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppRouterModule} from "../app-routing.module";
 import {MoviesService} from "./services/movies.service";
+import { ActionsComponent } from './components/actions/actions.component';
+import {ItemDetailComponent} from "./components/item-detail/item-detail.component";
 
 @NgModule ({
   declarations: [
     HeaderComponent,
     ItemBlockComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ActionsComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import {MoviesService} from "./services/movies.service";
     HeaderComponent,
     ItemBlockComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ActionsComponent,
+    ItemDetailComponent
   ],
   providers: [
     MoviesService

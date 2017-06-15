@@ -1,0 +1,37 @@
+<div *ngIf="item" class="poster ">
+  <div class="poster__image">
+    <div class="image__content">
+      <img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ item.poster_path }}' [alt]='item.title'>
+    </div>
+    <div class="image__zoom">
+
+    </div>
+  </div>
+  <div class="poster__info">
+    <div class="poster__title">
+      <h2>
+        <a> {{ item.title }}
+          <span>({{ item.release_date.slice(0,4) }})</span>
+        </a>
+      </h2>
+    </div>
+    <app-actions [item]="item"></app-actions>
+    <div class="poster__description">
+      <h3>Сюжет</h3>
+      <div>
+        <p>
+          {{ item.overview }}
+        </p>
+      </div>
+      <h3>Создатели</h3>
+      <ol  class="creator__list ">
+        <li class="creator__item"  >
+          <p>
+            <a class="creator-name"></a>
+          </p>
+          <p class="creator-role"></p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>

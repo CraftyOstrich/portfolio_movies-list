@@ -40,4 +40,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-!/src/app/components/movies-detail/movies-detail.component.html
+!/src/app/shared/components/item-detail/item-detail.component.html

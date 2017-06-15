@@ -7,24 +7,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var MoviesDetailComponent = (function () {
-    function MoviesDetailComponent(_route, _moviesService) {
+var ItemDetailComponent = (function () {
+    function ItemDetailComponent(_route, _moviesService) {
         this._route = _route;
         this._moviesService = _moviesService;
         this.link = '/movie/';
     }
-    MoviesDetailComponent.prototype.ngOnInit = function () {
+    ItemDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         var id = +this._route.snapshot.params['id'];
         this._moviesService.getMovie(this.link, id).subscribe(function (movie) { return _this.movie = movie; });
     };
-    return MoviesDetailComponent;
+    return ItemDetailComponent;
 }());
-MoviesDetailComponent = __decorate([
+ItemDetailComponent = __decorate([
     core_1.Component({
         selector: 'app-movies-detail',
-        templateUrl: 'movies-detail.component.html',
-        styleUrls: ['movies-detail.component.scss']
+        templateUrl: 'item-detail.component.html',
+        styleUrls: ['item-detail.component.scss']
     })
-], MoviesDetailComponent);
-exports.MoviesDetailComponent = MoviesDetailComponent;
+], ItemDetailComponent);
+exports.ItemDetailComponent = ItemDetailComponent;
