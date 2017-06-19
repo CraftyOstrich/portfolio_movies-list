@@ -10,6 +10,7 @@ import {AppRouterModule} from "../app-routing.module";
 import {MoviesService} from "./services/movies.service";
 import { ActionsComponent } from './components/actions/actions.component';
 import {ItemDetailComponent} from "./components/item-detail/item-detail.component";
+import {DisplayDirective} from "./directives/display.directive";
 
 @NgModule ({
   declarations: [
@@ -18,7 +19,8 @@ import {ItemDetailComponent} from "./components/item-detail/item-detail.componen
     LoginComponent,
     RegistrationComponent,
     ActionsComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    DisplayDirective
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import {ItemDetailComponent} from "./components/item-detail/item-detail.componen
     LoginComponent,
     RegistrationComponent,
     ActionsComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    DisplayDirective
   ],
   providers: [
     MoviesService

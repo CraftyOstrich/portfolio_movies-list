@@ -1,8 +1,14 @@
 import {Component, OnInit, DoCheck} from '@angular/core';
 import {MoviesService} from "../../shared/services/movies.service";
 import {ActivatedRoute} from "@angular/router";
-import {IMovieDetail} from "../../models/movie-detail";
+import {IMovieDetail, MovieDetail} from "../../models/movie-detail";
 import {IGenre} from "../../models/genre";
+import {Movie} from "../../models/movie";
+import {MovieVideo} from "../../models/movie-video";
+import {SafeUrl, DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+import {Character} from "../../models/character";
+import {Creator} from "../../models/creator";
+import {Keyword} from "../../models/keyword";
 
 @Component({
   selector: 'app-movie-detail',
@@ -10,11 +16,20 @@ import {IGenre} from "../../models/genre";
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit {
-  movie: IMovieDetail;
+  movie: MovieDetail;
+  moviesSimilar: Movie[];
+  movieVideos: MovieVideo[];
+  movieCharacters: Character[];
+  movieCreators: Creator[];
+  movieKeywords: Keyword[];
   link: string = '/movie/';
+  linkSimilar: string = '/similar';
+  linkVideo: string = '/videos';
+  linkPeople: string = '/credits';
+  linkKeywords: string = '/keywords';
   genres: IGenre[];
 
-  constructor(private _route: ActivatedRoute, private _moviesService: MoviesService) { }
+  constructor(private _route: ActivatedRoute, private _moviesService: MoviesService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     let id = +this._route.snapshot.params['id'];
@@ -22,7 +37,27 @@ export class MovieDetailComponent implements OnInit {
       this.movie = movie;
       this.genres = movie.genres;
     });
-    // console.log(this.movie.genres);
+    this._moviesService.getKeywords(this.link, id, this.linkKeywords).subscribe((response) => {
+      this.movieKeywords = response.keywords || [];
+    });
+    this._moviesService.getPeople(this.link, id, this.linkPeople).subscribe((response) => {
+      this.movieCharacters = response.cast.slice(0, 5) || [];
+      this.movieCreators = response.crew.slice(0, 5) || [];
+    });
+    this._moviesService.getSimilarMovies(this.link, id, this.linkSimilar).subscribe((response) => {
+      this.moviesSimilar = response.results || [];
+    });
+    this._moviesService.getVideos(this.link, id, this.linkVideo).subscribe((response) => {
+      this.movieVideos = response.results.slice(0, 3) || [];
+    });
+
+
+
   }
+
+  sanitizeUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + url);
+  }
+
 
 }

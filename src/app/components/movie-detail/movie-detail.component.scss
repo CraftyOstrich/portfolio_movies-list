@@ -3,6 +3,12 @@ a, p, h4, h3 {
   font-family: "Roboto Medium", "Times New Roman";
   text-decoration: none;
 }
+a {
+  &:hover {
+    color: #ffffff;
+    cursor: pointer;
+  }
+}
 strong {
   display: block;
   font-size: 16px;
@@ -12,6 +18,8 @@ strong {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+
 .flex {
   display: flex;
   justify-content: space-between;
@@ -24,9 +32,11 @@ strong {
 .info {
   width: 75%;
 }
+
 .facts {
   width: 20%;
 }
+
 .starring {
   &__list {
     width: 100%;
@@ -34,9 +44,12 @@ strong {
   &__item {
     display: inline-block;
     margin: 10px;
-
+    &:first-child {
+      margin-left: 0;
+    }
   }
   &__detail {
+    width: 138px;
     border: 1px solid #888;
     border-top: none;
     padding: 10px 5px;
@@ -44,32 +57,36 @@ strong {
   &-title {
     margin-bottom: 20px;
   }
-  &-link {
-    display: block;
-  }
+
   &-img {
-    width: 100%;
-    height: 100%;
+    width: 138px;
+    height: 175px;
   }
   &-name {
     font-weight: bold;
     font-size: 18px;
+  }
+  &-btn {
+    font-size: 18px;
+  }
+}
+
+.video {
+  &__item {
+    display: inline-block;
   }
 }
 
 .similar {
   &__item {
     display: inline-block;
-    float: none;
     width: 250px;
     margin: 10px;
   }
-  &__img {
-    margin-bottom: 5px;
+  &__img-block {
+    position: relative;
   }
-  &__info {
 
-  }
   &-name {
     width: 120px;
   }
@@ -79,6 +96,26 @@ strong {
     }
   }
 }
+
+.meta {
+  visibility: hidden;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  top: -30px;
+  left: 0;
+  padding: 5px 10px;
+  &__release-date {
+    color: black;
+    font-family: "Roboto Medium", "Times New Roman";
+  }
+  &-calendar {
+    &:before {
+      content: '\E046';
+    }
+  }
+}
+
 .facts {
   &__item {
     margin-bottom: 30px;

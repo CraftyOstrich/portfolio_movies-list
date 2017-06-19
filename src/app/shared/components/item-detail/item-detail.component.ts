@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {IMovieDetail} from "../../../models/movie-detail";
+import {Creator} from "../../../models/creator";
 
 
 @Component({
@@ -9,6 +10,7 @@ import {IMovieDetail} from "../../../models/movie-detail";
 })
 export class ItemDetailComponent implements OnInit {
   @Input() item: IMovieDetail;
+  @Input() creators: Creator[];
   link: string = '/movie/';
 
 
