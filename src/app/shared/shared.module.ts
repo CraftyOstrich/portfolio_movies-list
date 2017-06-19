@@ -11,6 +11,7 @@ import {MoviesService} from "./services/movies.service";
 import { ActionsComponent } from './components/actions/actions.component';
 import {ItemDetailComponent} from "./components/item-detail/item-detail.component";
 import {DisplayDirective} from "./directives/display.directive";
+import {SerialsService} from "./services/serials.service";
 
 @NgModule ({
   declarations: [
@@ -38,7 +39,8 @@ import {DisplayDirective} from "./directives/display.directive";
     DisplayDirective
   ],
   providers: [
-    MoviesService
+    MoviesService,
+    SerialsService
   ]
 })
 export class SharedModule {}

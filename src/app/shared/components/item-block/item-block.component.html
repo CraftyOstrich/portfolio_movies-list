@@ -5,9 +5,9 @@
     </div>
     <div class="item__info">
       <p class="flex_between item-title">
-        <a (click)="goTo(item.id)"
+        <a (click)="goTo(item.id, item.title)"
                 class="text_short item-link">
-        {{ item.title }}
+        {{ item.title || item.name }}
       </a>
         <span class="item-rating">
               {{ item.vote_average }}
@@ -15,7 +15,7 @@
             </span>
       </p>
       <p class="flex_between">
-        <span class="glyphicon glyphicon-calendar">{{ item.release_date.slice(0,4) }}</span>
+        <span class="glyphicon glyphicon-calendar">{{ getShortDate(item.release_date || item.first_air_date )}}</span>
         <span class="text_short item-genres"></span>
         <!--<span> {{(_moviesService.getGenres(movie.genre_ids) | async) }} </span>-->
       </p>
@@ -24,7 +24,7 @@
       </p>
       <hr class="line">
       <p class="item-more">
-        <a [routerLink]="['/overview', item.id]"
+        <a (click)="goTo(item.id, item.title)"
            class="more-link">
           More
         </a>

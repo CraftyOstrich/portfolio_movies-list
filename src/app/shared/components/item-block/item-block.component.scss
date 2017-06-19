@@ -1,6 +1,10 @@
 a {
   text-decoration: none;
   color: rgb(136, 136, 136);
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+  }
 }
 p {
   margin: 0;
@@ -22,7 +26,7 @@ p {
   &__block {
     padding-bottom: 50px;
     &:nth-child(odd) {
-      padding-right: 15px;
+
     }
     &:nth-child(even) {
       padding-left: 15px;
@@ -58,7 +62,7 @@ p {
     }
   }
   &-description {
-    padding: 10px 0;
+    padding: 10px 5px;
     max-height: 90px;
     overflow: hidden;
   }

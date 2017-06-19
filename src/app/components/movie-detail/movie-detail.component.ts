@@ -2,9 +2,9 @@ import {Component, OnInit, DoCheck} from '@angular/core';
 import {MoviesService} from "../../shared/services/movies.service";
 import {ActivatedRoute} from "@angular/router";
 import {IMovieDetail, MovieDetail} from "../../models/movie-detail";
-import {IGenre} from "../../models/genre";
+import {IGenre, Genre} from "../../models/genre";
 import {Movie} from "../../models/movie";
-import {MovieVideo} from "../../models/movie-video";
+import {Video} from "../../models/video";
 import {SafeUrl, DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {Character} from "../../models/character";
 import {Creator} from "../../models/creator";
@@ -18,7 +18,7 @@ import {Keyword} from "../../models/keyword";
 export class MovieDetailComponent implements OnInit {
   movie: MovieDetail;
   moviesSimilar: Movie[];
-  movieVideos: MovieVideo[];
+  movieVideos: Video[];
   movieCharacters: Character[];
   movieCreators: Creator[];
   movieKeywords: Keyword[];
@@ -27,7 +27,7 @@ export class MovieDetailComponent implements OnInit {
   linkVideo: string = '/videos';
   linkPeople: string = '/credits';
   linkKeywords: string = '/keywords';
-  genres: IGenre[];
+  genres: Genre[];
 
   constructor(private _route: ActivatedRoute, private _moviesService: MoviesService, private sanitizer: DomSanitizer) { }
 

@@ -9,21 +9,18 @@ import {AppRouterModule} from "./app-routing.module";
 import { MoviesComponent } from './components/movies/movies.component';
 import {SharedModule} from "./shared/shared.module";
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { SerialsComponent } from './components/serials/serials.component';
+import { SerialDetailComponent } from './components/serial-detail/serial-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     DiscoverComponent,
-
-
-
     MoviesComponent,
-
-
-
-    MovieDetailComponent
+    MovieDetailComponent,
+    SerialsComponent,
+    SerialDetailComponent
   ],
   imports: [
     BrowserModule,

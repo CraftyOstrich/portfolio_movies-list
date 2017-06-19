@@ -77,26 +77,26 @@ export const NavItems = <INavItem[]>
       {
         id: 3.1,
         name: 'Popular',
-        link: '/serials/popular',
-        path: ''
+        link: '/tv/popular',
+        //path: ''
       },
       {
         id: 3.2,
         name: 'Top',
-        link: '/serials/top',
-        path: ''
+        link: '/tv/top_rated',
+        //path: ''
       },
       {
         id: 3.3,
         name: 'On TV',
-        link: '/serials/on TV',
+        link: '/tv/on_the_air',
         path: ''
       },
       {
         id: 3.4,
         name: 'Today on TV',
-        link: '/serials/today',
-        path: ''
+        link: '/tv/airing_today',
+        //path: ''
       }
       ]
     },

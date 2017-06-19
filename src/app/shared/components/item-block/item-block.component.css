@@ -1,6 +1,9 @@
 a {
   text-decoration: none;
   color: #888888; }
+  a:hover {
+    color: #fff;
+    cursor: pointer; }
 
 p {
   margin: 0;
@@ -17,8 +20,6 @@ p {
 
 .item__block {
   padding-bottom: 50px; }
-  .item__block:nth-child(odd) {
-    padding-right: 15px; }
   .item__block:nth-child(even) {
     padding-left: 15px; }
 .item__wrapper {
@@ -42,7 +43,7 @@ p {
     .item-genres {
       width: 120px; } }
 .item-description {
-  padding: 10px 0;
+  padding: 10px 5px;
   max-height: 90px;
   overflow: hidden; }
 

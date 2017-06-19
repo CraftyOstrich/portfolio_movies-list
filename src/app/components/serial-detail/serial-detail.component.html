@@ -1,0 +1,122 @@
+<app-item-detail [item]="serial" [creators]="serialCreators"></app-item-detail>
+<div class="flex" *ngIf="serial">
+  <div class="info">
+    <div class="info__wrapper">
+      <section class="info__starring">
+        <h3 class="starring-title">Starring</h3>
+        <ol class="starring__list">
+          <li *ngFor="let character of serialCharacters" class="starring__item" >
+            <a class="starring-link">
+              <img class="starring-img" src="https://image.tmdb.org/t/p/w138_and_h175_bestv2/{{ character.profile_path }}" [alt]=" character.name ">
+            </a>
+            <div class="starring__detail">
+              <p class="text_short starring-name">
+                <a class="text_hover">
+                  {{ character.name }}
+                </a>
+              </p>
+              <p class="text_short starring-character">{{ character.character }}</p>
+            </div>
+          </li>
+        </ol>
+        <p class="starring-btn">
+          <a>
+            More
+          </a>
+        </p>
+      </section>
+      <section class="info__video">
+        <h3 class="">Video</h3>
+        <div class="scroller">
+          <div *ngFor="let video of serialVideos" class="video__item">
+            <iframe width="640" height="360"
+                    [src]="sanitizeUrl(video.key)"
+                    frameborder="0" allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </section>
+      <section class="info__similar">
+        <h3>You will like it</h3>
+        <div class="scroller">
+          <div class="similar__item" *ngFor="let serialSimilar of serialsSimilar">
+            <div class="similar__img-block">
+              <a show >
+                <img class="similar-img"
+                     src="https://image.tmdb.org/t/p/w250_and_h141_bestv2/{{ serialSimilar.poster_path}}" [alt]='serialSimilar.name'>
+                <div class="meta">
+                  <span class="meta__release-date">
+                    <span class="glyphicon glyphicon-calendar meta-calendar">
+                      {{ serialSimilar.first_air_date }}
+                  </span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <p class="flex">
+              <a href='/tv/{{ serialSimilar.id}}' class="text_short similar-name">{{ serialSimilar.name }}</a>
+              <span>
+                {{ serialSimilar.vote_average }}
+                <span class="glyphicon glyphicon-star similar-star"></span>
+              </span>
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="facts">
+    <h3 class="facts-title">Facts</h3>
+    <p class="facts__item">
+      <strong>Original title</strong>
+      {{ serial.original_name }}
+    </p>
+    <p class="facts__item">
+      <strong>Status</strong>
+      {{ serial.status }}
+    </p>
+    <p class="facts__item">
+      <strong>Company</strong>
+      <span *ngFor="let network of serialNetworks">{{ network.name }}, </span>
+    </p>
+    <p class="facts__item">
+      <strong>Type</strong>
+      {{ serial.type }}
+    </p>
+    <p class="facts__item">
+      <strong>Original language</strong>
+      {{ serial.original_language | uppercase}}
+    </p>
+    <p class="facts__item">
+      <strong>Episode's runtime</strong>
+      <span *ngFor="let time of serial.episode_run_time ">{{time}}m, </span>
+    </p>
+    <p class="facts__item">
+      <strong>Number of episodes</strong>
+      {{ serial.number_of_episodes }}
+    </p>
+    <p class="facts__item">
+      <strong>Homepage</strong>
+      <a [href]='serial.homepage'>{{ serial.homepage }}</a>
+    </p>
+    <section class="facts__genres">
+      <h4>Genres</h4>
+      <ul>
+        <li class="facts__list-item" *ngFor="let genre of genres">
+          <a class="text_hover facts-link">
+            {{ genre.name }}
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section class="facts__keywords">
+      <h4>Keywords</h4>
+      <ul>
+        <li  *ngFor="let keyword of serialKeywords" class="facts__list-item">
+          <a class="text_hover facts-link">
+            {{ keyword.name }}
+          </a>
+      </ul>
+    </section>
+  </div>
+</div>

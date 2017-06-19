@@ -1,7 +1,7 @@
 <div *ngIf="item" class="poster ">
   <div class="poster__image">
     <div class="image__content">
-      <img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ item.poster_path }}' [alt]='item.title'>
+      <img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ item.poster_path }}' [alt]='item.title || item.name'>
     </div>
     <div class="image__zoom">
 
@@ -10,8 +10,8 @@
   <div class="poster__info">
     <div class="poster__title">
       <h2>
-        <a> {{ item.title }}
-          <span>({{ item.release_date.slice(0,4) }})</span>
+        <a> {{ item.title || item.name }}
+          <span>({{ getShortDate(item.release_date || item.first_air_date) }})</span>
         </a>
       </h2>
     </div>

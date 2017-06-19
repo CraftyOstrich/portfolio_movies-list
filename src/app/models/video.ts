@@ -1,4 +1,4 @@
-export interface IMovieVideo {
+export interface IVideo {
   id: string;
   iso_639_1: string;
   iso_3166_1: string;
@@ -9,7 +9,7 @@ export interface IMovieVideo {
   type: string;
 }
 
-export class MovieVideo implements IMovieVideo {
+export class Video implements IVideo {
  public id: string;
  public iso_639_1: string;
  public iso_3166_1: string;
@@ -19,7 +19,7 @@ export class MovieVideo implements IMovieVideo {
  public size: number;
  public type: string;
 
-  constructor (video: MovieVideo) {
+  constructor (video: Video) {
     this.id = video.id;
     this.iso_639_1 = video.iso_639_1;
     this.iso_3166_1 = video.iso_3166_1;

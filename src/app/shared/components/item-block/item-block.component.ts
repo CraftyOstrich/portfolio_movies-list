@@ -14,7 +14,16 @@ export class ItemBlockComponent implements OnInit {
   ngOnInit() {
   }
 
-  goTo(id) {
-    this.router.navigate(['movie', id]);
+  goTo(id, title?) {
+    if (title) {
+      this.router.navigate(['movie', id]);
+    } else {
+      this.router.navigate(['tv', id]);
+    }
+
+  }
+
+  getShortDate(item: string) {
+    return item.slice(0, 4)
   }
 }
