@@ -1,0 +1,56 @@
+a, p, h3 {
+  color: #888888;
+  font-family: "Roboto Medium", "Times New Roman"; }
+
+a {
+  text-decoration: none;
+  cursor: pointer; }
+  a:hover {
+    color: #ffffff; }
+
+.flex_between {
+  display: flex;
+  justify-content: space-between; }
+
+.flex_wrap {
+  flex-wrap: wrap; }
+
+.wrapper {
+  margin: 50px 0; }
+
+.big_column {
+  width: 70%; }
+
+.profile__image {
+  margin: auto 30px; }
+.profile__biography {
+  margin: auto; }
+  .profile__biography h3 {
+    margin: 0;
+    padding: 20px 0; }
+.profile__name {
+  font-weight: 700;
+  font-size: 42px;
+  color: #ffffff; }
+
+.info {
+  width: 25%;
+  margin-right: 5%; }
+  .info__item {
+    margin-bottom: 30px; }
+    .info__item strong {
+      display: block;
+      font-size: 16px; }
+  .info-title {
+    margin: 20px 0; }
+
+.popular__item {
+  width: 150px;
+  margin: 15px; }
+.popular-image {
+  width: 150px; }
+.popular-name {
+  text-align: center;
+  padding: 5px 0; }
+
+/*# sourceMappingURL=person-detail.component.css.map */

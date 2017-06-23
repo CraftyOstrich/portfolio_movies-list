@@ -11,6 +11,7 @@ import {SharedModule} from "./shared/shared.module";
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { SerialsComponent } from './components/serials/serials.component';
 import { SerialDetailComponent } from './components/serial-detail/serial-detail.component';
+import { PeopleComponent } from './components/people/people.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SerialDetailComponent } from './components/serial-detail/serial-detail.
     MoviesComponent,
     MovieDetailComponent,
     SerialsComponent,
-    SerialDetailComponent
+    SerialDetailComponent,
+    PeopleComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,12 @@ import { ActionsComponent } from './components/actions/actions.component';
 import {ItemDetailComponent} from "./components/item-detail/item-detail.component";
 import {DisplayDirective} from "./directives/display.directive";
 import {SerialsService} from "./services/serials.service";
+import { PersonBlockComponent } from './components/person-block/person-block.component';
+import { PersonDetailComponent } from '../components/person-detail/person-detail.component';
+import {PeopleService} from "./services/people.service";
+import {FilmDisplayDirective} from "./directives/film-display.directive";
+import {SortByPipe} from "./sort.pipe";
+import { WorkComponent } from './components/work/work.component';
 
 @NgModule ({
   declarations: [
@@ -21,7 +27,12 @@ import {SerialsService} from "./services/serials.service";
     RegistrationComponent,
     ActionsComponent,
     ItemDetailComponent,
-    DisplayDirective
+    PersonBlockComponent,
+    PersonDetailComponent,
+    DisplayDirective,
+    FilmDisplayDirective,
+    SortByPipe,
+    WorkComponent
   ],
   imports: [
     BrowserModule,
@@ -36,11 +47,18 @@ import {SerialsService} from "./services/serials.service";
     RegistrationComponent,
     ActionsComponent,
     ItemDetailComponent,
-    DisplayDirective
+    DisplayDirective,
+    PersonBlockComponent,
+    PersonDetailComponent,
+    FilmDisplayDirective,
+    SortByPipe,
+    WorkComponent
+
   ],
   providers: [
     MoviesService,
-    SerialsService
+    SerialsService,
+    PeopleService
   ]
 })
 export class SharedModule {}

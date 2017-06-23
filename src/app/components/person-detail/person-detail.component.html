@@ -1,0 +1,66 @@
+<div *ngIf="person" class="wrapper">
+  <section class="flex_between profile">
+    <div class="profile__image">
+      <div class="image__content">
+        <img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ person.profile_path }}'
+             [alt]="person.name" class="image">
+      </div>
+    </div>
+    <section class="profile__biography">
+      <a class="profile__name">
+        {{ person.name }}
+      </a>
+      <h3>Biography</h3>
+      <p class="profile__biography-content">{{ person.biography }}</p>
+    </section>
+  </section>
+  <section class="flex_between">
+    <div class="info">
+      <h3 class="info-title">Information about person</h3>
+      <p class="info__item">
+        <strong>Gender</strong>
+        {{ DetermineGender(person.gender) }}
+      </p>
+      <p *ngIf='allWorks' class="info__item">
+        <strong>Known works</strong>
+        {{ allWorks.length }}
+      </p>
+      <p class="info__item">
+        <strong>Birthday</strong>
+        {{ person.birthday ? person.birthday : '-' }}
+      </p>
+      <p class="info__item">
+        <strong>Place of birth</strong>
+        {{ person.place_of_birth ? person.place_of_birth : '-' }}
+      </p>
+      <p class="info__item">
+        <strong>Official site</strong>
+        <a [href]="person.homepage">{{ person.homepage ? person.homepage : '-'}}</a>
+      </p>
+      <p *ngIf='person.also_known_as.length' class="info__item">
+        <strong>Also known as</strong>
+        <span *ngFor="let name of person.also_known_as">{{ name }}<br></span>
+      </p>
+    </div>
+    <div class="big_column">
+      <!--<div class="works_popular">-->
+        <!--<h3>Known for</h3>-->
+        <!--<ul class="flex_between flex_wrap">-->
+          <!--<li *ngFor="let work of popularWorks" class="popular__item">-->
+            <!--<a (click)="goTo(work.id, work.title)">-->
+              <!--<img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ work.poster_path }}'-->
+                   <!--[alt]='work.title || work.name' class="popular-image">-->
+            <!--</a>-->
+            <!--<p class="popular-name">-->
+              <!--<a (click)="goTo(work.id, work.title)">{{work.title || work.name}}</a>-->
+            <!--</p>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+      <app-work>
+
+      </app-work>
+    </div>
+  </section>
+
+</div>

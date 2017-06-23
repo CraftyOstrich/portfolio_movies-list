@@ -1,0 +1,11 @@
+h2 {
+  font-size: 30px;
+  color: #888888;
+}
+
+
+.flex_around {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+}

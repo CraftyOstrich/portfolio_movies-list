@@ -13,6 +13,7 @@ export interface IMovie {
   adult: boolean;
   overview: string;
   release_date: string;
+  media_type?: string;
 }
 export class Movie implements IMovie {
   public id: number;
@@ -29,6 +30,7 @@ export class Movie implements IMovie {
   public adult: boolean;
   public original_language: string;
   public original_title: string;
+  public media_type?: string;
 
   constructor(movie: IMovie) {
     this.id = movie.id;
@@ -44,6 +46,9 @@ export class Movie implements IMovie {
     this.video = movie.video;
     this.adult = movie.adult;
     this.original_language = movie.original_language;
-    this.original_title = movie.original_title
+    this.original_title = movie.original_title;
+    this.media_type = movie.media_type;
   }
 }
+
+

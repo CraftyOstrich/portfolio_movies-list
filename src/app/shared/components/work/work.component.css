@@ -1,0 +1,54 @@
+a {
+  color: #888888;
+  font-family: "Roboto Medium", "Times New Roman";
+  text-decoration: none;
+  cursor: pointer; }
+  a:hover {
+    color: #ffffff; }
+
+table {
+  border-collapse: collapse;
+  color: #888888;
+  width: 100%; }
+  table tr {
+    display: table-row; }
+    table tr td {
+      display: table-cell;
+      padding: 5px 0; }
+
+.flex_between {
+  display: flex;
+  justify-content: space-between; }
+
+.work {
+  padding: 20px 0; }
+  .work-title {
+    display: block;
+    color: #888;
+    margin: 0; }
+
+.buttons {
+  display: block; }
+  .buttons-item {
+    display: inline-block;
+    background-color: #232323;
+    border-radius: 4px;
+    padding: 5px 15px;
+    margin: 0 5px; }
+
+.cast {
+  border: 1px solid #888888;
+  margin: 20px; }
+  .cast__item {
+    border-collapse: separate;
+    border-bottom: 1px solid #888888;
+    padding: 20px 0; }
+  .cast-year {
+    width: 15%;
+    text-align: center;
+    font-weight: 600; }
+  .cast-movie {
+    font-size: 16px;
+    font-weight: 600; }
+
+/*# sourceMappingURL=work.component.css.map */

@@ -6,12 +6,12 @@
         <h3 class="starring-title">Starring</h3>
         <ol class="starring__list">
           <li *ngFor="let character of movieCharacters" class="starring__item" >
-            <a class="starring-link">
+            <a href='/person/{{ character.id}}' class="starring-link">
               <img class="starring-img" src="https://image.tmdb.org/t/p/w138_and_h175_bestv2/{{ character.profile_path }}" [alt]=" character.name ">
             </a>
             <div class="starring__detail">
               <p class="text_short starring-name">
-                <a class="text_hover">
+                <a href='/person/{{ character.id}}' class="text_hover">
                   {{ character.name }}
                 </a>
               </p>

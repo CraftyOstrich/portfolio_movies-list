@@ -1,0 +1,39 @@
+a {
+  text-decoration: none;
+  cursor: pointer; }
+
+p {
+  margin: 0;
+  font-family: "Roboto Medium", "Times New Roman";
+  color: #000000; }
+
+.text_short {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.person__card {
+  margin: 20px; }
+.person__profile {
+  overflow: hidden;
+  width: 100%; }
+.person__img-block {
+  display: block; }
+  .person__img-block img {
+    height: 235px; }
+.person__meta {
+  z-index: 1;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: -40px;
+  padding: 5px 10px;
+  height: 40px;
+  visibility: visible; }
+.person-name {
+  font-weight: 600; }
+.person-films {
+  width: 137px;
+  visibility: hidden;
+  font-weight: 100; }
+
+/*# sourceMappingURL=person-block.component.css.map */

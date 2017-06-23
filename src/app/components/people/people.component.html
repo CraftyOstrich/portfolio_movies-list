@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>Celebrities</h2>
+  <div class="flex_around">
+    <div *ngFor="let person of people">
+      <app-person-block [person]="person">
+
+      </app-person-block>
+    </div>
+  </div>
+</div>

@@ -4,9 +4,7 @@ import {Directive, ElementRef, HostListener} from "@angular/core";
 })
 
 export class DisplayDirective {
-  constructor (private element:ElementRef) {
-    //this.renderer.setElementStyle(this.element.nativeElement.children, 'display', 'block')
-  }
+  constructor (private element:ElementRef) {}
 
   @HostListener("mouseover") onMouseOver() {
     this.setDisplayProperty('visible');

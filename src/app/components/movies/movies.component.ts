@@ -9,7 +9,7 @@ import {MoviesService} from "../../shared/services/movies.service";
 })
 export class MoviesComponent implements OnInit {
   errorMessage: string;
-  movies: IMovie[];
+  videos: any[];
   link: string = '/movie/popular';
 
   constructor(public _moviesService: MoviesService) { }
@@ -20,7 +20,7 @@ export class MoviesComponent implements OnInit {
       href = this.link;
     }
     this._moviesService.getMovies(href)
-      .subscribe(response => this.movies = response.results || [],
+      .subscribe(response => this.videos = response.results || [],
         error => this.errorMessage = <any>error);
 
   }

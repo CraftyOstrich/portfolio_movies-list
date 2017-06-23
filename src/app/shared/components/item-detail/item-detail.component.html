@@ -27,7 +27,7 @@
       <ol  class="creator__list ">
         <li *ngFor="let creator of creators" class="creator__item"  >
           <p>
-            <a class="creator-name">{{ creator.name }}</a>
+            <a  href='/person/{{ creator.id}}' class="creator-name">{{ creator.name }}</a>
           </p>
           <p class="creator-role">{{ creator.job }}</p>
         </li>
