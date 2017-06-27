@@ -1,4 +1,5 @@
-import {MovieCast, TvCast} from "./work";
+import {MovieCast, TvCast} from "./cast";
+import {MovieCrew, TvCrew} from "./crew";
 
 export interface IPersonDetail{
   adult: boolean;
@@ -16,6 +17,48 @@ export interface IPersonDetail{
   profile_path: string;
 }
 
+export class PersonJobs {
+  cast: (MovieCast | TvCast)[];
+  crew: (MovieCrew | TvCrew)[];
+  constructor(response: any) {
+    try {
+      this.cast = response.cast.map((item: any) => {
+        if (item.media_type === 'movie') {
+          return new MovieCast(item);
+        } else if (item.media_type === 'tv') {
+          return new TvCast(item)
+        }
+        return null;
+      });
+      this.crew = response.crew.map((item: any) => {
+        if (item.media_type === 'movie') {
+          return new MovieCrew(item);
+        } else if (item.media_type === 'tv') {
+          return new TvCrew(item)
+        }
+        return null;
+      });
+    } catch (err) {
+      throw err;
+    }
+  }
+
+
+  getCastByType(mediaType: string): (MovieCast | TvCast)[] {
+    if (!mediaType && !this.cast) {
+      return [];
+    }
+    return this.cast.filter((item: MovieCast | TvCast) => item.media_type === mediaType);
+  }
+
+  getCrewByType(mediaType: string): (MovieCrew | TvCrew)[] {
+    if (!mediaType && !this.crew) {
+      return [];
+    }
+    return this.crew.filter((item: MovieCrew | TvCrew) => item.media_type === mediaType);
+  }
+}
+
 export class PersonDetail implements IPersonDetail {
   public adult: boolean;
   public also_known_as: string[];
@@ -30,9 +73,8 @@ export class PersonDetail implements IPersonDetail {
   public place_of_birth: string;
   public popularity: number;
   public profile_path: string;
-  // public movies_cast: MovieCast[];
-  // public tvs_cast: TvCast[];
-  // public crew: any[];
+  public jobs: PersonJobs;
+
 
 
   constructor (person: IPersonDetail) {
@@ -49,6 +91,10 @@ export class PersonDetail implements IPersonDetail {
     this.place_of_birth = person.place_of_birth;
     this.popularity = person.popularity;
     this.profile_path = person.profile_path;
+  }
+
+  setPersonJobs(response: any) {
+    this.jobs = new PersonJobs(response);
   }
 
 }

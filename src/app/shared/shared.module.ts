@@ -16,8 +16,10 @@ import { PersonBlockComponent } from './components/person-block/person-block.com
 import { PersonDetailComponent } from '../components/person-detail/person-detail.component';
 import {PeopleService} from "./services/people.service";
 import {FilmDisplayDirective} from "./directives/film-display.directive";
-import {SortByPipe} from "./sort.pipe";
 import { WorkComponent } from './components/work/work.component';
+import {GroupByPipe} from "./pipes/groupBy.pipe";
+import {SortByYearPipe} from './pipes/sortByYear.pipe';
+import { GroupByDepartmentPipe } from './pipes/groupByDepartment.pipe';
 
 @NgModule ({
   declarations: [
@@ -31,8 +33,10 @@ import { WorkComponent } from './components/work/work.component';
     PersonDetailComponent,
     DisplayDirective,
     FilmDisplayDirective,
-    SortByPipe,
-    WorkComponent
+    GroupByPipe,
+    WorkComponent,
+    SortByYearPipe,
+    GroupByDepartmentPipe
   ],
   imports: [
     BrowserModule,
@@ -51,9 +55,7 @@ import { WorkComponent } from './components/work/work.component';
     PersonBlockComponent,
     PersonDetailComponent,
     FilmDisplayDirective,
-    SortByPipe,
     WorkComponent
-
   ],
   providers: [
     MoviesService,

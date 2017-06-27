@@ -42,7 +42,7 @@
         <span *ngFor="let name of person.also_known_as">{{ name }}<br></span>
       </p>
     </div>
-    <div class="big_column">
+    <div *ngIf="person.jobs" class="big_column">
       <!--<div class="works_popular">-->
         <!--<h3>Known for</h3>-->
         <!--<ul class="flex_between flex_wrap">-->
@@ -57,7 +57,7 @@
           <!--</li>-->
         <!--</ul>-->
       <!--</div>-->
-      <app-work>
+      <app-work [jobs]="person.jobs">
 
       </app-work>
     </div>

@@ -21,24 +21,10 @@ export class PeopleService {
       .catch(this.handleError);
   }
 
-  getMovieWorks(link, id, path): Observable<any> {
-    return this._http.get(this.getRequestUrl(link, id, path))
-      .map((response: Response) => response.json())
-      //.do(data => console.log('All:' + JSON.stringify(data)))
-      .catch(this.handleError);
-  }
-  //
-  // getSerialWorks(link, id, path): Observable<any> {
-  //   return this._http.get(this.getRequestUrl(link, id, path))
-  //     .map((response: Response) => response.json())
-  //     .do(data => console.log('All:' + JSON.stringify(data)))
-  //     .catch(this.handleError);
-  // }
-
   getAllWorks(link, id, path): Observable<any> {
     return this._http.get(this.getRequestUrl(link, id, path))
       .map((response: Response) => response.json())
-      .do(data => console.log('All:' + JSON.stringify(data)))
+      // .do(data => console.log('All:' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 

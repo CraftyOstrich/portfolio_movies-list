@@ -1,190 +1,44 @@
-<div class="work">
+<div class="wrapper">
   <div class="flex_between">
     <h3 class="work-title">Filming</h3>
     <span class="buttons">
-    <a (click)="displayTable(showMovie)" class="buttons-item">Movies</a>
-    <a (click)="displayTable(showSerial)" class="buttons-item">Serials</a>
+    <a (click)="onTypeChange(showMovie)" class="buttons-item">Movies</a>
+    <a (click)="onTypeChange(showSerial)" class="buttons-item">Serials</a>
   </span>
   </div>
-
-  <!--<div ngSwitch="dataType">-->
-    <!--<div ngSwitchCase="'movie'"></div>-->
-    <!--<div ngSwitchCase="'tv'"></div>-->
-  <!--</div>-->
-  <div *ngIf="showMovies">
-    <table class="cast">
-      <tr>
+    <table class="work">
+      <tr  *ngFor="let item of cast | groupBy:'year' | sortByYear">
         <td>
-          <table class="cast__item">
-            <tr>
-              <td class="cast-year">2018</td>
+          <table class="work__item">
+            <tr *ngFor="let i of item">
+              <td class="work-year">{{ i.year }}</td>
               <td>
-                <a class="cast-movie">{{movie.title}}</a>
-                as
-                <span class="cast-role">{{movie.character}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="cast-year">2018</td>
-              <td>
-                <a class="cast-movie">{{movie.title}}</a>
-                as
-                <span class="cast-role">{{movie.character}}</span>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <table class="cast__item">
-            <tr>
-              <td class="cast-year">2017</td>
-              <td>
-                <a class="cast-movie">{{movie.title}}</a>
-                as
-                <span class="cast-role">{{movie.character}}</span>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <table class="cast__item">
-            <tr>
-              <td class="cast-year">2016</td>
-              <td>
-                <a class="cast-movie">{{movie.title}}</a>
-                as
-                <span class="cast-role">{{movie.character}}</span>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-
-    </table>
-    <h3 class="work-title">Production</h3>
-    <table  class="cast">
-      <tr>
-        <td>
-          <table class="cast__item">
-            <tr>
-              <td class="cast-year">2018</td>
-              <td>
-                <a class="cast-movie">{{crewMovie.title}}</a>
-                ...
-                <span class="cast-role">{{crewMovie.job}}</span>
+                <a (click)="goToWork(i.id)" class="work-video">{{i.title || i.name}}</a>
+                <span *ngIf="i.episode_count">... ({{i.episode_count}} episode)</span>
+                <span *ngIf="i.character">as {{i.character}}</span>
               </td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
-    <h3 class="work-title">Direction</h3>
-    <table class="cast">
-      <tr>
-        <td>
-          <table class="cast__item">
-            <tr>
-              <td class="cast-year">2018</td>
-              <td>
-                <a class="cast-movie">{{crewMovie.title}}</a>
-                ...
-                <span class="cast-role">{{crewMovie.job}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="cast-year">2018</td>
-              <td>
-                <a class="cast-movie">{{crewMovie.title}}</a>
-                ...
-                <span class="cast-role">{{crewMovie.job}}</span>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div *ngIf="showTVs">
-    <table class="cast">
-      <tr>
-        <td>
-          <table class="cast__item">
-            <tr>
-              <td class="cast-year">2018</td>
-              <td>
-                <a class="cast-movie">{{tv.name}}</a>
-                 -
-                <span class="cast-role">({{tv.episode_count}} episode)</span>
-                <span *ngIf="tv.character"> as {{tv.character}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="cast-year">2018</td>
-              <td>
-                <a class="cast-movie">{{tv.name}}</a>
-                -
-                <span class="cast-role">({{tv.episode_count}} episode)</span>
-                <span *ngIf="tv.character"> as {{tv.character}}</span>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <table class="cast__item">
-            <tr>
-              <td class="cast-year">2017</td>
-              <td>
-                <a class="cast-movie">{{tv.name}}</a>
-                -
-                <span class="cast-role">({{tv.episode_count}} episode)</span>
-                <span *ngIf="tv.character"> as {{tv.character}}</span>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <table class="cast__item">
-            <tr>
-              <td class="cast-year">2016</td>
-              <td>
-                <a class="cast-movie">{{tv.name}}</a>
-                -
-                <span class="cast-role">({{tv.episode_count}} episode)</span>
-                <span *ngIf="tv.character"> as {{tv.character}}</span>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-
-    </table>
-    <h3 class="work-title">Direction</h3>
-    <table  class="cast">
-      <tr>
-        <td>
-          <table class="cast__item">
-            <tr>
-              <td class="cast-year">2018</td>
-              <td>
-                <a class="cast-movie">{{crewTVs.name}}</a>
-                -
-                <span class="cast-role"> ({{crewTVs.episode_count}} episodes)</span>
-                ...
-                <span>{{crewTVs.job}}</span>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </div>
-
+    <div *ngFor="let item of crew |groupByDepartment: 'department'">
+      <h3 class="work-title">{{ item.key }}</h3>
+      <table class="work">
+        <tr *ngFor="let job of item.result | groupBy:'year' | sortByYear">
+          <td>
+            <table class="work__item">
+              <tr *ngFor="let j of job">
+                <td class="work-year">{{ j.year }}</td>
+                <td>
+                  <a class="work-video">{{j.title || j.name}}</a>
+                  <span *ngIf="j.episode_count">- ({{j.episode_count}} episode)</span>
+                  <span *ngIf="j.job">... {{ j.job }}</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
 </div>

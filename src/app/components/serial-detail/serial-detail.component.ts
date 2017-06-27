@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {SeriesDetail} from "../../models/series-detail";
+import {SeriesDetail} from "../../models/tv-detail";
 import {ActivatedRoute} from "@angular/router";
 import {SerialsService} from "../../shared/services/serials.service";
 import {Genre} from "../../models/genre";
-import {Series} from "../../models/series";
+import {Series} from "../../models/tv";
 import {Character} from "../../models/character";
 import {Creator} from "../../models/creator";
 import {Keyword} from "../../models/keyword";

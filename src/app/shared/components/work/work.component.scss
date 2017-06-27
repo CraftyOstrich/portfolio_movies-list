@@ -25,40 +25,45 @@ table {
   justify-content: space-between;
 }
 
-.work {
+.wrapper {
   padding: 20px 0;
-  &-title {
-    display: block;
-    color: #888;
-    margin: 0;
-  }
 }
-.buttons {
-  display: block;
-  &-item {
-    display: inline-block;
-    background-color: #232323;
-    border-radius: 4px;
-    padding: 5px 15px;
-    margin: 0 5px;
-  }
-}
-.cast {
+
+.work {
   border: 1px solid #888888;
   margin: 20px;
+  tr:last-child {
+    td table {
+      border-bottom: none;
+    }
+  }
   &__item {
     border-collapse: separate;
     border-bottom: 1px solid #888888;
     padding: 20px 0;
-
   }
   &-year {
     width: 15%;
     text-align: center;
     font-weight: 600;
   }
-  &-movie {
+  &-video {
     font-size: 16px;
     font-weight: 600;
+    &-title {
+      display: block;
+      color: #888;
+      margin: 0;
+    }
+  }
+  .buttons {
+    display: block;
+    &-item {
+      display: inline-block;
+      background-color: #232323;
+      border-radius: 4px;
+      padding: 5px 15px;
+      margin: 0 5px;
+    }
   }
 }
