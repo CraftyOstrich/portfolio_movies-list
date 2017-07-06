@@ -16,6 +16,9 @@ table {
       display: table-cell;
       padding: 5px 0; }
 
+h3 {
+  color: #888888; }
+
 .flex_between {
   display: flex;
   justify-content: space-between; }
@@ -43,13 +46,14 @@ table {
       display: block;
       color: #888;
       margin: 0; }
-  .work .buttons {
-    display: block; }
-    .work .buttons-item {
-      display: inline-block;
-      background-color: #232323;
-      border-radius: 4px;
-      padding: 5px 15px;
-      margin: 0 5px; }
+
+.buttons {
+  display: block; }
+  .buttons-item {
+    display: inline-block;
+    background-color: #232323;
+    border-radius: 4px;
+    padding: 5px 15px;
+    margin: 0 5px; }
 
 /*# sourceMappingURL=work.component.css.map */

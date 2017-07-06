@@ -2,12 +2,15 @@
 <div class="flex" *ngIf="movie">
   <div class="info">
     <div class="info__wrapper">
-      <section class="info__starring">
+      <section *ngIf='movieCharacters.length' class="info__starring">
         <h3 class="starring-title">Starring</h3>
         <ol class="starring__list">
           <li *ngFor="let character of movieCharacters" class="starring__item" >
             <a href='/person/{{ character.id}}' class="starring-link">
-              <img class="starring-img" src="https://image.tmdb.org/t/p/w138_and_h175_bestv2/{{ character.profile_path }}" [alt]=" character.name ">
+              <img *ngIf="character.profile_path" class="starring-img"
+                   src="https://image.tmdb.org/t/p/w138_and_h175_bestv2/{{ character.profile_path }}"
+                   [alt]=" character.name ">
+              <div *ngIf="!character.profile_path" class="glyphicon glyphicon-user starring-no_image"></div>
             </a>
             <div class="starring__detail">
               <p class="text_short starring-name">
@@ -25,7 +28,7 @@
           </a>
         </p>
       </section>
-      <section class="info__video">
+      <section *ngIf="movieVideos?.length" class="info__video">
         <h3 class="">Video</h3>
         <div class="scroller">
           <div *ngFor="let video of movieVideos" class="video__item">
@@ -36,7 +39,7 @@
           </div>
         </div>
       </section>
-      <section class="info__similar">
+      <section *ngIf='moviesSimilar.length' class="info__similar">
         <h3>You will like it</h3>
         <div class="scroller">
           <div class="similar__item" *ngFor="let movieSimilar of moviesSimilar">
@@ -69,11 +72,11 @@
     <h3 class="facts-title">Facts</h3>
     <p class="facts__item">
       <strong>Original title</strong>
-      {{ movie.original_title }}
+      {{ movie.original_title ? movie.original_title : '-' }}
     </p>
     <p class="facts__item">
       <strong>Status</strong>
-      {{ movie.status }}
+      {{ movie.status ? movie.status : '-' }}
     </p>
     <p class="facts__item">
       <strong>Release Information</strong>
@@ -89,17 +92,17 @@
     </p>
     <p class="facts__item">
       <strong>Budget</strong>
-      ${{ movie.budget }}
+      ${{ movie.budget ? movie.budget : '-'}}
     </p>
     <p class="facts__item">
       <strong>Revenue</strong>
-      ${{ movie.revenue }}
+      ${{ movie.revenue ? movie.revenue : '-' }}
     </p>
     <p class="facts__item">
       <strong>Homepage</strong>
-      <a [href]='movie.homepage'>{{ movie.homepage }}</a>
+      <a [href]='movie.homepage'>{{ movie.homepage ? movie.homepage : '-' }}</a>
     </p>
-    <section class="facts__genres">
+    <section *ngIf="genres.length" class="facts__genres">
       <h4>Genres</h4>
       <ul>
         <li class="facts__list-item" *ngFor="let genre of genres">
@@ -109,7 +112,7 @@
         </li>
       </ul>
     </section>
-    <section class="facts__keywords">
+    <section *ngIf="movieKeywords.length" class="facts__keywords">
       <h4>Keywords</h4>
       <ul>
         <li  *ngFor="let keyword of movieKeywords" class="facts__list-item">

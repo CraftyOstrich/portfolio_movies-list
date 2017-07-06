@@ -17,11 +17,11 @@ import {Keyword} from "../../models/keyword";
 })
 export class MovieDetailComponent implements OnInit {
   movie: MovieDetail;
-  moviesSimilar: Movie[];
-  movieVideos: Video[];
-  movieCharacters: Character[];
-  movieCreators: Creator[];
-  movieKeywords: Keyword[];
+  moviesSimilar: Movie[] = [];
+  movieVideos: Video[] = [];
+  movieCharacters: Character[] = [];
+  movieCreators: Creator[] = [];
+  movieKeywords: Keyword[]= [];
   link: string = '/movie/';
   linkSimilar: string = '/similar';
   linkVideo: string = '/videos';

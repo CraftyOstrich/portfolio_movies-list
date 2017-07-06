@@ -44,6 +44,15 @@ a {
   .info-title {
     margin: 20px 0; }
 
+.image__content {
+  width: 300px;
+  height: 450px;
+  padding: 170px 0;
+  color: #888888;
+  font-size: 18px;
+  border: 1px solid #888888;
+  text-align: center; }
+
 .popular__item {
   width: 150px;
   margin: 15px; }

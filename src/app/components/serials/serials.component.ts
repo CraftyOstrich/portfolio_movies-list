@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SerialsService} from "../../shared/services/serials.service";
-import {Series} from "../../models/tv";
+import {Tv} from "../../models/tv";
 
 @Component({
   selector: 'app-serials',
@@ -9,7 +9,7 @@ import {Series} from "../../models/tv";
 })
 export class SerialsComponent implements OnInit {
   errorMessage: string;
-  serials: Series[];
+  serials: Tv[];
   link: string = '/tv/popular';
 
   constructor(public _serialsService: SerialsService) { }

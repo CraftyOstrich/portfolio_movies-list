@@ -22,7 +22,9 @@ export class ItemDetailComponent implements OnInit {
 
 
   getShortDate(item: string) {
-    return item.slice(0, 4)
+    if (item) {
+      return item.slice(0, 4)
+    }
   }
 
 }

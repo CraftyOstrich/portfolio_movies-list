@@ -1,8 +1,13 @@
 <div class="container">
   <h2>Discover new movies and series</h2>
+  <app-search [searchUrl]="CurrentUrlGenres" (onFilterChange)="onFilterChange($event)"></app-search>
+
   <div class="row discover">
-    <div *ngFor="let item of movies" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-      <app-item-block [item]="item"></app-item-block>
+    <div *ngFor="let item of videos" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <app-item-block [item]="item" ></app-item-block>
     </div>
   </div>
 </div>
+
+<!--(onFilterChange)="onFilterChange($event)-->
+<!--[searchType]="'movie'"-->

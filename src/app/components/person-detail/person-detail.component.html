@@ -1,9 +1,12 @@
 <div *ngIf="person" class="wrapper">
   <section class="flex_between profile">
     <div class="profile__image">
-      <div class="image__content">
+      <div *ngIf="person.profile_path">
         <img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ person.profile_path }}'
              [alt]="person.name" class="image">
+      </div>
+      <div class="image__content"  *ngIf="!person.profile_path">
+        <p>There is no photo of this actor <br>at the moment </p>
       </div>
     </div>
     <section class="profile__biography">
@@ -11,7 +14,13 @@
         {{ person.name }}
       </a>
       <h3>Biography</h3>
-      <p class="profile__biography-content">{{ person.biography }}</p>
+      <div *ngIf="person.biography">
+        <p class="profile__biography-content">{{ person.biography }}</p>
+      </div>
+      <div *ngIf="!person.biography">
+        <p>There is no biography of this actor at this moment.</p>
+      </div>
+
     </section>
   </section>
   <section class="flex_between">
@@ -21,10 +30,10 @@
         <strong>Gender</strong>
         {{ DetermineGender(person.gender) }}
       </p>
-      <p *ngIf='allWorks' class="info__item">
-        <strong>Known works</strong>
-        {{ allWorks.length }}
-      </p>
+      <!--<p *ngIf='allWorks' class="info__item">-->
+        <!--<strong>Known works</strong>-->
+        <!--{{ allWorks.length }}-->
+      <!--</p>-->
       <p class="info__item">
         <strong>Birthday</strong>
         {{ person.birthday ? person.birthday : '-' }}

@@ -14,9 +14,8 @@ import {PersonDetailComponent} from "./components/person-detail/person-detail.co
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
-  {path: 'overview', component: DiscoverComponent},
   {path: 'overview/movie', component: DiscoverComponent},
-  {path: 'overview/serials', component: DiscoverComponent},
+  {path: 'overview/tv', component: DiscoverComponent},
   {path: 'movie', component: MoviesComponent},
   {path: 'serials', component: SerialsComponent},
   {path: 'tv/popular', component: SerialsComponent},

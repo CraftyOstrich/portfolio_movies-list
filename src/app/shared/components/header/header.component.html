@@ -3,7 +3,7 @@
     <div class="header__logo">
       <img src="../../../../assets/images/logo.svg" alt="Cute Tube">
     </div>
-    <div class="flex flex-between header__large">
+    <div class="flex flex_between header__large">
       <div class="header__nav" *ngIf="hiddenSearch">
         <ul>
           <li class="nav__item" *ngFor="let navBarItem of navbar">
@@ -20,10 +20,44 @@
           </li>
         </ul>
       </div>
-      <div class="flex flex-between header__large"  *ngIf="hiddenNav">
+      <div class="flex flex_between header__large"  *ngIf="hiddenNav">
         <div>
           <form action="#" class="search__form">
-            <input type="text" placeholder="Search movies" class="search-field">
+            <input type="text" placeholder="Search movies..."
+                   [(ngModel)]="searchWord"  [ngModelOptions]="{standalone: true}"
+                   (ngModelChange)="loadSearchList($event)"
+                   class="search-field">
+            <div *ngIf="displaySearchResults" class="search__list">
+              <ul>
+                <li *ngFor="let item of searchList" class="search-item">
+                  <span class="item__block item__content">
+                    <span class="item__block">
+                      <img *ngIf="item.poster_path || item.profile_path"
+                            src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ item.poster_path || item.profile_path }}'
+                           alt="" class="item-image">
+                      <div *ngIf="!item.poster_path && !item.profile_path && (item.media_type === 'person')"
+                           class="glyphicon glyphicon-user search__no_image">
+                      </div>
+                      <div *ngIf="!item.poster_path && !item.profile_path && (item.media_type !== 'person')"
+                           class="glyphicon glyphicon-picture search__no_image">
+                      </div>
+                    </span>
+                    <span class="item__block item__info" >
+                      <span class="item__info-block">
+                        <a (click)='goToSearchItem(item.media_type, item.id)'>{{ item.name || item.title}}</a>
+                      </span>
+                      <span class="item__info-block">
+                        {{ item.release_date || item.first_air_date }}
+                      </span>
+                    </span>
+                    <span class="item__block item__media-type">
+                      <p >{{ item.media_type }}</p>
+                    </span>
+                  </span>
+
+                </li>
+              </ul>
+            </div>
           </form>
         </div>
         <div>
@@ -41,9 +75,9 @@
   </div>
     <div class="header_mobile">
       <a class="mobile__nav-link" (click)="dropDownMobileList()" >
-        <span *ngIf="!hiddenMobileNav"></span>
-        <span *ngIf="!hiddenMobileNav"></span>
-        <span *ngIf="!hiddenMobileNav"></span>
+        <span *ngIf="!hiddenMobileNav" class="mobile-icon"></span>
+        <span *ngIf="!hiddenMobileNav" class="mobile-icon"></span>
+        <span *ngIf="!hiddenMobileNav" class="mobile-icon"></span>
         <span class="mobile__nav-close" *ngIf="hiddenMobileNav" >
           <a (click)="dropDownMobileList()"></a>
         </span>
@@ -60,9 +94,43 @@
             </a>
           </li>
         </ul>
-        <div class=".mobile__search">
+        <div class="mobile__search">
           <form action="#" class="search__form">
-            <input type="text" placeholder="Search movies" class="search-field">
+            <input type="text" placeholder="Search movies"
+                   [(ngModel)]="searchWord"  [ngModelOptions]="{standalone: true}"
+                   (ngModelChange)="loadSearchList($event)"
+                   class="search-field">
+            <div *ngIf="displaySearchResults" class="search__list">
+              <ul>
+                <li *ngFor="let item of searchList" class="search-item">
+                  <span class="item__block item__content">
+                    <span class="item__block">
+                      <img *ngIf="item.poster_path || item.profile_path"
+                           src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ item.poster_path || item.profile_path }}'
+                           alt="" class="item-image">
+                      <div *ngIf="!item.poster_path && !item.profile_path && (item.media_type === 'person')"
+                           class="glyphicon glyphicon-user search__no_image">
+                      </div>
+                      <div *ngIf="!item.poster_path && !item.profile_path && (item.media_type !== 'person')"
+                           class="glyphicon glyphicon-picture search__no_image">
+                      </div>
+                    </span>
+                    <span class="item__block item__info" >
+                      <span class="item__info-block">
+                        <a (click)='goToSearchItem(item.media_type, item.id)'>{{ item.name || item.title}}</a>
+                      </span>
+                      <span class="item__info-block">
+                        {{ item.release_date || item.first_air_date }}
+                      </span>
+                    </span>
+                    <span class="item__block item__media-type">
+                      <p >{{ item.media_type }}</p>
+                    </span>
+                  </span>
+
+                </li>
+              </ul>
+            </div>
           </form>
         </div>
      </div>

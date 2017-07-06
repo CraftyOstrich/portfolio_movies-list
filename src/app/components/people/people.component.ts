@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PeopleService} from "../../shared/services/people.service";
 import {Person} from "../../models/person";
 
@@ -11,15 +11,14 @@ export class PeopleComponent implements OnInit {
   people: Person[];
   errorMessage: string;
 
-  constructor(public _peopleService: PeopleService) { }
+  constructor(public _peopleService: PeopleService) {
+  }
 
   ngOnInit() {
     this._peopleService.getPeople('/person/popular')
       .subscribe(response => {
           this.people = response.results || [];
-
-      },
+        },
         error => this.errorMessage = <any>error);
   }
-
 }

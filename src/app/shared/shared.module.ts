@@ -20,6 +20,8 @@ import { WorkComponent } from './components/work/work.component';
 import {GroupByPipe} from "./pipes/groupBy.pipe";
 import {SortByYearPipe} from './pipes/sortByYear.pipe';
 import { GroupByDepartmentPipe } from './pipes/groupByDepartment.pipe';
+import { SearchComponent } from './components/search/search.component';
+import {SearchService} from "./services/search.service";
 
 @NgModule ({
   declarations: [
@@ -36,7 +38,8 @@ import { GroupByDepartmentPipe } from './pipes/groupByDepartment.pipe';
     GroupByPipe,
     WorkComponent,
     SortByYearPipe,
-    GroupByDepartmentPipe
+    GroupByDepartmentPipe,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -55,12 +58,14 @@ import { GroupByDepartmentPipe } from './pipes/groupByDepartment.pipe';
     PersonBlockComponent,
     PersonDetailComponent,
     FilmDisplayDirective,
-    WorkComponent
+    WorkComponent,
+    SearchComponent
   ],
   providers: [
     MoviesService,
     SerialsService,
-    PeopleService
+    PeopleService,
+    SearchService
   ]
 })
 export class SharedModule {}

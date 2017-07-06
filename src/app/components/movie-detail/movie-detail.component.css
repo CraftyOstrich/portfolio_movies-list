@@ -48,6 +48,11 @@ strong {
 .starring-img {
   width: 138px;
   height: 175px; }
+.starring-no_image {
+  padding: 59px 40px;
+  font-size: 56px;
+  border: 1px solid #888888;
+  border-bottom: none; }
 .starring-name {
   font-weight: bold;
   font-size: 18px; }

@@ -1,8 +1,11 @@
 a {
-  font-family: "Roboto Regular", "Times New Roman";
+  font-family: "Roboto Medium", "Times New Roman";
   text-decoration: none;
+  color: #888;
+
   &:hover {
     color: rgb(256, 256, 256);
+    cursor: pointer;
   }
 }
 
@@ -12,18 +15,13 @@ input {
   letter-spacing: normal;
 }
 
-span {
-  display: block;
-  height: 3px;
-  width: 27px;
-  margin-bottom: 5px;
-  background: rgb(111, 111, 111);
-}
-
 .flex {
   display: flex;
-  &-between {
+  &_between {
     justify-content: space-between;
+  }
+  &_start {
+    justify-content: flex-start;
   }
 }
 
@@ -121,7 +119,7 @@ span {
     color: rgb(256, 256, 256);
     font-family: "Roboto Medium";
     font-size: 19px;
-    padding: 0 50px;
+    padding: 0 30px;
     @media (min-width: 1200px) {
       width: 200%;
     }
@@ -130,6 +128,33 @@ span {
       background-color: rgb(33, 33, 33);
     padding: 0 25px;
     }
+  }
+  &__list {
+    position: absolute;
+    z-index: 3;
+    width: 150%;
+    max-height: 370px;
+    background: #1e1e1e;
+    font-size: 16px;
+    overflow-y: scroll;
+    @media (min-width: 1200px) {
+      width: 200%;
+    }
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+  }
+  &__no_image {
+    padding: 11px 7px;
+    width: 45px;
+    height: 62px;
+    font-size: 30px;
+    border: 1px solid #888888;
+  }
+  &-item {
+
+    padding: 10px;
+    color: #888888;
   }
   &:before {
     content: ' ';
@@ -181,7 +206,38 @@ span {
     }
   }
 }
+.item {
+  &__block {
+    display: inline-block;;
+  }
+  &__content {
+    display: flex;
+    justify-content: flex-start;
+  }
+  &__info {
+    width: 80%;
+    margin: auto 0;
+    padding: 15px;
+    &-block {
+      display: block;
+    }
+  }
+  &__media-type {
+    width: 62px;
+    margin: auto 0;
+    padding: 5px;
+    border: 1px solid #888888;
+    border-radius: 5px;
+    p {
+      margin: 0;
+      text-align: center;
+    }
+  }
+  &-image {
+    width: 45px;
+  }
 
+}
 .login {
   &-btn {
     display: inline-block;
@@ -198,11 +254,12 @@ span {
   &__nav {
     width: 100vw;
     background-color: rgb(33, 33, 33);
-    height: 300px;
+    height: 250px;
     padding: 0 25px;
     position: absolute;
     top: 86px;
     left: 0;
+    z-index: 5;
     &__list {
       padding-top: 15px;
       margin: 0;
@@ -210,7 +267,7 @@ span {
     &__item {
       display: block;
       border-bottom: 1px solid rgb(39, 39, 39);
-      padding: 13px 0;
+      padding: 10px 0;
       position: relative;
     }
     &-link{
@@ -242,7 +299,14 @@ span {
   &__search {
     margin: 0 35px;
     @media (max-width: 991px) {
-      margin: 10px 10px;
+
     }
+  }
+  &-icon {
+    display: block;
+    height: 3px;
+    width: 27px;
+    margin-bottom: 5px;
+    background: rgb(111, 111, 111);
   }
 }

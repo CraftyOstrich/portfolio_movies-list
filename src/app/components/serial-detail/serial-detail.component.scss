@@ -57,7 +57,12 @@ strong {
   &-title {
     margin-bottom: 20px;
   }
-
+  &-no_image {
+    padding: 59px 40px;
+    font-size: 56px;
+    border: 1px solid #888888;
+    border-bottom: none;
+  }
   &-img {
     width: 138px;
     height: 175px;

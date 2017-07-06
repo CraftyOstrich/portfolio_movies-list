@@ -19,6 +19,9 @@ table {
     }
   }
 }
+h3 {
+  color: #888888;
+}
 
 .flex_between {
   display: flex;
@@ -56,14 +59,15 @@ table {
       margin: 0;
     }
   }
-  .buttons {
-    display: block;
-    &-item {
-      display: inline-block;
-      background-color: #232323;
-      border-radius: 4px;
-      padding: 5px 15px;
-      margin: 0 5px;
-    }
+}
+
+.buttons {
+  display: block;
+  &-item {
+    display: inline-block;
+    background-color: #232323;
+    border-radius: 4px;
+    padding: 5px 15px;
+    margin: 0 5px;
   }
 }

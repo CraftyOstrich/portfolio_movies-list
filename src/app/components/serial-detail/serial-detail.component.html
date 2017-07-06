@@ -2,12 +2,15 @@
 <div class="flex" *ngIf="serial">
   <div class="info">
     <div class="info__wrapper">
-      <section class="info__starring">
+      <section *ngIf="serialCharacters.length" class="info__starring">
         <h3 class="starring-title">Starring</h3>
         <ol class="starring__list">
           <li *ngFor="let character of serialCharacters" class="starring__item" >
             <a href='/person/{{ character.id}}' class="starring-link">
-              <img class="starring-img" src="https://image.tmdb.org/t/p/w138_and_h175_bestv2/{{ character.profile_path }}" [alt]=" character.name ">
+              <img *ngIf="character.profile_path" class="starring-img"
+                   src="https://image.tmdb.org/t/p/w138_and_h175_bestv2/{{ character.profile_path }}"
+                   [alt]=" character.name ">
+              <div *ngIf="!character.profile_path" class="glyphicon glyphicon-user starring-no_image"></div>
             </a>
             <div class="starring__detail">
               <p class="text_short starring-name">
@@ -25,7 +28,7 @@
           </a>
         </p>
       </section>
-      <section class="info__video">
+      <section *ngIf="serialVideos.length" class="info__video">
         <h3 class="">Video</h3>
         <div class="scroller">
           <div *ngFor="let video of serialVideos" class="video__item">
@@ -36,7 +39,7 @@
           </div>
         </div>
       </section>
-      <section class="info__similar">
+      <section *ngIf="serialsSimilar.length" class="info__similar">
         <h3>You will like it</h3>
         <div class="scroller">
           <div class="similar__item" *ngFor="let serialSimilar of serialsSimilar">

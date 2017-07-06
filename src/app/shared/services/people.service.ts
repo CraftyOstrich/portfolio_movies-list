@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 
 @Injectable()
 export class PeopleService {
+
   constructor (private _http: Http) {}
 
   getPeople(link): Observable<any> {
@@ -27,6 +28,7 @@ export class PeopleService {
       // .do(data => console.log('All:' + JSON.stringify(data)))
       .catch(this.handleError);
   }
+
 
   private handleError(error: Response) {
     console.log(error);

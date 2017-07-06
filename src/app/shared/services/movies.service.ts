@@ -14,6 +14,13 @@ export class MoviesService {
   constructor(private _http: Http) {
   }
 
+  getContent(link, sort?): Observable<any> {
+  return this._http.get(this.getRequestUrl(link, sort))
+    .map((response: Response) => response.json())
+    //.do(data => console.log('All:' + JSON.stringify(data)))
+    .catch(this.handleError);
+}
+
   getMovies(link): Observable<any> {
     return this._http.get(this.getRequestUrl(link))
       .map((response: Response) => response.json())
@@ -52,7 +59,7 @@ export class MoviesService {
   getKeywords(link, id, path) {
     return this._http.get(this.getRequestUrl(link, id, path))
       .map((response: Response) => response.json())
-      //.do(data => console.log('All:' + JSON.stringify(data)))
+      .do(data => console.log('All:' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -69,6 +76,5 @@ export class MoviesService {
     } else
       return API_CONFIG.Url + link + API_CONFIG.Key
   }
-
 
 }

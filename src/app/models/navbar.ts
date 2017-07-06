@@ -4,7 +4,7 @@ export interface INavItem {
   collapsed?: boolean;
   collapsedChildren?: boolean;
   link: string;
-  path: string;
+  path?: string;
   children?: INavItem[];
 }
 
@@ -14,18 +14,17 @@ export const NavItems = <INavItem[]>
       id: 1,
       name: 'Overview',
       collapsedChildren: true,
-      link: '/overview',
-      path: '',
+      link: '/overview/movie',
       children: [
         {
           id: 1.1,
           name: 'Movie',
-          link:'/overview/movie'
+          link:'/overview/movie',
         },
         {
           id: 1.2,
           name: 'Serials',
-          link: '/overview/serials'
+          link: '/overview/tv',
         }
       ]
     },
