@@ -3,7 +3,7 @@
     <label for="search_year" class="search-label">Year</label>
     <span>
       <select name="" (change)="filterOptions.onYearChange($event.target.value)" id="search_year" class="search__element search__select">
-        <option>Choose year... </option>
+        <option hidden>Choose year... </option>
         <option *ngFor="let item of filterOptions.yearsList" [value]="item">{{ item }}</option>
       </select>
     </span>

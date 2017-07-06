@@ -8,12 +8,13 @@ export class SearchService {
 
   constructor(private _http: Http) { }
 
-  getContent(link, sort): Observable<any> {
-    return this._http.get(this.getSortByUrl(link, sort))
+  getFilterContent(link, page, sort): Observable<any> {
+    return this._http.get(this.getSortByUrl(link, page, sort))
       .map((response: Response) => response.json())
       //.do(data => console.log('All:' + JSON.stringify(data)))
       .catch(this.handleError);
   }
+
   getGenres(link): Observable<any> {
     return this._http.get(this.getRequestUrl(link))
       .map((response: Response) => response.json())
@@ -50,9 +51,9 @@ export class SearchService {
       return API_CONFIG.Url + link + API_CONFIG.Key
   }
 
-  private getSortByUrl(link: string, path: string) {
-    if (path) {
-      return API_CONFIG.Url + link + API_CONFIG.Key + path
+  private getSortByUrl(link: string, page: number, sort: string) {
+    if (sort) {
+      return API_CONFIG.Url + link + API_CONFIG.Key + API_CONFIG.Page + page + sort
     }
   }
 

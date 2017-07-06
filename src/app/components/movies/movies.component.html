@@ -5,4 +5,7 @@
       <app-item-block [item]="item"></app-item-block>
     </div>
   </div>
+  <app-pagination [pagesNumber]="pagesNumber" [currentPage]="currentPage"
+                  (onPageChange)="onPageChange($event)">
+  </app-pagination>
 </div>

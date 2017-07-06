@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {PersonDetail} from "../../models/person-detail";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, Params} from "@angular/router";
 import {PeopleService} from "../../shared/services/people.service";
 import {Movie} from "../../models/movie";
 import {PeopleComponent} from "../people/people.component";
@@ -21,19 +21,19 @@ export class PersonDetailComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    let id = +this._route.snapshot.params['id'];
-
-    this._peopleService.getPerson(this.link , id)
-      .mergeMap(
-        (person: any) => {
-          this.person = new PersonDetail(person);
-          return this._peopleService.getAllWorks(this.link , id, this.linkAllWorks)
-        }
-      )
-      .subscribe((response: any) => {
-      this.person.setPersonJobs(response);
-      });
-
+    this._route.params.subscribe((params: Params) => {
+      let id = +params['id'];
+      this._peopleService.getPerson(this.link , id)
+        .mergeMap(
+          (person: any) => {
+            this.person = new PersonDetail(person);
+            return this._peopleService.getAllWorks(this.link , id, this.linkAllWorks)
+          }
+        )
+        .subscribe((response: any) => {
+          this.person.setPersonJobs(response);
+        });
+    });
   }
 
   DetermineGender (gender: number) {

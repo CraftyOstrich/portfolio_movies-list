@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
 import {MoviesService} from "../../shared/services/movies.service";
 import { Movie} from "../../models/movie";
 import {Tv} from "../../models/tv";
@@ -15,6 +15,9 @@ export class DiscoverComponent implements OnInit {
   errorMessage: string;
   videos: (Movie | Tv)[];
   genres: Genre[];
+  optionsUrl: string = '';
+  pagesNumber: number;
+  currentPage: number = 1;
   private UrlMovies: string = '/discover/movie';
   private UrlTVs: string = '/discover/tv';
   private UrlMovieGenres: string = '/genre/movie/list';
@@ -26,13 +29,17 @@ export class DiscoverComponent implements OnInit {
 
   ngOnInit() {
     let href = window.location.href.slice(21);
+    this.currentPage = 1;
     if (href ==='/overview/movie') {
       this.CurrentUrl = this.UrlMovies;
     } else if (href === '/overview/tv') {
       this.CurrentUrl = this.UrlTVs;
     }
-    this._moviesService.getContent(this.CurrentUrl)
-      .subscribe(response => this.videos = response.results || [],
+    this._moviesService.getContent(this.CurrentUrl, this.currentPage)
+      .subscribe(response => {
+        this.videos = response.results || [];
+        this.pagesNumber  = response.total_pages;
+      },
         error => this.errorMessage = <any>error);
     if (this.CurrentUrl === this.UrlMovies) {
       this.CurrentUrlGenres = this.UrlMovieGenres;
@@ -44,19 +51,38 @@ export class DiscoverComponent implements OnInit {
 
   onFilterChange(optionsUrl: string) {
     let href = window.location.href.slice(21);
+    this.currentPage = 1;
     if (href ==='/overview/movie') {
-      href = this.UrlMovies;
+      this.CurrentUrl = this.UrlMovies;
     } else if (href === '/overview/tv') {
-      href = this.UrlTVs;
+      this.CurrentUrl = this.UrlTVs;
     }
     if (optionsUrl) {
-      this.getVideo(href, '&' + optionsUrl);
+      this.optionsUrl = optionsUrl;
+      this.getFilterContent(this.CurrentUrl, this.currentPage, '&' + optionsUrl);
     }
   }
 
-  getVideo(href: string, options: string) {
-    this._searchService.getContent(href, options)
-      .subscribe(response => this.videos = response.results || [],
+  onPageChange(currentPage: number) {
+    if (this.currentPage !== currentPage) {
+      if (this.optionsUrl) {
+        this.getFilterContent(this.CurrentUrl, this.currentPage, '&' + this.optionsUrl);
+      } else {
+        this.currentPage = currentPage;
+        this._moviesService.getContent(this.CurrentUrl, this.currentPage)
+          .subscribe(response =>
+              this.videos = response.results || [],
+            error => this.errorMessage = <any>error);
+      }
+      }
+  }
+
+  getFilterContent(href: string, page: number, options: string) {
+    this._searchService.getFilterContent(href, page, options)
+      .subscribe(response => {
+          this.videos = response.results || [];
+          this.pagesNumber  = response.total_pages;
+        },
         error => this.errorMessage = <any>error);
   }
 }

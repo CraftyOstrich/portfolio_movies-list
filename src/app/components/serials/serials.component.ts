@@ -8,21 +8,37 @@ import {Tv} from "../../models/tv";
   styleUrls: ['./serials.component.scss']
 })
 export class SerialsComponent implements OnInit {
-  errorMessage: string;
   serials: Tv[];
+  pagesNumber: number;
+  currentPage: number = 1;
   link: string = '/tv/popular';
+  private currentUrl: string = '';
+  private errorMessage: string;
 
   constructor(public _serialsService: SerialsService) { }
 
   ngOnInit() {
-    let href = window.location.href.slice(21);
-    if (href === '/serials') {
-      href = this.link;
+    this.currentUrl = window.location.href.slice(21);
+    if (this.currentUrl === '/serials') {
+      this.currentUrl = this.link;
     }
-    this._serialsService.getSerials(href)
-      .subscribe(response => this.serials = response.results || [],
-        error => this.errorMessage = <any>error);
-
+    this.currentPage = 1;
+    this.getSerials(this.currentUrl, this.currentPage)
   }
 
+  onPageChange(currentPage: number) {
+    if (this.currentPage !== currentPage) {
+      this.currentPage = currentPage;
+      this.getSerials(this.currentUrl, this.currentPage)
+    }
+  }
+
+  private getSerials(url, page) {
+    this._serialsService.getSerials(url, page)
+      .subscribe(response => {
+          this.serials = response.results || [];
+          this.pagesNumber = response.total_pages
+        },
+        error => this.errorMessage = <any>error);
+  }
 }

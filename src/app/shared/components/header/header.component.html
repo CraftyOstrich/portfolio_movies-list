@@ -7,13 +7,13 @@
       <div class="header__nav" *ngIf="hiddenSearch">
         <ul>
           <li class="nav__item" *ngFor="let navBarItem of navbar">
-            <a [routerLink]="[navBarItem.link]" class="nav__item-link">
+            <a [routerLink]="[navBarItem.link]"  class="nav__item-link">
               {{navBarItem.name}}
             </a>
             <div class="nav__list">
               <ul>
                 <li class="list__item" *ngFor="let listItem of navBarItem.children">
-                  <a [routerLink]="[listItem.link]"  class="list__item-link">{{listItem.name}} </a>
+                  <a [routerLink]="[listItem.link]" class="list__item-link">{{listItem.name}} </a>
                 </li>
               </ul>
             </div>

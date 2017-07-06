@@ -14,15 +14,15 @@ export class MoviesService {
   constructor(private _http: Http) {
   }
 
-  getContent(link, sort?): Observable<any> {
-  return this._http.get(this.getRequestUrl(link, sort))
+  getContent(link, page): Observable<any> {
+  return this._http.get(this.getRequestPageUrl(link, page))
     .map((response: Response) => response.json())
     //.do(data => console.log('All:' + JSON.stringify(data)))
     .catch(this.handleError);
 }
 
-  getMovies(link): Observable<any> {
-    return this._http.get(this.getRequestUrl(link))
+  getMovies(link, page): Observable<any> {
+    return this._http.get(this.getRequestPageUrl(link, page))
       .map((response: Response) => response.json())
       //.do(data => console.log('All:' + JSON.stringify(data)))
       .catch(this.handleError);
@@ -68,13 +68,19 @@ export class MoviesService {
     return Observable.throw(error.json().error || 'Server error');
   }
 
+  getRequestPageUrl(link: string, page: number) {
+    if (link && page) {
+      return API_CONFIG.Url + link + API_CONFIG.Key + API_CONFIG.Page + page;
+    }
+  }
+
   private getRequestUrl(link: string, id?: number, path?: string) {
     if (id && path) {
       return API_CONFIG.Url + link + id + path + API_CONFIG.Key
     } else if (id) {
       return API_CONFIG.Url + link + id + API_CONFIG.Key
     } else
-      return API_CONFIG.Url + link + API_CONFIG.Key
+      return API_CONFIG.Url + link + API_CONFIG.Key;
   }
 
 }

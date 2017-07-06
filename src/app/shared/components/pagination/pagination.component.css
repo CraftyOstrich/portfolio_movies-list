@@ -1,0 +1,20 @@
+a {
+  text-decoration: none;
+  color: #888888; }
+  a:hover {
+    color: #ffffff;
+    cursor: pointer; }
+
+.pagination {
+  float: right; }
+  .pagination__item {
+    display: inline-block;
+    padding: 5px;
+    margin: 0 10px;
+    border: 1px solid #888888;
+    border-radius: 20px;
+    font-size: 20px; }
+  .pagination_disabled {
+    pointer-events: none; }
+
+/*# sourceMappingURL=pagination.component.css.map */

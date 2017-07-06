@@ -1,0 +1,23 @@
+a {
+  text-decoration: none;
+  color: #888888;
+  &:hover {
+    color: #ffffff;
+    cursor: pointer;
+  }
+}
+
+.pagination {
+  float: right;
+  &__item {
+    display: inline-block;
+    padding: 5px;
+    margin: 0 10px;
+    border: 1px solid #888888;
+    border-radius: 20px;
+    font-size: 20px;
+  }
+  &_disabled {
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,25 @@
+<div class="pagination">
+  <span class="pagination__item">
+    <a (click)="goTo(1)" [ngClass]="{pagination_disabled: currentPage === 1}">
+      <<
+    </a>
+  </span>
+  <span class="pagination__item ">
+    <a (click)="goTo(currentPage - 1)" [ngClass]="{pagination_disabled: currentPage === 1}">
+      <
+    </a>
+  </span>
+  <span>
+    <strong>{{ currentPage }}</strong>
+  </span>
+  <span class="pagination__item">
+    <a (click)="goTo(currentPage + 1)" [ngClass]="{pagination_disabled: currentPage === 1000 || currentPage === pagesNumber }">
+      >
+    </a>
+  </span>
+  <span class="pagination__item">
+    <a (click)="goTo(pagesNumber)" [ngClass]="{pagination_disabled: currentPage === 1000 || currentPage === pagesNumber}">
+      >>
+    </a>
+  </span>
+</div>

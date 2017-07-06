@@ -37,7 +37,7 @@ export class HeaderComponent {
   }
 
   goToSearchItem(type: string, id: number) {
-    console.log(type, id)
+    console.log(type, id);
     this.router.navigate(['/' + type, id]);
     let href = window.location.href;
     console.log(href)

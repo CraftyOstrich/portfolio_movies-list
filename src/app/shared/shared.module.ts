@@ -22,6 +22,7 @@ import {SortByYearPipe} from './pipes/sortByYear.pipe';
 import { GroupByDepartmentPipe } from './pipes/groupByDepartment.pipe';
 import { SearchComponent } from './components/search/search.component';
 import {SearchService} from "./services/search.service";
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule ({
   declarations: [
@@ -39,7 +40,8 @@ import {SearchService} from "./services/search.service";
     WorkComponent,
     SortByYearPipe,
     GroupByDepartmentPipe,
-    SearchComponent
+    SearchComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import {SearchService} from "./services/search.service";
     PersonDetailComponent,
     FilmDisplayDirective,
     WorkComponent,
-    SearchComponent
+    SearchComponent,
+    PaginationComponent
   ],
   providers: [
     MoviesService,

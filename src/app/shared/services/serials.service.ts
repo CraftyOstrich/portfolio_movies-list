@@ -8,8 +8,8 @@ export class SerialsService {
   constructor (private _http: Http) {
   }
 
-  getSerials(link): Observable<any> {
-    return this._http.get(this.getRequestUrl(link))
+  getSerials(link, page): Observable<any> {
+    return this._http.get(this.getRequestPageUrl(link, page))
       .map((response: Response) => response.json())
       //.do(data => console.log('All:' + JSON.stringify(data)))
       .catch(this.handleError);
@@ -53,6 +53,12 @@ export class SerialsService {
   private handleError(error: Response) {
     console.log(error);
     return Observable.throw(error.json().error || 'Server error');
+  }
+
+  getRequestPageUrl(link: string, page: number) {
+    if (link && page) {
+      return API_CONFIG.Url + link + API_CONFIG.Key + API_CONFIG.Page + page;
+    }
   }
 
   private getRequestUrl(link: string, id?: number, path?: string) {

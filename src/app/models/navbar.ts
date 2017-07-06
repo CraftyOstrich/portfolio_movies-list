@@ -4,7 +4,6 @@ export interface INavItem {
   collapsed?: boolean;
   collapsedChildren?: boolean;
   link: string;
-  path?: string;
   children?: INavItem[];
 }
 

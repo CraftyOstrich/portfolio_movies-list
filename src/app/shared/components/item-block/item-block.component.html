@@ -1,7 +1,9 @@
 <div class="item__block">
   <div class="flex_between item__wrapper">
-    <div>
-      <img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ item.poster_path }}' [alt]='item.title' class="item-img">
+    <div *ngIf="!item.poster_path" class="glyphicon glyphicon-picture no_picture"></div>
+    <div *ngIf="item.poster_path">
+      <img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ item.poster_path }}'
+           [alt]='item.title' class="item-img">
     </div>
     <div class="item__info">
       <p class="flex_between item-title">
@@ -20,7 +22,7 @@
         <!--<span> {{(_moviesService.getGenres(movie.genre_ids) | async) }} </span>-->
       </p>
       <p class="item-description">
-        {{ item.overview }}
+        {{ item.overview || 'No overview found.'}}
       </p>
       <hr class="line">
       <p class="item-more">

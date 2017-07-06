@@ -3,8 +3,10 @@
   <div class="flex_around">
     <div *ngFor="let person of people">
       <app-person-block [person]="person">
-
       </app-person-block>
     </div>
+    <app-pagination [pagesNumber]="pagesNumber" [currentPage]="currentPage"
+                    (onPageChange)="onPageChange($event)">
+    </app-pagination>
   </div>
 </div>
