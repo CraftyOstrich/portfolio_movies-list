@@ -22,6 +22,7 @@ export class PaginationComponent implements OnInit {
       pageNumber = 1;
     }
     this.currentPage = pageNumber;
+    console.log(this.currentPage);
     this.onPageChange.emit(this.currentPage);
   }
 

@@ -40,11 +40,20 @@ p {
   }
   &-name {
     font-weight: 600;
+    width: 135px;
   }
   &-films {
     width: 137px;
     visibility: hidden;
     font-weight: 100;
   }
-
+  &-no_image {
+    height: 235px;
+    width: 156.6px;
+    color: #888888;
+    padding: 60px 49px;
+    font-size: 56px;
+    border: 1px solid #888888;
+    border-bottom: none;
+  }
 }

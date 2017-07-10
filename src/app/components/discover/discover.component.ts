@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MoviesService} from "../../shared/services/movies.service";
 import { Movie} from "../../models/movie";
 import {Tv} from "../../models/tv";
@@ -66,6 +66,7 @@ export class DiscoverComponent implements OnInit {
   onPageChange(currentPage: number) {
     if (this.currentPage !== currentPage) {
       if (this.optionsUrl) {
+        this.currentPage = currentPage;
         this.getFilterContent(this.CurrentUrl, this.currentPage, '&' + this.optionsUrl);
       } else {
         this.currentPage = currentPage;

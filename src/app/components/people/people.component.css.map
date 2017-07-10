@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,EAAG;EACD,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,OAAO;;AAIhB,YAAa;EACX,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,eAAe,EAAE,YAAY",
+"mappings": "AAAA,EAAG;EACD,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,OAAO;;AAGhB,YAAa;EACX,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,eAAe,EAAE,UAAU",
 "sources": ["people.component.scss"],
 "names": [],
 "file": "people.component.css"

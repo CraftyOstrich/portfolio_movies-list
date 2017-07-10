@@ -11,8 +11,7 @@ export class PersonBlockComponent implements OnInit {
   @Input() person: Person;
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSelect(id) {
     this.router.navigate(['/person', id]);

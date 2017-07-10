@@ -30,10 +30,19 @@ p {
   height: 40px;
   visibility: visible; }
 .person-name {
-  font-weight: 600; }
+  font-weight: 600;
+  width: 135px; }
 .person-films {
   width: 137px;
   visibility: hidden;
   font-weight: 100; }
+.person-no_image {
+  height: 235px;
+  width: 156.6px;
+  color: #888888;
+  padding: 60px 49px;
+  font-size: 56px;
+  border: 1px solid #888888;
+  border-bottom: none; }
 
 /*# sourceMappingURL=person-block.component.css.map */
