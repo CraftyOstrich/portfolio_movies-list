@@ -1,65 +1,55 @@
 import { Injectable } from '@angular/core';
-import {Http, Response} from "@angular/http";
-import {Observable} from "rxjs";
-import {API_CONFIG} from "../../app-config";
+import { Http, Response } from "@angular/http";
+import { Observable } from "rxjs";
+import { API_CONFIG } from "../../app-config";
 
 @Injectable()
 export class SearchService {
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http) {
+  }
 
   getFilterContent(link, page, sort): Observable<any> {
-    return this._http.get(this.getSortByUrl(link, page, sort))
+    return this._http.get(this._getSortByUrl(link, page, sort))
       .map((response: Response) => response.json())
-      //.do(data => console.log('All:' + JSON.stringify(data)))
-      .catch(this.handleError);
+      .catch(this._handleError);
   }
 
   getGenres(link): Observable<any> {
-    return this._http.get(this.getRequestUrl(link))
+    return this._http.get(this._getRequestUrl(link))
       .map((response: Response) => response.json())
-      //.do(data => console.log('All:' + JSON.stringify(data)))
-      .catch(this.handleError);
+      .catch(this._handleError);
   }
+
   getKeywords(link, keyword): Observable<any> {
-    return this._http.get(this.getRequestSearchUrl(link,keyword))
+    return this._http.get(this._getRequestSearchUrl(link, keyword))
       .map((response: Response) => response.json())
-      //.do(data => console.log('All:' + JSON.stringify(data)))
-      .catch(this.handleError);
+      .catch(this._handleError);
   }
 
   getSearchList(link, searchWord): Observable<any> {
-    return this._http.get(this.getRequestSearchUrl(link,searchWord))
+    return this._http.get(this._getRequestSearchUrl(link, searchWord))
       .map((response: Response) => response.json())
-      //.do(data => console.log('All:' + JSON.stringify(data)))
-      .catch(this.handleError);
+      .catch(this._handleError);
   }
 
-
-
-  private handleError(error: Response) {
-    console.log(error);
+  private _handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error');
   }
 
-  private getRequestUrl(link: string, id?: number, path?: string) {
-    if (id && path) {
-      return API_CONFIG.Url + link + id + path + API_CONFIG.Key
-    } else if (id) {
-      return API_CONFIG.Url + link + id + API_CONFIG.Key
-    } else
-      return API_CONFIG.Url + link + API_CONFIG.Key
+  private _getRequestUrl(link: string) {
+    return API_CONFIG.URL + link + API_CONFIG.KEY
   }
 
-  private getSortByUrl(link: string, page: number, sort: string) {
+  private _getSortByUrl(link: string, page: number, sort: string) {
     if (sort) {
-      return API_CONFIG.Url + link + API_CONFIG.Key + API_CONFIG.Page + page + sort
+      return API_CONFIG.URL + link + API_CONFIG.KEY + API_CONFIG.PAGE + page + sort
     }
   }
 
-  private getRequestSearchUrl(link: string, keyword: string) {
+  private _getRequestSearchUrl(link: string, keyword: string) {
     if (link && keyword) {
-      return API_CONFIG.Url + link + API_CONFIG.Key + API_CONFIG.Query+ keyword + API_CONFIG.Page
+      return API_CONFIG.URL + link + API_CONFIG.KEY + API_CONFIG.QUERY + keyword + API_CONFIG.FIRST_PAGE
     }
   }
 

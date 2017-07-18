@@ -1,27 +1,25 @@
-import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
-import {Observable, Subject} from "rxjs";
-import {Genre} from "../../../models/genre";
-import {SearchService} from "../../services/search.service";
-import {Keyword} from "../../../models/keyword";
-import {isNumber} from "util";
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Observable, Subject } from "rxjs";
+import { Genre } from "../../../models/genre";
+import { SearchService } from "../../services/search.service";
+import { Keyword } from "../../../models/keyword";
+import { API_CONFIG } from '../../../app-config';
 
 export class FilterOptions {
-
-
-  private year = {
+  private _year = {
     fieldNameMovie: 'primary_release_year',
     fieldNameTV: 'first_air_date_year',
     value: <number>null
   };
-  private sortBy = {
+  private _sortBy = {
     fieldName: 'sort_by',
     value: <string>null
   };
-  private genres = {
+  private _genres = {
     fieldName: 'with_genres',
     value: <Genre[]>[]
   };
-  private keywords = {
+  private _keywords = {
     fieldName: 'with_keywords',
     value: <Keyword[]>[]
   };
@@ -66,7 +64,6 @@ export class FilterOptions {
     },
   ];
   genresList: Genre[];
-
   optionsUrl: Subject<string> = new Subject();
 
   constructor() {
@@ -76,31 +73,31 @@ export class FilterOptions {
   onOptionsChange() {
     let href = window.location.href.slice(31);
     let options: string[] = [];
-    let genresValueLength: number = this.genres.value.length;
-    if (this.year.value) {
+    let genresValueLength: number = this._genres.value.length;
+    if (this._year.value) {
       if (href === 'movie') {
-        options.push(`${this.year.fieldNameMovie}=${this.year.value}`);
+        options.push(`${this._year.fieldNameMovie}=${this._year.value}`);
       }
       else if (href === 'tv') {
-        options.push(`${this.year.fieldNameTV}=${this.year.value}`);
+        options.push(`${this._year.fieldNameTV}=${this._year.value}`);
       }
     }
-    if (this.sortBy.value) {
-      options.push(`${this.sortBy.fieldName}=${this.sortBy.value}`);
+    if (this._sortBy.value) {
+      options.push(`${this._sortBy.fieldName}=${this._sortBy.value}`);
     }
     if (genresValueLength) {
-      let genres: string = this.genres.value[0].id.toString();
+      let genres: string = this._genres.value[0].id.toString();
       for (let i = 1; i < genresValueLength; i++) {
-        genres += `,${this.genres.value[i].id}`;
+        genres += `,${this._genres.value[i].id}`;
       }
-      options.push(`${this.genres.fieldName}=${genres}`);
+      options.push(`${this._genres.fieldName}=${genres}`);
     }
-    if (this.keywords.value.length) {
-      let keywords: string = this.keywords.value[0].id.toString();
-      for (let i = 1; i < this.keywords.value.length; i++) {
-        keywords += `,${this.keywords.value[i].id}`;
+    if (this._keywords.value.length) {
+      let keywords: string = this._keywords.value[0].id.toString();
+      for (let i = 1; i < this._keywords.value.length; i++) {
+        keywords += `,${this._keywords.value[i].id}`;
       }
-      options.push(`${this.keywords.fieldName}=${keywords}`);
+      options.push(`${this._keywords.fieldName}=${keywords}`);
     }
 
     if (options.length) {
@@ -110,44 +107,44 @@ export class FilterOptions {
 
   onYearChange(year) {
     if (year) {
-      this.year.value = year;
+      this._year.value = year;
       this.onOptionsChange();
     }
   }
 
   onSortChange(sortBy) {
-    this.sortBy.value = sortBy;
+    this._sortBy.value = sortBy;
     this.onOptionsChange();
   }
 
   onGenreSelect(genre: Genre) {
-    const found = this.genres.value.findIndex((g: Genre) => g.id === genre.id) > -1;
+    const found = this._genres.value.findIndex((g: Genre) => g.id === genre.id) > -1;
     if (!found) {
-      this.genres.value.push(genre);
+      this._genres.value.push(genre);
     }
     this.onOptionsChange();
   }
 
   onGenreRemove(id: number) {
-    const foundIndex = this.genres.value.findIndex((genre: Genre) => genre.id === id);
+    const foundIndex = this._genres.value.findIndex((genre: Genre) => genre.id === id);
     if (foundIndex > -1) {
-      this.genres.value.splice(foundIndex, 1);
+      this._genres.value.splice(foundIndex, 1);
     }
     this.onOptionsChange();
   }
 
   onKeywordSelect(keyword: Keyword) {
-    const found = this.keywords.value.findIndex((k: Keyword) => k.id === keyword.id) > -1;
+    const found = this._keywords.value.findIndex((k: Keyword) => k.id === keyword.id) > -1;
     if (!found) {
-      this.keywords.value.push(keyword);
+      this._keywords.value.push(keyword);
     }
     this.onOptionsChange();
   }
 
   onKeywordRemove(id: number) {
-    const foundIndex = this.keywords.value.findIndex((k: Keyword) => k.id === id);
+    const foundIndex = this._keywords.value.findIndex((k: Keyword) => k.id === id);
     if (foundIndex > -1) {
-      this.keywords.value.splice(foundIndex, 1);
+      this._keywords.value.splice(foundIndex, 1);
     }
     this.onOptionsChange();
   }
@@ -163,7 +160,6 @@ export class FilterOptions {
   }
 }
 
-
 @Component({
   selector: 'app-search',
   templateUrl: 'search.component.html',
@@ -176,13 +172,13 @@ export class SearchComponent implements OnInit {
   filterOptions: any;
   keywordsSearch: string = '';
   keywordsList: Keyword[] = [];
-  private displayGenres: boolean = false;
-  private displayKeywords: boolean = false;
-  private UrlKeywordList = '/search/keyword';
-  private errorMessage: string;
+  displayGenres: boolean = false;
+  displayKeywords: boolean = false;
 
+  private _errorMessage: string;
 
-  constructor(public _searchService: SearchService) {}
+  constructor(private _searchService: SearchService) {
+  }
 
   ngOnInit() {
     this.filterOptions = new FilterOptions();
@@ -194,7 +190,7 @@ export class SearchComponent implements OnInit {
           let genres = response.genres || [];
           this.filterOptions.setGenres(genres);
         },
-        error => this.errorMessage = <any>error);
+        error => this._errorMessage = <any>error);
   }
 
   displayGenreList() {
@@ -203,12 +199,13 @@ export class SearchComponent implements OnInit {
 
   loadKeywordsList(event) {
     if (event) {
-      this._searchService.getKeywords(this.UrlKeywordList, this.keywordsSearch)
-        .subscribe(response => this.keywordsList = response.results || [],
-          error => this.errorMessage = <any>error);
+      this._searchService.getKeywords(API_CONFIG.KEYWORDS_LIST, this.keywordsSearch)
+        .subscribe(response =>
+            this.keywordsList = response.results || [],
+          error => this._errorMessage = <any>error);
     }
     if (!this.displayKeywords) {
-          this.displayKeywords = !this.displayKeywords;
+      this.displayKeywords = !this.displayKeywords;
     }
   }
 

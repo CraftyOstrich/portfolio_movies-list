@@ -1,20 +1,20 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Router} from "@angular/router";
-import {Person} from "../../../models/person";
+import { Component, Input } from '@angular/core';
+import { Router } from "@angular/router";
+import { Person } from "../../../models/person";
 
 @Component({
   selector: 'app-person-block',
   templateUrl: 'person-block.component.html',
   styleUrls: ['person-block.component.scss']
 })
-export class PersonBlockComponent implements OnInit {
+export class PersonBlockComponent {
   @Input() person: Person;
-  constructor(private router: Router) { }
 
-  ngOnInit() {}
+  constructor(private _router: Router) {
+  }
 
   onSelect(id) {
-    this.router.navigate(['/person', id]);
+    this._router.navigate(['/person', id]);
   }
 
 }

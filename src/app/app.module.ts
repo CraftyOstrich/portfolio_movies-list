@@ -5,14 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { DiscoverComponent } from './components/discover/discover.component';
-import {AppRouterModule} from "./app-routing.module";
+import { AppRouterModule } from "./app-routing.module";
 import { MoviesComponent } from './components/movies/movies.component';
-import {SharedModule} from "./shared/shared.module";
+import { SharedModule } from "./shared/shared.module";
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
-import { SerialsComponent } from './components/serials/serials.component';
-import { SerialDetailComponent } from './components/serial-detail/serial-detail.component';
 import { PeopleComponent } from './components/people/people.component';
-
+import { TvsComponent } from './components/tvs/tvs.component';
+import { TvDetailComponent } from './components/tv-detail/tv-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +19,9 @@ import { PeopleComponent } from './components/people/people.component';
     DiscoverComponent,
     MoviesComponent,
     MovieDetailComponent,
-    SerialsComponent,
-    SerialDetailComponent,
-    PeopleComponent
+    PeopleComponent,
+    TvsComponent,
+    TvDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -33,4 +32,5 @@ import { PeopleComponent } from './components/people/people.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

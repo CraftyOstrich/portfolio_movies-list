@@ -1,89 +1,85 @@
-import {Component, OnInit} from '@angular/core';
-import {MoviesService} from "../../shared/services/movies.service";
-import { Movie} from "../../models/movie";
-import {Tv} from "../../models/tv";
-import {SearchService} from "../../shared/services/search.service";
-import {Genre} from "../../models/genre";
-
+import { Component, OnInit } from '@angular/core';
+import { MoviesService } from "../../shared/services/movies.service";
+import { Movie } from "../../models/movie";
+import { Tv } from "../../models/tv";
+import { SearchService } from "../../shared/services/search.service";
+import { Genre } from "../../models/genre";
+import { ActivatedRoute, Params } from '@angular/router';
+import { API_CONFIG } from '../../app-config';
 
 @Component({
   selector: 'app-overview',
   templateUrl: 'discover.component.html',
   styleUrls: ['discover.component.scss']
 })
+
 export class DiscoverComponent implements OnInit {
-  errorMessage: string;
   videos: (Movie | Tv)[];
   genres: Genre[];
-  optionsUrl: string = '';
   pagesNumber: number;
   currentPage: number = 1;
-  private UrlMovies: string = '/discover/movie';
-  private UrlTVs: string = '/discover/tv';
-  private UrlMovieGenres: string = '/genre/movie/list';
-  private UrlTvGenres: string = '/genre/tv/list';
-  private CurrentUrl: string = '/discover/movie';
-  private CurrentUrlGenres: string = '/genre/movie/list';
+  currentUrlGenres: string = API_CONFIG.MOVIES_GENRES;
 
-  constructor(public _moviesService: MoviesService, public _searchService: SearchService) { }
+  private _currentUrl: string = API_CONFIG.DISCOVER_MOVIES;
+  private _optionsUrl: string = '';
+  private _errorMessage: string;
 
-  ngOnInit() {
-    let href = window.location.href.slice(21);
-    this.currentPage = 1;
-    if (href ==='/overview/movie') {
-      this.CurrentUrl = this.UrlMovies;
-    } else if (href === '/overview/tv') {
-      this.CurrentUrl = this.UrlTVs;
-    }
-    this._moviesService.getContent(this.CurrentUrl, this.currentPage)
-      .subscribe(response => {
-        this.videos = response.results || [];
-        this.pagesNumber  = response.total_pages;
-      },
-        error => this.errorMessage = <any>error);
-    if (this.CurrentUrl === this.UrlMovies) {
-      this.CurrentUrlGenres = this.UrlMovieGenres;
-    } else if (this.CurrentUrl === this.UrlTVs) {
-      this.CurrentUrlGenres = this.UrlTvGenres
-    }
+  constructor(private _moviesService: MoviesService,
+              private _searchService: SearchService,
+              private _route: ActivatedRoute) {
   }
 
+  ngOnInit() {
+    //console.log(this._route.snapshot);
+    this._route.params.subscribe((params: Params) => {
+      // init();
+      this.currentPage = 1;
+      if (params.type === 'movie') {
+        this._currentUrl = API_CONFIG.DISCOVER_MOVIES;
+        this.currentUrlGenres = API_CONFIG.MOVIES_GENRES;
+      } else if (params.type === 'tv') {
+        this._currentUrl = API_CONFIG.DISCOVER_TVS;
+        this.currentUrlGenres = API_CONFIG.TVS_GENRES;
+      }
+      //console.log(this._currentUrl);
+      this.getContent(this._currentUrl, this.currentPage);
+    });
+  }
 
-  onFilterChange(optionsUrl: string) {
-    let href = window.location.href.slice(21);
+  onFilterChange(_optionsUrl: string) {
     this.currentPage = 1;
-    if (href ==='/overview/movie') {
-      this.CurrentUrl = this.UrlMovies;
-    } else if (href === '/overview/tv') {
-      this.CurrentUrl = this.UrlTVs;
-    }
-    if (optionsUrl) {
-      this.optionsUrl = optionsUrl;
-      this.getFilterContent(this.CurrentUrl, this.currentPage, '&' + optionsUrl);
+    if (_optionsUrl) {
+      this._optionsUrl = _optionsUrl;
+      this.getFilterContent(this._currentUrl, this.currentPage, '&' + _optionsUrl);
     }
   }
 
   onPageChange(currentPage: number) {
     if (this.currentPage !== currentPage) {
-      if (this.optionsUrl) {
-        this.currentPage = currentPage;
-        this.getFilterContent(this.CurrentUrl, this.currentPage, '&' + this.optionsUrl);
+      this.currentPage = currentPage;
+      if (this._optionsUrl) {
+        this.getFilterContent(this._currentUrl, this.currentPage, '&' + this._optionsUrl);
       } else {
-        this.currentPage = currentPage;
-        this._moviesService.getContent(this.CurrentUrl, this.currentPage)
-          .subscribe(response =>
-              this.videos = response.results || [],
-            error => this.errorMessage = <any>error);
+        this.getContent(this._currentUrl, this.currentPage);
       }
-      }
+    }
   }
 
-  getFilterContent(href: string, page: number, options: string) {
-    this._searchService.getFilterContent(href, page, options)
+  getContent(link: string, page: number) {
+    this._moviesService.getContent(link, page)
       .subscribe(response => {
           this.videos = response.results || [];
-          this.pagesNumber  = response.total_pages;
+          this.pagesNumber = response.total_pages;
         },
-        error => this.errorMessage = <any>error);
+        error => this._errorMessage = <any>error);
+  }
+
+  getFilterContent(link: string, page: number, options: string) {
+    this._searchService.getFilterContent(link, page, options)
+      .subscribe(response => {
+          this.videos = response.results || [];
+          this.pagesNumber = response.total_pages;
+        },
+        error => this._errorMessage = <any>error);
   }
 }

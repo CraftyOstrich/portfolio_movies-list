@@ -8,16 +8,16 @@
     <div class="item__info">
       <p class="flex_between item-title">
         <a (click)="goTo(item.id, item.title)"
-                class="text_short item-link">
-        {{ item.title || item.name }}
-      </a>
+           class="link text_short item-link">
+          {{ item.title || item.name }}
+        </a>
         <span class="item-rating">
               {{ item.vote_average }}
               <span class="glyphicon glyphicon-star item-star"></span>
             </span>
       </p>
       <p class="flex_between">
-        <span class="glyphicon glyphicon-calendar">{{ getShortDate(item.release_date || item.first_air_date )}}</span>
+        <span class="glyphicon glyphicon-calendar" *ngIf="itemYear">{{ itemYear }}</span>
         <span class="text_short item-genres"></span>
         <!--<span> {{(_moviesService.getGenres(movie.genre_ids) | async) }} </span>-->
       </p>
@@ -27,7 +27,7 @@
       <hr class="line">
       <p class="item-more">
         <a (click)="goTo(item.id, item.title)"
-           class="more-link">
+           class="link link_more">
           More
         </a>
       </p>

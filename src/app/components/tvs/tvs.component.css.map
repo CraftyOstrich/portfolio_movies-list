@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,SAAU;EACR,KAAK,ECCA,OAAkB;EDAvB,WAAW,EAAE,mCAAmC;EAChD,kBAAW;IACT,MAAM,EAAE,OAAO",
+"sources": ["tvs.component.scss","../../../assets/scss/colors.scss"],
+"names": [],
+"file": "tvs.component.css"
+}

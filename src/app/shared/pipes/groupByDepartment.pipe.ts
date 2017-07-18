@@ -11,14 +11,14 @@ export class GroupByDepartmentPipe implements PipeTransform {
       return [];
     }
 
-    let result =  value.reduce((function (prev, current) {
+    let result = value.reduce((function (prev, current) {
       if (current[key]) {
         (prev[current[key]] = prev[current[key]] || []).push(current);
       }
       return prev;
     }), {});
 
-    let keys:any[] = [];
+    let keys: any[] = [];
     for (let key in result) {
       keys.push({key: key, result: result[key]});
     }

@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {PeopleService} from "../../shared/services/people.service";
-import {Person} from "../../models/person";
+import { Component, OnInit } from '@angular/core';
+import { PeopleService } from "../../shared/services/people.service";
+import { Person } from "../../models/person";
+import { API_CONFIG } from '../../app-config';
 
 @Component({
   selector: 'app-people',
@@ -11,29 +12,28 @@ export class PeopleComponent implements OnInit {
   people: Person[];
   pagesNumber: number;
   currentPage: number = 1;
-  private currentUrl: string = '/person/popular';
-  private errorMessage: string;
+  private _errorMessage: string;
 
-  constructor(public _peopleService: PeopleService) {
+  constructor(private _peopleService: PeopleService) {
   }
 
   ngOnInit() {
-   this.getPeople(this.currentUrl, this.currentPage)
+    this.getPeople(API_CONFIG.PEOPLE_POPULAR, this.currentPage)
   }
 
   onPageChange(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
-      this.getPeople(this.currentUrl, this.currentPage)
+      this.getPeople(API_CONFIG.PEOPLE_POPULAR, this.currentPage)
     }
   }
 
-  private getPeople(url, page) {
-    this._peopleService.getPeople(url, page)
+  private getPeople(link: string, page: number) {
+    this._peopleService.getPeople(link, page)
       .subscribe(response => {
           this.people = response.results || [];
           this.pagesNumber = response.total_pages;
         },
-        error => this.errorMessage = <any>error);
+        error => this._errorMessage = <any>error);
   }
 }

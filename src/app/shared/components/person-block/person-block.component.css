@@ -1,16 +1,11 @@
-a {
-  text-decoration: none;
-  cursor: pointer; }
-
-p {
+.text {
   margin: 0;
   font-family: "Roboto Medium", "Times New Roman";
-  color: #000000; }
-
-.text_short {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; }
+  color: black; }
+  .text_short {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
 
 .person__card {
   margin: 20px; }
@@ -18,7 +13,9 @@ p {
   overflow: hidden;
   width: 100%; }
 .person__img-block {
-  display: block; }
+  display: block;
+  text-decoration: none;
+  cursor: pointer; }
   .person__img-block img {
     height: 235px; }
 .person__meta {

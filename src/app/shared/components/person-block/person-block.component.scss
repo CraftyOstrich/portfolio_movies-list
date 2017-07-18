@@ -1,19 +1,15 @@
-a {
-  text-decoration: none;
-  cursor: pointer;
-}
-p {
+@import "../../../../assets/scss/colors";
+
+.text {
   margin: 0;
   font-family: "Roboto Medium", "Times New Roman";
-  color: #000000;
+  color: $black;
+  &_short {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
-
-.text_short {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 
 .person {
   &__card {
@@ -25,6 +21,8 @@ p {
   }
   &__img-block {
     display: block;
+    text-decoration: none;
+    cursor: pointer;
     img {
       height: 235px;
     }
@@ -50,10 +48,10 @@ p {
   &-no_image {
     height: 235px;
     width: 156.6px;
-    color: #888888;
+    color: $gray;
     padding: 60px 49px;
     font-size: 56px;
-    border: 1px solid #888888;
+    border: 1px solid $gray;
     border-bottom: none;
   }
 }

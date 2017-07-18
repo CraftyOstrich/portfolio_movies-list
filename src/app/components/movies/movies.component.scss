@@ -1,9 +1,10 @@
-h2 {
-   color: rgb(136, 136, 136);
- }
+@import "../../../assets/scss/colors";
 
 .discover {
-  margin: 50px 5%;
-  font-family: "Roboto Regular", "Times New Roman";
-  color: rgb(136, 136, 136);
+  color: $gray;
+  &__content {
+    margin: 50px 5%;
+    font-family: "Roboto Regular", "Times New Roman";
+  }
+
 }

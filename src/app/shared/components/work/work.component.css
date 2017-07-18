@@ -1,23 +1,20 @@
-a {
+.link {
   color: #888888;
   font-family: "Roboto Medium", "Times New Roman";
   text-decoration: none;
   cursor: pointer; }
-  a:hover {
-    color: #ffffff; }
+  .link:hover {
+    color: white; }
 
-table {
+.table-work {
   border-collapse: collapse;
   color: #888888;
   width: 100%; }
-  table tr {
+  .table-work_tr {
     display: table-row; }
-    table tr td {
-      display: table-cell;
-      padding: 5px 0; }
-
-h3 {
-  color: #888888; }
+  .table-work_td {
+    display: table-cell;
+    padding: 5px 0; }
 
 .flex_between {
   display: flex;
@@ -44,14 +41,15 @@ h3 {
     font-weight: 600; }
     .work-video-title {
       display: block;
-      color: #888;
+      color: #888888;
       margin: 0; }
 
 .buttons {
-  display: block; }
+  display: block;
+  margin: 20px 0; }
   .buttons-item {
     display: inline-block;
-    background-color: #232323;
+    background-color: #212121;
     border-radius: 4px;
     padding: 5px 15px;
     margin: 0 5px; }

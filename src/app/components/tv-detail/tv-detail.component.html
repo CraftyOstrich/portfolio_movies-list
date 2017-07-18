@@ -1,12 +1,12 @@
-<app-item-detail [item]="serial" [creators]="serialCreators"></app-item-detail>
-<div class="flex" *ngIf="serial">
+<app-item-detail [item]="tv" [creators]="tvCreators"></app-item-detail>
+<div class="flex wrapper" *ngIf="tv">
   <div class="info">
     <div class="info__wrapper">
-      <section *ngIf="serialCharacters.length" class="info__starring">
+      <section *ngIf="tvCharacters.length" class="info__starring">
         <h3 class="starring-title">Starring</h3>
         <ol class="starring__list">
-          <li *ngFor="let character of serialCharacters" class="starring__item" >
-            <a href='/person/{{ character.id}}' class="starring-link">
+          <li *ngFor="let character of tvCharacters" class="starring__item" >
+            <a (click)="goToActor(character.id)" class="link starring-link">
               <img *ngIf="character.profile_path" class="starring-img"
                    src="https://image.tmdb.org/t/p/w138_and_h175_bestv2/{{ character.profile_path }}"
                    [alt]=" character.name ">
@@ -14,7 +14,7 @@
             </a>
             <div class="starring__detail">
               <p class="text_short starring-name">
-                <a href='/person/{{ character.id}}' class="text_hover">
+                <a (click)="goToActor(character.id)" class="link text_hover">
                   {{ character.name }}
                 </a>
               </p>
@@ -22,44 +22,37 @@
             </div>
           </li>
         </ol>
-        <p class="starring-btn">
-          <a>
-            More
-          </a>
-        </p>
       </section>
-      <section *ngIf="serialVideos.length" class="info__video">
-        <h3 class="">Video</h3>
-        <div class="scroller">
-          <div *ngFor="let video of serialVideos" class="video__item">
+      <section *ngIf="tvVideos.length" class="info__video">
+        <h3>Video</h3>
+          <div *ngFor="let video of tvVideos" class="video__item">
             <iframe width="640" height="360"
                     [src]="sanitizeUrl(video.key)"
                     frameborder="0" allowfullscreen>
             </iframe>
           </div>
-        </div>
       </section>
-      <section *ngIf="serialsSimilar.length" class="info__similar">
+      <section *ngIf="tvSimilar.length" class="info__similar">
         <h3>You will like it</h3>
-        <div class="scroller">
-          <div class="similar__item" *ngFor="let serialSimilar of serialsSimilar">
+        <div class="scroll">
+          <div class="similar__item" *ngFor="let tvSimilar of tvSimilar">
             <div class="similar__img-block">
-              <a show >
+              <a class="similar-meta">
                 <img class="similar-img"
-                     src="https://image.tmdb.org/t/p/w250_and_h141_bestv2/{{ serialSimilar.poster_path}}" [alt]='serialSimilar.name'>
+                     src="https://image.tmdb.org/t/p/w250_and_h141_bestv2/{{ tvSimilar.poster_path}}" [alt]='tvSimilar.name'>
                 <div class="meta">
                   <span class="meta__release-date">
                     <span class="glyphicon glyphicon-calendar meta-calendar">
-                      {{ serialSimilar.first_air_date }}
+                      {{ tvSimilar.first_air_date }}
                   </span>
                   </span>
                 </div>
               </a>
             </div>
             <p class="flex">
-              <a href='/tv/{{ serialSimilar.id}}' class="text_short similar-name">{{ serialSimilar.name }}</a>
+              <a (click)="goToSimilar(tvSimilar.id)" class="link text_short similar-name">{{ tvSimilar.name }}</a>
               <span>
-                {{ serialSimilar.vote_average }}
+                {{ tvSimilar.vote_average }}
                 <span class="glyphicon glyphicon-star similar-star"></span>
               </span>
             </p>
@@ -71,42 +64,42 @@
   <div class="facts">
     <h3 class="facts-title">Facts</h3>
     <p class="facts__item">
-      <strong>Original title</strong>
-      {{ serial.original_name }}
+      <strong class="title">Original title</strong>
+      {{ tv.original_name }}
     </p>
     <p class="facts__item">
-      <strong>Status</strong>
-      {{ serial.status }}
+      <strong class="title">Status</strong>
+      {{ tv.status }}
     </p>
     <p class="facts__item">
-      <strong>Company</strong>
-      <span *ngFor="let network of serialNetworks">{{ network.name }}, </span>
+      <strong class="title">Company</strong>
+      <span *ngFor="let network of tvNetworks">{{ network.name }}, </span>
     </p>
     <p class="facts__item">
-      <strong>Type</strong>
-      {{ serial.type }}
+      <strong class="title">Type</strong>
+      {{ tv.type }}
     </p>
     <p class="facts__item">
       <strong>Original language</strong>
-      {{ serial.original_language | uppercase}}
+      {{ tv.original_language | uppercase}}
     </p>
     <p class="facts__item">
-      <strong>Episode's runtime</strong>
-      <span *ngFor="let time of serial.episode_run_time ">{{time}}<br></span>
+      <strong class="title">Episode's runtime</strong>
+      <span *ngFor="let time of tv.episode_run_time ">{{time}}<br></span>
     </p>
     <p class="facts__item">
-      <strong>Number of seasons</strong>
-      {{ serial.number_of_seasons }}
+      <strong class="title">Number of seasons</strong>
+      {{ tv.number_of_seasons }}
     </p>
     <p class="facts__item">
-      <strong>Homepage</strong>
-      <a [href]='serial.homepage'>{{ serial.homepage }}</a>
+      <strong class="title">Homepage</strong>
+      <a [href]='tv.homepage' class="link">{{ tv.homepage }}</a>
     </p>
     <section class="facts__genres">
       <h4>Genres</h4>
       <ul>
         <li class="facts__list-item" *ngFor="let genre of genres">
-          <a class="text_hover facts-link">
+          <a class="link text_hover facts-link">
             {{ genre.name }}
           </a>
         </li>
@@ -115,8 +108,8 @@
     <section class="facts__keywords">
       <h4>Keywords</h4>
       <ul>
-        <li  *ngFor="let keyword of serialKeywords" class="facts__list-item">
-          <a class="text_hover facts-link">
+        <li  *ngFor="let keyword of tvKeywords" class="link facts__list-item">
+          <a class="link text_hover facts-link">
             {{ keyword.name }}
           </a>
       </ul>

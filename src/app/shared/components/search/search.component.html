@@ -2,8 +2,9 @@
   <span class="search__item">
     <label for="search_year" class="search-label">Year</label>
     <span>
-      <select name="" (change)="filterOptions.onYearChange($event.target.value)" id="search_year" class="search__element search__select">
-        <option hidden>Choose year... </option>
+      <select (change)="filterOptions.onYearChange($event.target.value)" id="search_year"
+              class="search__element search__select">
+        <option>Choose year... </option>
         <option *ngFor="let item of filterOptions.yearsList" [value]="item">{{ item }}</option>
       </select>
     </span>
@@ -11,8 +12,9 @@
   <span class="search__item">
     <label for="search_sort" class="search-label">Sort By</label>
     <span>
-      <select  name="" (change)="filterOptions.onSortChange($event.target.value)" id="search_sort" class="search__element search__select" >
-        <option *ngFor="let item of filterOptions.sortByList" [value]="item.urlSortBy" >
+      <select (change)="filterOptions.onSortChange($event.target.value)" id="search_sort"
+              class="search__element search__select">
+        <option *ngFor="let item of filterOptions.sortByList" [value]="item.urlSortBy">
           {{ item.select }}
         </option>
       </select>
@@ -28,17 +30,17 @@
         <ul>
           <li *ngFor="let item of filterOptions.genresList" class="genre-item">
             <span (click)="selectGenre(item)">
-              <a>{{ item.name }}</a>
+              <a class="link">{{ item.name }}</a>
             </span>
           </li>
         </ul>
       </div>
-      <div *ngIf="filterOptions.genres.value" class="selected__list">
+      <div *ngIf="filterOptions._genres.value" class="selected__list">
         <ul>
-          <li *ngFor="let item of filterOptions.genres.value" class="selected-item">
+          <li *ngFor="let item of filterOptions._genres.value" class="selected-item">
             <span>{{ item.name }}</span>
             <span>
-              <a (click)="filterOptions.onGenreRemove(item.id)">     X</a>
+              <a class="link" (click)="filterOptions.onGenreRemove(item.id)">     X</a>
             </span>
           </li>
         </ul>
@@ -49,25 +51,25 @@
     <label for="search_keywords" class="search-label">Keywords</label>
     <span>
       <div class="relative">
-        <input  type="text" [(ngModel)]="keywordsSearch"
-                [ngModelOptions]="{standalone: true}" (ngModelChange)="loadKeywordsList($event)"
-                id="search_keywords"
-                class="search__element search__input">
+        <input type="text" [(ngModel)]="keywordsSearch"
+               [ngModelOptions]="{standalone: true}" (ngModelChange)="loadKeywordsList($event)"
+               id="search_keywords"
+               class="search__element search__input">
         <div *ngIf="displayKeywords" class="list keyword__list">
            <ul>
             <li *ngFor="let item of keywordsList" class="keyword-item">
               <span (click)="selectKeyword(item)">
-                <a>{{ item.name }}</a>
+                <a class="link">{{ item.name }}</a>
               </span>
             </li>
           </ul>
         </div>
-        <div *ngIf="filterOptions.keywords.value" class="selected__list">
+        <div *ngIf="filterOptions._keywords.value" class="selected__list">
         <ul>
-          <li *ngFor="let item of filterOptions.keywords.value" class="selected-item">
+          <li *ngFor="let item of filterOptions._keywords.value" class="selected-item">
             <span>{{ item.name }}</span>
             <span>
-              <a (click)="filterOptions.onKeywordRemove(item.id)">     X</a>
+              <a (click)="filterOptions.onKeywordRemove(item.id)" class="link">     X</a>
             </span>
           </li>
         </ul>

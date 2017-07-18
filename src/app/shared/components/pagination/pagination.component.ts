@@ -1,18 +1,17 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
   @Input() pagesNumber: number;
   @Input() currentPage: number;
   @Output() onPageChange: EventEmitter<number> = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {}
+  constructor() {
+  }
 
   goTo(pageNumber) {
     if (pageNumber > 1000) {
@@ -22,7 +21,6 @@ export class PaginationComponent implements OnInit {
       pageNumber = 1;
     }
     this.currentPage = pageNumber;
-    console.log(this.currentPage);
     this.onPageChange.emit(this.currentPage);
   }
 

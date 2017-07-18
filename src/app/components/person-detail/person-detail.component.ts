@@ -1,9 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PersonDetail} from "../../models/person-detail";
-import {ActivatedRoute, Router, Params} from "@angular/router";
+import {ActivatedRoute, Params} from "@angular/router";
 import {PeopleService} from "../../shared/services/people.service";
-import {Movie} from "../../models/movie";
-import {PeopleComponent} from "../people/people.component";
+import { API_CONFIG } from '../../app-config';
 
 
 @Component({
@@ -13,21 +12,22 @@ import {PeopleComponent} from "../people/people.component";
 })
 export class PersonDetailComponent implements OnInit {
   person: PersonDetail;
-  link: string = "/person/";
-  linkAllWorks: string = "/combined_credits";
+  personGender: string = '';
+
+  private _currentLink: string = "/person/";
 
   constructor(private _route: ActivatedRoute,
-              private _peopleService: PeopleService,
-              private router: Router) { }
+              private _peopleService: PeopleService) { }
 
   ngOnInit() {
     this._route.params.subscribe((params: Params) => {
       let id = +params['id'];
-      this._peopleService.getPerson(this.link , id)
+      this._peopleService.getPerson(this._currentLink , id)
         .mergeMap(
           (person: any) => {
             this.person = new PersonDetail(person);
-            return this._peopleService.getAllWorks(this.link , id, this.linkAllWorks)
+            this.personGender = this._determineGender(this.person.gender);
+            return this._peopleService.getAllWorks(this._currentLink , id, API_CONFIG.PERSON_WORKS)
           }
         )
         .subscribe((response: any) => {
@@ -36,7 +36,7 @@ export class PersonDetailComponent implements OnInit {
     });
   }
 
-  DetermineGender (gender: number) {
+  private _determineGender (gender: number) {
     if (gender) {
       return gender === 1 ? 'female' : 'male';
     } else {
@@ -44,14 +44,4 @@ export class PersonDetailComponent implements OnInit {
     }
   }
 
-
-
-  goTo(id, title?) {
-    if (title) {
-      this.router.navigate(['movie', id]);
-    } else {
-      this.router.navigate(['tv', id]);
-    }
-
-  }
 }

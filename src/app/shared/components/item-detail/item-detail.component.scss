@@ -1,6 +1,17 @@
-a {
-  color: rgb(136, 136, 136);
+@import "../../../../assets/scss/colors";
+
+.link {
+  color: $gray;
   text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    color: $white;
+  }
+}
+
+.flex_between {
+  display: flex;
+  justify-content: space-between;
 }
 
 .poster {
@@ -8,7 +19,7 @@ a {
   align-items: flex-start;
   margin-bottom: 35px;
   font-family: "Roboto Medium", "Times New Roman";
-  color: rgb(136, 136, 136);
+  color: $gray;
   &__image {
     width: 300px;
   }
@@ -17,7 +28,33 @@ a {
   }
 }
 
-.creator{
+.rating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  &__fon {
+    width: 68px;
+    height: 68px;
+  }
+  &__circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 10px 0;
+    background-color: $mine_shaft;
+    position: relative;
+  }
+  &__percent {
+    position: absolute;
+    top: 28%;
+    left: 28%;
+  }
+  &-value {
+    font-size: 16px;
+  }
+}
+
+.creator {
   &__list {
     display: block;
   }

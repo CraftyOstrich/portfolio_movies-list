@@ -1,24 +1,32 @@
-a, p,  h3 {
-  color: #888888;
-  font-family: "Roboto Medium", "Times New Roman";
-}
-a {
-  text-decoration: none;
-  cursor: pointer ;
-  &:hover {
-    color: #ffffff;
+@import "../../../assets/scss/colors";
+
+.flex {
+  &_between {
+    display: flex;
+    justify-content: space-between;
+  }
+  &_wrap {
+    flex-wrap: wrap;
   }
 }
-.flex_between {
-  display: flex;
-  justify-content: space-between;
+
+.title {
+  display: block;
+  font-size: 16px;
 }
-.flex_wrap {
-  flex-wrap: wrap;
+
+.link {
+  color: $gray;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: $white;
+  }
 }
 
 .wrapper {
   margin: 50px 0;
+  color: $gray;
 }
 
 .big_column {
@@ -27,7 +35,7 @@ a {
 
 .profile {
   &__image {
-    margin:auto 30px;
+    margin: auto 30px;
   }
   &__biography {
     margin: auto;
@@ -39,19 +47,16 @@ a {
   &__name {
     font-weight: 700;
     font-size: 42px;
-    color: #ffffff;
+    color: $white;
   }
 }
+
 .info {
   width: 25%;
   margin-right: 5%;
+  margin-top: 20px;
   &__item {
     margin-bottom: 30px;
-    strong {
-      display: block;
-      font-size: 16px;
-
-    }
   }
   &-title {
     margin: 20px 0;
@@ -62,9 +67,9 @@ a {
   width: 300px;
   height: 450px;
   padding: 170px 0;
-  color: #888888;
+  color: $gray;
   font-size: 18px;
-  border: 1px solid #888888;
+  border: 1px solid $gray;
   text-align: center;
 }
 

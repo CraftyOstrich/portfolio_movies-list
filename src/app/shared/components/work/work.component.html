@@ -2,18 +2,18 @@
   <div class="flex_between">
     <h3 class="work-title">Filming</h3>
     <span class="buttons">
-    <a (click)="onTypeChange(showMovie)" class="buttons-item">Movies</a>
-    <a (click)="onTypeChange(showSerial)" class="buttons-item">Serials</a>
+    <a (click)="onTypeChange(showMovie)" class="link buttons-item">Movies</a>
+    <a (click)="onTypeChange(showSerial)" class="link buttons-item">Serials</a>
   </span>
   </div>
-    <table class="work">
-      <tr  *ngFor="let item of cast | groupBy:'year' | sortByYear">
-        <td>
-          <table class="work__item">
-            <tr *ngFor="let i of item">
-              <td class="work-year">{{ i.year }}</td>
-              <td>
-                <a (click)="goToWork(i.id)" class="work-video">{{i.title || i.name}}</a>
+    <table class="table-work work">
+      <tr class="table-work_tr" *ngFor="let item of cast | groupBy:'year' | sortByYear">
+        <td class="table-work_td">
+          <table class="table-work work__item">
+            <tr *ngFor="let i of item" class="table-work_tr">
+              <td class="table-work_td work-year">{{ i.year }}</td>
+              <td class="table-work_td">
+                <a (click)="goToWork(i.id)" class="link work-video">{{i.title || i.name}}</a>
                 <span *ngIf="i.episode_count">... ({{i.episode_count}} episode)</span>
                 <span *ngIf="i.character">as {{i.character}}</span>
               </td>
@@ -24,14 +24,14 @@
     </table>
     <div *ngFor="let item of crew |groupByDepartment: 'department'">
       <h3 class="work-title">{{ item.key }}</h3>
-      <table class="work">
-        <tr *ngFor="let job of item.result | groupBy:'year' | sortByYear">
-          <td>
-            <table class="work__item">
-              <tr *ngFor="let j of job">
-                <td class="work-year">{{ j.year }}</td>
-                <td>
-                  <a class="work-video">{{j.title || j.name}}</a>
+      <table class="table-work work">
+        <tr class="table-work_tr" *ngFor="let job of item.result | groupBy:'year' | sortByYear">
+          <td class="table-work_td">
+            <table class="table-work work__item">
+              <tr *ngFor="let j of job" class="table-work_tr">
+                <td class="table-work_td work-year">{{ j.year }}</td>
+                <td class="table-work_td">
+                  <a class="link work-video">{{j.title || j.name}}</a>
                   <span *ngIf="j.episode_count">- ({{j.episode_count}} episode)</span>
                   <span *ngIf="j.job">... {{ j.job }}</span>
                 </td>

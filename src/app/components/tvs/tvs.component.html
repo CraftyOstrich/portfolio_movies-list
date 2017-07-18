@@ -1,0 +1,10 @@
+<div class="container discover">
+  <h2 class="discover__title">Serials</h2>
+  <div class="row discover__content">
+    <div *ngFor="let item of tvs" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <app-item-block [item]="item"></app-item-block>
+    </div>
+    <app-pagination [pagesNumber]="pagesNumber" [currentPage]="currentPage"
+                    (onPageChange)="onPageChange($event)"></app-pagination>
+  </div>
+</div>

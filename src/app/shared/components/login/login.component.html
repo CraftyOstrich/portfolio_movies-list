@@ -1,9 +1,17 @@
-<div class="login">
-  <h1 class="login-title">Log in</h1>
-  <input type="text" value="" placeholder="Username" class="login__input login__input-username" />
-  <input type="password" value="" placeholder="Password" class="login__input login__input-password" />
-  <button class="login__btn">Submit</button>
-  <div class="login__link">
-    <a [routerLink]="['/registration']">Do you haven't an account?</a>
+<form #f="ngForm" (submit)="signIn(f)">
+  <div class="login">
+    <h1 class="login-title">Log in</h1>
+    <input name="email" ngModel required #email="ngModel"
+           class="login__input login__input-email"
+           placeholder="User email" type="email">
+    <input name="password" ngModel required #password="ngModel"
+           placeholder="Password"
+           class="login__input login__input-password"
+           type="password">
+    <p *ngIf="_errorMessage" class="wrong">{{ _errorMessage }}</p>
+    <button class="login__btn">Submit</button>
   </div>
-</div>
+</form>
+
+
+

@@ -1,34 +1,41 @@
-a, p, h4, h3 {
-  color: #888888;
+@import "../../../assets/scss/colors";
+
+.wrapper {
+  color: $gray;
   font-family: "Roboto Medium", "Times New Roman";
-  text-decoration: none;
 }
-a {
+
+.link {
+  color: $gray;
+  text-decoration: none;
   &:hover {
-    color: #ffffff;
+    color: $white;
     cursor: pointer;
   }
 }
-strong {
+
+.title {
   display: block;
   font-size: 16px;
 }
+
 .text_short {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-
 .flex {
   display: flex;
   justify-content: space-between;
 }
-.scroller {
+
+.scroll {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
 }
+
 .info {
   width: 75%;
 }
@@ -50,7 +57,7 @@ strong {
   }
   &__detail {
     width: 138px;
-    border: 1px solid #888;
+    border: 1px solid $gray;
     border-top: none;
     padding: 10px 5px;
   }
@@ -65,21 +72,19 @@ strong {
   &-no_image {
     padding: 59px 40px;
     font-size: 56px;
-    border: 1px solid #888888;
+    border: 1px solid $gray;
     border-bottom: none;
   }
   &-name {
     font-weight: bold;
     font-size: 18px;
   }
-  &-btn {
-    font-size: 18px;
-  }
 }
 
 .video {
   &__item {
-    display: inline-block;
+    text-align: center;
+    margin: 20px 0;
   }
 }
 
@@ -101,6 +106,11 @@ strong {
       content: '\E050';
     }
   }
+  &-meta {
+    &:hover .meta {
+      visibility: visible;
+    }
+  }
 }
 
 .meta {
@@ -112,8 +122,7 @@ strong {
   left: 0;
   padding: 5px 10px;
   &__release-date {
-    color: black;
-    font-family: "Roboto Medium", "Times New Roman";
+    color: $black;
   }
   &-calendar {
     &:before {
@@ -138,7 +147,7 @@ strong {
   }
 
   &-link {
-    border: 1px solid #d7d7d7;
+    border: 1px solid $alto;
     padding: 4px 10px;
     border-radius: 4px;
   }

@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,EAAG;EACA,KAAK,EAAE,OAAkB;;AAG5B,SAAU;EACR,MAAM,EAAE,OAAO;EACf,WAAW,EAAE,mCAAmC;EAChD,KAAK,EAAE,OAAkB",
-"sources": ["movies.component.scss"],
+"mappings": "AAEA,SAAU;EACR,KAAK,ECCA,OAAkB;EDAvB,kBAAW;IACT,MAAM,EAAE,OAAO;IACf,WAAW,EAAE,mCAAmC",
+"sources": ["movies.component.scss","../../../assets/scss/colors.scss"],
 "names": [],
 "file": "movies.component.css"
 }

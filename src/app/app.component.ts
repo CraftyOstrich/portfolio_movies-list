@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -11,6 +10,7 @@ export class AppComponent implements OnInit {
 
   }
 
+  // if on init empty -> remove it
   ngOnInit() {
 
   }

@@ -4,6 +4,7 @@ export interface INavItem {
   collapsed?: boolean;
   collapsedChildren?: boolean;
   link: string;
+  type?: string;
   children?: INavItem[];
 }
 
@@ -11,19 +12,22 @@ export const NavItems = <INavItem[]>
   [
     {
       id: 1,
-      name: 'Overview',
+      name: 'Discover',
       collapsedChildren: true,
-      link: '/overview/movie',
+      link: '/discover',
+      type: 'movie',
       children: [
         {
           id: 1.1,
           name: 'Movie',
-          link:'/overview/movie',
+          link:'/discover',
+          type: 'movie'
         },
         {
           id: 1.2,
-          name: 'Serials',
-          link: '/overview/tv',
+          name: 'Tv',
+          link: '/discover',
+          type: 'tv'
         }
       ]
     },
@@ -32,54 +36,64 @@ export const NavItems = <INavItem[]>
         collapsedChildren: false,
         name: 'Movies',
         link: '/movie',
+        type: 'popular',
         children: [
         {
           id: 2.1,
           name: 'Popular',
-          link: '/movie/popular'
+          link: '/movie',
+          type: 'popular'
         },
         {
           id: 2.2,
           name: 'Top',
-          link: '/movie/top_rated'
+          link: '/movie',
+          type: 'top_rated'
         },
         {
           id: 2.3,
           name: 'Soon',
-          link: '/movie/upcoming'
+          link: '/movie',
+          type: 'upcoming'
         },
         {
           id: 2.4,
           name: 'Now on screen',
-          link: '/movie/now_playing'
+          link: '/movie',
+          type: 'now_playing',
         }
         ]
      },
       {
       id: 3,
-      name: 'Serials',
+      name: 'Tvs',
       collapsedChildren: false,
-      link: '/serials',
+      link: '/tv',
+      type: 'popular',
       children: [
       {
         id: 3.1,
         name: 'Popular',
-        link: '/tv/popular'
+        link: '/tv',
+        type: 'popular'
       },
       {
         id: 3.2,
         name: 'Top',
-        link: '/tv/top_rated'
+        link: '/tv',
+        type: 'top_rated'
       },
       {
         id: 3.3,
         name: 'On TV',
-        link: '/tv/on_the_air'
+        link: '/tv',
+        type: 'on_the_air'
       },
       {
         id: 3.4,
         name: 'Today on TV',
-        link: '/tv/airing_today'
+        link: '/tv',
+        type: 'airing_today'
       }
       ]
     },

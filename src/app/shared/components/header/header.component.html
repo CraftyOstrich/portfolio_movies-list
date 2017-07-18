@@ -1,19 +1,21 @@
 <div class="header">
   <div class="flex header__container">
     <div class="header__logo">
-      <img src="../../../../assets/images/logo.svg" alt="Cute Tube">
+      <a (click)="goTo('/home')">
+        <img src="../../../../assets/images/logo.svg" alt="Cute Tube">
+      </a>
     </div>
     <div class="flex flex_between header__large">
       <div class="header__nav" *ngIf="hiddenSearch">
         <ul>
           <li class="nav__item" *ngFor="let navBarItem of navbar">
-            <a [routerLink]="[navBarItem.link]"  class="nav__item-link">
+            <a (click)="goTo(navBarItem)" class="nav__item-link">
               {{navBarItem.name}}
             </a>
             <div class="nav__list">
               <ul>
                 <li class="list__item" *ngFor="let listItem of navBarItem.children">
-                  <a [routerLink]="[listItem.link]" class="list__item-link">{{listItem.name}} </a>
+                  <a (click)="goTo(listItem)" class="list__item-link">{{listItem.name}} </a>
                 </li>
               </ul>
             </div>
@@ -64,13 +66,17 @@
           <a class="search-close" (click)="closeSearchField()"></a>
         </div>
       </div>
-      <div class="flex" *ngIf="hiddenSearch">
+      <div *ngIf="hiddenSearch" class="flex">
         <div  class="header__search" >
           <a (click)="showSearchField()" class="search-btn"></a>
         </div>
-        <div *ngIf="hiddenSearch" >
-        <a [routerLink]="['/login']" class="login-btn">LOG IN</a>
-      </div>
+        <div *ngIf="hiddenSearch && !authService.isLoggedIn" >
+          <a (click)="goTo('/login')" class="login-btn">LOG IN</a>
+        </div>
+        <div *ngIf="authService.isLoggedIn">
+          <strong class="login-user">{{ authService._signedUser.login }}</strong>
+          <a (click)="loginService.signOut()" class="login-btn">LOG OUT</a>
+        </div>
       </div>
   </div>
     <div class="header_mobile">
@@ -83,12 +89,12 @@
         </span>
       </a>
       <div class="mobile__login" *ngIf="hiddenSearch" >
-        <a [routerLink]="['/login']" class="login-btn">LOG IN</a>
+        <a (click)="goTo('/login')" class="login-btn">LOG IN</a>
       </div>
       <div class="mobile__nav" *ngIf="hiddenMobileNav">
         <ul class="mobile__nav__list">
           <li class="nav__item mobile__nav__item" *ngFor="let navBarItem of navbar">
-            <a [routerLink]="[navBarItem.link]"
+            <a (click)="goTo(navBarItem)"
                class="nav__item-link" >
               {{navBarItem.name}}
             </a>
@@ -127,7 +133,6 @@
                       <p >{{ item.media_type }}</p>
                     </span>
                   </span>
-
                 </li>
               </ul>
             </div>

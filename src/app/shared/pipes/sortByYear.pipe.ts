@@ -11,14 +11,13 @@ export class SortByYearPipe implements PipeTransform {
       return [];
     }
 
-
     let result: any[] = [];
     const sorterObject = Object.keys(value)
-                               .sort()
-                               .reduce((r, k) => ({
-                                 ...r,
-                                 [k]: value[k]
-                               }), {});
+      .sort()
+      .reduce((r, k) => ({
+        ...r,
+        [k]: value[k]
+      }), {});
 
     for (let prop in sorterObject) {
       if (sorterObject.hasOwnProperty(prop)) {
@@ -27,7 +26,7 @@ export class SortByYearPipe implements PipeTransform {
     }
 
     if (!result.length) {
-     return [];
+      return [];
     }
 
     return result;

@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,EAAG;EACD,KAAK,EAAE,OAAkB;;AAG3B,SAAU;EACR,MAAM,EAAE,OAAO;EACf,WAAW,EAAE,mCAAmC;EAChD,KAAK,EAAE,OAAkB",
-"sources": ["discover.component.scss"],
+"mappings": "AAEA,SAAU;EACR,KAAK,ECCA,OAAkB;EDAvB,kBAAW;IACT,MAAM,EAAE,OAAO;IACf,WAAW,EAAE,mCAAmC",
+"sources": ["discover.component.scss","../../../assets/scss/colors.scss"],
 "names": [],
 "file": "discover.component.css"
 }

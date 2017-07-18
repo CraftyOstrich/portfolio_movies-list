@@ -1,0 +1,9 @@
+@import "../../../assets/scss/colors";
+
+.discover {
+  color: $gray;
+  font-family: "Roboto Regular", "Times New Roman";
+  &__content {
+    margin: 50px 5%;
+  }
+}

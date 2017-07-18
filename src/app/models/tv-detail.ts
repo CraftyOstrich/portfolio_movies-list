@@ -3,7 +3,8 @@ import {Genre} from "./genre";
 import {Company} from "./production-companie";
 import {Season} from "./season";
 import {Network} from "./network";
-export interface ISeriesDetail {
+
+export interface ITvDetail {
   backdrop_path: string;
   created_by: Creator[];
   episode_run_time: number[];
@@ -32,7 +33,7 @@ export interface ISeriesDetail {
   vote_count: number;
 }
 
-export class SeriesDetail implements ISeriesDetail {
+export class TvDetail implements ITvDetail {
   public backdrop_path: string;
   public created_by: Creator[];
   public episode_run_time: number[];
@@ -60,32 +61,32 @@ export class SeriesDetail implements ISeriesDetail {
   public vote_average: number;
   public vote_count: number;
 
-  constructor (series: SeriesDetail) {
-    this.backdrop_path = series.backdrop_path;
-    this.created_by = series.created_by;
-    this.episode_run_time = series.episode_run_time;
-    this.first_air_date = series.first_air_date;
-    this.genres = series.genres;
-    this.homepage = series.homepage;
-    this.id = series.id;
-    this.in_production = series.in_production;
-    this.languages = series.languages;
-    this.last_air_date = series.last_air_date;
-    this.name = series.name;
-    this.networks = series.networks;
-    this.number_of_episodes = series.number_of_episodes;
-    this.number_of_seasons = series.number_of_seasons;
-    this.origin_country = series.origin_country;
-    this.original_language = series.original_language;
-    this.original_name = series.original_name;
-    this.overview = series.overview;
-    this.popularity = series.popularity;
-    this.poster_path = series.poster_path;
-    this.production_companies = series.production_companies;
-    this.seasons = series.seasons;
-    this.status = series.status;
-    this.type = series.type;
-    this.vote_average = series.vote_average;
-    this.vote_count = series.vote_count;
+  constructor (tv: TvDetail) {
+    this.backdrop_path = tv.backdrop_path;
+    this.created_by = tv.created_by;
+    this.episode_run_time = tv.episode_run_time;
+    this.first_air_date = tv.first_air_date;
+    this.genres = tv.genres;
+    this.homepage = tv.homepage;
+    this.id = tv.id;
+    this.in_production = tv.in_production;
+    this.languages = tv.languages;
+    this.last_air_date = tv.last_air_date;
+    this.name = tv.name;
+    this.networks = tv.networks;
+    this.number_of_episodes = tv.number_of_episodes;
+    this.number_of_seasons = tv.number_of_seasons;
+    this.origin_country = tv.origin_country;
+    this.original_language = tv.original_language;
+    this.original_name = tv.original_name;
+    this.overview = tv.overview;
+    this.popularity = tv.popularity;
+    this.poster_path = tv.poster_path;
+    this.production_companies = tv.production_companies;
+    this.seasons = tv.seasons;
+    this.status = tv.status;
+    this.type = tv.type;
+    this.vote_average = tv.vote_average;
+    this.vote_count = tv.vote_count;
   }
 }

@@ -1,3 +1,5 @@
+@import "../../../../assets/scss/colors";
+
 .flex_start {
   display: flex;
   justify-content: space-around;
@@ -12,35 +14,35 @@
   width: 100%;
   height: 100px;
   padding: 10px;
-  background-color: #1e1e1e;
-  color: #888888;
+  background-color: $cod_gray;
+  color: $gray;
   overflow-y: scroll;
   z-index: 3;
 }
-form {
-  font-family: "Roboto Medium", "Times New Roman";
-}
-a {
+
+.link {
   text-decoration: none;
-  color: #888888;
+  color: $gray;
   cursor: pointer;
   &:hover {
-    color: #ffffff;
+    color: $white;
   }
 }
+
 .search {
   margin: 35px 0;
   width: 100%;
+  font-family: "Roboto Medium", "Times New Roman";
+  color: $gray;
   &__item {
     width: 20%;
     position: relative;
     padding-right: 5%;
   }
   &__element {
-    background-color: #1e1e1e;
+    background-color: $cod_gray;
     height: 35px;
     border: none;
-    color: #888888;
     outline: none;
     letter-spacing: normal;
   }
@@ -56,21 +58,16 @@ a {
     }
   }
   &-label {
-    color: #888888;
     font-size: 16px;
   }
 }
 
 .selected {
-  &__list {
-    color: #888888;
-  }
   &-item {
-    border: 1px solid #888888;
+    border: 1px solid $gray;
     border-radius: 4px;
     display: inline-block;
     padding: 2px;
     margin: 5px;
   }
-
 }

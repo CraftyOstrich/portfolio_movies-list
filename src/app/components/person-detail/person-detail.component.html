@@ -10,7 +10,7 @@
       </div>
     </div>
     <section class="profile__biography">
-      <a class="profile__name">
+      <a class="link profile__name">
         {{ person.name }}
       </a>
       <h3>Biography</h3>
@@ -20,56 +20,34 @@
       <div *ngIf="!person.biography">
         <p>There is no biography of this actor at this moment.</p>
       </div>
-
     </section>
   </section>
   <section class="flex_between">
     <div class="info">
       <h3 class="info-title">Information about person</h3>
       <p class="info__item">
-        <strong>Gender</strong>
-        {{ DetermineGender(person.gender) }}
+        <strong class="title">Gender</strong>
+        {{ personGender }}
       </p>
-      <!--<p *ngIf='allWorks' class="info__item">-->
-        <!--<strong>Known works</strong>-->
-        <!--{{ allWorks.length }}-->
-      <!--</p>-->
       <p class="info__item">
-        <strong>Birthday</strong>
+        <strong class="title">Birthday</strong>
         {{ person.birthday ? person.birthday : '-' }}
       </p>
       <p class="info__item">
-        <strong>Place of birth</strong>
+        <strong class="title">Place of birth</strong>
         {{ person.place_of_birth ? person.place_of_birth : '-' }}
       </p>
       <p class="info__item">
-        <strong>Official site</strong>
-        <a [href]="person.homepage">{{ person.homepage ? person.homepage : '-'}}</a>
+        <strong class="title">Official site</strong>
+        <a [href]="person.homepage" class="link">{{ person.homepage ? person.homepage : '-'}}</a>
       </p>
       <p *ngIf='person.also_known_as.length' class="info__item">
-        <strong>Also known as</strong>
+        <strong class="title">Also known as</strong>
         <span *ngFor="let name of person.also_known_as">{{ name }}<br></span>
       </p>
     </div>
     <div *ngIf="person.jobs" class="big_column">
-      <!--<div class="works_popular">-->
-        <!--<h3>Known for</h3>-->
-        <!--<ul class="flex_between flex_wrap">-->
-          <!--<li *ngFor="let work of popularWorks" class="popular__item">-->
-            <!--<a (click)="goTo(work.id, work.title)">-->
-              <!--<img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ work.poster_path }}'-->
-                   <!--[alt]='work.title || work.name' class="popular-image">-->
-            <!--</a>-->
-            <!--<p class="popular-name">-->
-              <!--<a (click)="goTo(work.id, work.title)">{{work.title || work.name}}</a>-->
-            <!--</p>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
-      <app-work [jobs]="person.jobs">
-
-      </app-work>
+      <app-work [jobs]="person.jobs"></app-work>
     </div>
   </section>
-
 </div>

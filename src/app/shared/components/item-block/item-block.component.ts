@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-item-block',
@@ -8,24 +8,27 @@ import {Router} from "@angular/router";
 })
 export class ItemBlockComponent implements OnInit {
   @Input() item: any;
+  itemYear: string;
 
-  constructor(private router: Router) { }
+  constructor(private _router: Router) {
+  }
 
   ngOnInit() {
-  }
-
-  goTo(id, title?) {
-    if (title) {
-      this.router.navigate(['movie', id]);
+    if (this.item.release_date) {
+      this.itemYear = this.item.release_date.slice(0, 4);
+    } else if (this.item.first_air_date) {
+      this.itemYear = this.item.first_air_date.slice(0, 4);
     } else {
-      this.router.navigate(['tv', id]);
-    }
-
-  }
-
-  getShortDate(item: string) {
-    if (item) {
-      return item.slice(0, 4)
+      this.itemYear = '';
     }
   }
+
+  goTo(id: number, title: string) {
+    if (title) {
+      this._router.navigate(['movie/detail', id]);
+    } else {
+      this._router.navigate(['tv/detail', id]);
+    }
+  }
+
 }

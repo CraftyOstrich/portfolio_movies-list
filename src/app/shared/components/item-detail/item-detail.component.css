@@ -1,6 +1,13 @@
-a {
+.link {
   color: #888888;
   text-decoration: none; }
+  .link:hover {
+    cursor: pointer;
+    color: white; }
+
+.flex_between {
+  display: flex;
+  justify-content: space-between; }
 
 .poster {
   display: flex;
@@ -12,6 +19,27 @@ a {
     width: 300px; }
   .poster__info {
     margin: 0 5%; }
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; }
+  .rating__fon {
+    width: 68px;
+    height: 68px; }
+  .rating__circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 10px 0;
+    background-color: #212121;
+    position: relative; }
+  .rating__percent {
+    position: absolute;
+    top: 28%;
+    left: 28%; }
+  .rating-value {
+    font-size: 16px; }
 
 .creator__list {
   display: block; }

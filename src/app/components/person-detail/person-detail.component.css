@@ -1,22 +1,23 @@
-a, p, h3 {
-  color: #888888;
-  font-family: "Roboto Medium", "Times New Roman"; }
-
-a {
-  text-decoration: none;
-  cursor: pointer; }
-  a:hover {
-    color: #ffffff; }
-
 .flex_between {
   display: flex;
   justify-content: space-between; }
-
 .flex_wrap {
   flex-wrap: wrap; }
 
+.title {
+  display: block;
+  font-size: 16px; }
+
+.link {
+  color: #888888;
+  text-decoration: none;
+  cursor: pointer; }
+  .link:hover {
+    color: white; }
+
 .wrapper {
-  margin: 50px 0; }
+  margin: 50px 0;
+  color: #888888; }
 
 .big_column {
   width: 70%; }
@@ -31,16 +32,14 @@ a {
 .profile__name {
   font-weight: 700;
   font-size: 42px;
-  color: #ffffff; }
+  color: white; }
 
 .info {
   width: 25%;
-  margin-right: 5%; }
+  margin-right: 5%;
+  margin-top: 20px; }
   .info__item {
     margin-bottom: 30px; }
-    .info__item strong {
-      display: block;
-      font-size: 16px; }
   .info-title {
     margin: 20px 0; }
 

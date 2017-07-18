@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {IMovie, Movie} from "../../models/movie";
-import {MoviesService} from "../../shared/services/movies.service";
+import { Movie } from "../../models/movie";
+import { MoviesService } from "../../shared/services/movies.service";
+import { ActivatedRoute, Params } from '@angular/router';
+import { API_CONFIG } from '../../app-config';
 
 @Component({
   selector: 'app-movies',
@@ -11,25 +13,30 @@ export class MoviesComponent implements OnInit {
   videos: Movie[];
   pagesNumber: number;
   currentPage: number = 1;
-  link: string = '/movie/popular';
-  private currentUrl: string = '';
-  private errorMessage: string;
 
-  constructor(public _moviesService: MoviesService) { }
+  private _currentUrl: string = API_CONFIG.MOVIES_POPULAR;
+  private _errorMessage: string;
+
+  constructor(private _moviesService: MoviesService,
+              private  _route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    this.currentUrl = window.location.href.slice(21);
-    if (this.currentUrl === '/movie') {
-      this.currentUrl = this.link;
-    }
-    this.currentPage = 1;
-    this.getMovies(this.currentUrl, this.currentPage)
+    this._route.params.subscribe((params: Params) => {
+        this.currentPage = 1;
+        if (params.type) {
+          this._currentUrl = '/movie/' + params.type;
+        }
+        this.getMovies(this._currentUrl, this.currentPage)
+      },
+      error => this._errorMessage = <any>error
+    );
   }
 
   onPageChange(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
-      this.getMovies(this.currentUrl, this.currentPage)
+      this.getMovies(this._currentUrl, this.currentPage)
     }
   }
 
@@ -38,9 +45,8 @@ export class MoviesComponent implements OnInit {
       .subscribe(response => {
           this.videos = response.results || [];
           this.pagesNumber = response.total_pages;
-          console.log(this.pagesNumber)
         },
-        error => this.errorMessage = <any>error);
+        error => this._errorMessage = <any>error);
   }
 
 }

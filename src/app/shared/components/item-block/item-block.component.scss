@@ -1,14 +1,20 @@
-a {
-  text-decoration: none;
-  color: rgb(136, 136, 136);
-  &:hover {
-    color: #fff;
-    cursor: pointer;
-  }
-}
+@import "../../../../assets/scss/colors";
+
 p {
   margin: 0;
   padding: 10px 0;
+}
+
+.link {
+  text-decoration: none;
+  color: $gray;
+  &:hover {
+    color: $white;
+    cursor: pointer;
+  }
+  &_more {
+    font-size: 18px;
+  }
 }
 
 .flex_between {
@@ -26,21 +32,18 @@ p {
   height: 290px;
   font-size: 72px;
   padding: 85px 60px;
-  border-right: 1px solid #888888;
+  border-right: 1px solid $gray;
 }
 
 .item {
   &__block {
     padding-bottom: 50px;
-    &:nth-child(odd) {
-
-    }
     &:nth-child(even) {
       padding-left: 15px;
     }
   }
   &__wrapper {
-    border: 1px solid rgb(136, 136, 136);
+    border: 1px solid $gray;
   }
   &__info {
     padding: 0 10px;
@@ -74,16 +77,13 @@ p {
     overflow: hidden;
   }
 }
+
 .line {
-    margin-top: 30px;
-    color: rgb(136, 136, 136);
-    border: none;
-    background-color: rgb(136, 136, 136);
-    height: 1px;
+  margin-top: 30px;
+  color: $gray;
+  border: none;
+  background-color: $gray;
+  height: 1px;
 }
-.more {
-  &-link {
-    font-size: 18px;
-  }
-}
+
 

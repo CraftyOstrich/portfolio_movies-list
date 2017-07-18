@@ -1,11 +1,15 @@
 <div class="pagination">
   <span class="pagination__item">
-    <a (click)="goTo(1)" [ngClass]="{pagination_disabled: currentPage === 1}">
+    <a (click)="goTo(1)"
+       [ngClass]="{pagination_disabled: currentPage === 1}"
+       class="pagination-link">
       <<
     </a>
   </span>
   <span class="pagination__item ">
-    <a (click)="goTo(currentPage - 1)" [ngClass]="{pagination_disabled: currentPage === 1}">
+    <a (click)="goTo(currentPage - 1)"
+       [ngClass]="{pagination_disabled: currentPage === 1}"
+       class="pagination-link">
       <
     </a>
   </span>
@@ -13,12 +17,16 @@
     <strong>{{ currentPage }}</strong>
   </span>
   <span class="pagination__item">
-    <a (click)="goTo(currentPage + 1)" [ngClass]="{pagination_disabled: currentPage === 1000 || currentPage === pagesNumber }">
+    <a (click)="goTo(currentPage + 1)"
+       [ngClass]="{pagination_disabled: currentPage === 1000 || currentPage === pagesNumber }"
+       class="pagination-link">
       >
     </a>
   </span>
   <span class="pagination__item">
-    <a (click)="goTo(pagesNumber)" [ngClass]="{pagination_disabled: currentPage === 1000 || currentPage === pagesNumber}">
+    <a (click)="goTo(pagesNumber)"
+       [ngClass]="{pagination_disabled: currentPage === 1000 || currentPage === pagesNumber} "
+       class="pagination-link">
       >>
     </a>
   </span>

@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,EAAG;EACD,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,OAAO;;AAGhB,YAAa;EACX,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,eAAe,EAAE,UAAU",
-"sources": ["people.component.scss"],
+"mappings": "AAEA,YAAa;EACX,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,eAAe,EAAE,UAAU;;AAG7B,SAAU;EACR,KAAK,ECLA,OAAkB;EDMvB,gBAAS;IACP,SAAS,EAAE,IAAI",
+"sources": ["people.component.scss","../../../assets/scss/colors.scss"],
 "names": [],
 "file": "people.component.css"
 }

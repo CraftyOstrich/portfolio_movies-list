@@ -15,19 +15,18 @@
   overflow-y: scroll;
   z-index: 3; }
 
-form {
-  font-family: "Roboto Medium", "Times New Roman"; }
-
-a {
+.link {
   text-decoration: none;
   color: #888888;
   cursor: pointer; }
-  a:hover {
-    color: #ffffff; }
+  .link:hover {
+    color: white; }
 
 .search {
   margin: 35px 0;
-  width: 100%; }
+  width: 100%;
+  font-family: "Roboto Medium", "Times New Roman";
+  color: #888888; }
   .search__item {
     width: 20%;
     position: relative;
@@ -36,7 +35,6 @@ a {
     background-color: #1e1e1e;
     height: 35px;
     border: none;
-    color: #888888;
     outline: none;
     letter-spacing: normal; }
   .search__select {
@@ -48,11 +46,8 @@ a {
     .search__input_block {
       height: auto; }
   .search-label {
-    color: #888888;
     font-size: 16px; }
 
-.selected__list {
-  color: #888888; }
 .selected-item {
   border: 1px solid #888888;
   border-radius: 4px;

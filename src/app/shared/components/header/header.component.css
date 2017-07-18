@@ -1,7 +1,7 @@
 a {
   font-family: "Roboto Medium", "Times New Roman";
   text-decoration: none;
-  color: #888; }
+  color: #888888; }
   a:hover {
     color: white;
     cursor: pointer; }
@@ -198,9 +198,11 @@ input {
   padding: 5px 15px;
   margin: 10px 20px;
   text-align: center;
-  background-color: #232323;
+  background-color: #212121;
   color: #888888;
   border-radius: 4px; }
+.login-user {
+  color: #888888; }
 
 .mobile__nav {
   width: 100vw;
@@ -216,7 +218,7 @@ input {
     margin: 0; }
   .mobile__nav__item {
     display: block;
-    border-bottom: 1px solid #272727;
+    border-bottom: 1px solid #212121;
     padding: 10px 0;
     position: relative; }
   .mobile__nav-link {

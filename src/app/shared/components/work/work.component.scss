@@ -1,26 +1,25 @@
-a {
-  color: #888888;
+@import "../../../../assets/scss/colors";
+
+.link {
+  color: $gray;
   font-family: "Roboto Medium", "Times New Roman";
   text-decoration: none;
   cursor: pointer;
   &:hover {
-    color: #ffffff;
+    color: $white;
   }
 }
-table {
+.table-work {
   border-collapse: collapse;
-  color: #888888;
+  color: $gray;
   width: 100%;
-  tr {
+  &_tr {
     display: table-row;
-    td {
-      display: table-cell;
-      padding: 5px 0;
-    }
   }
-}
-h3 {
-  color: #888888;
+  &_td {
+    display: table-cell;
+    padding: 5px 0;
+  }
 }
 
 .flex_between {
@@ -33,7 +32,7 @@ h3 {
 }
 
 .work {
-  border: 1px solid #888888;
+  border: 1px solid $gray;
   margin: 20px;
   tr:last-child {
     td table {
@@ -42,7 +41,7 @@ h3 {
   }
   &__item {
     border-collapse: separate;
-    border-bottom: 1px solid #888888;
+    border-bottom: 1px solid $gray;
     padding: 20px 0;
   }
   &-year {
@@ -55,7 +54,7 @@ h3 {
     font-weight: 600;
     &-title {
       display: block;
-      color: #888;
+      color: $gray;
       margin: 0;
     }
   }
@@ -63,9 +62,10 @@ h3 {
 
 .buttons {
   display: block;
+  margin: 20px 0;
   &-item {
     display: inline-block;
-    background-color: #232323;
+    background-color: $mine_shaft;
     border-radius: 4px;
     padding: 5px 15px;
     margin: 0 5px;
