@@ -1,7 +1,7 @@
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { API_CONFIG } from '../../app-config';
-import { Observable } from 'rxjs/rx';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PeopleService {
