@@ -1,6 +1,6 @@
 export interface ICountry {
   iso_3166_1: number;
-  name: string
+  name: string;
 }
 
 export class Country implements ICountry {

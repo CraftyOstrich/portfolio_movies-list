@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { TvDetail } from "../../models/tv-detail";
-import { ActivatedRoute, Params, Router } from "@angular/router";
-import { TvsService } from "../../shared/services/tvs.service";
-import { Genre } from "../../models/genre";
-import { Tv } from "../../models/tv";
-import { Character } from "../../models/character";
-import { Creator } from "../../models/creator";
-import { Keyword } from "../../models/keyword";
-import { Network } from "../../models/network";
-import { SafeResourceUrl, DomSanitizer } from "@angular/platform-browser";
-import { Video } from "../../models/video";
+import { TvDetail } from '../../models/tv-detail';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { TvsService } from '../../shared/services/tvs.service';
+import { Genre } from '../../models/genre';
+import { Tv } from '../../models/tv';
+import { Character } from '../../models/character';
+import { Creator } from '../../models/creator';
+import { Keyword } from '../../models/keyword';
+import { Network } from '../../models/network';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { Video } from '../../models/video';
 import { API_CONFIG } from '../../app-config';
 
 @Component({
@@ -27,7 +27,7 @@ export class TvDetailComponent implements OnInit {
   tvKeywords: Keyword[] = [];
   tvNetworks: Network[] = [];
 
-  private _currentLink: string = '/tv/';
+  private _currentLink = '/tv/';
   private _errorMessage: string;
 
   constructor(private _route: ActivatedRoute,
@@ -38,7 +38,7 @@ export class TvDetailComponent implements OnInit {
 
   ngOnInit() {
     this._route.params.subscribe((params: Params) => {
-        let id = +params['id'];
+        const id = +params['id'];
         this._tvsService.getSerial(this._currentLink, id).subscribe((tv: TvDetail) => {
           this.tv = tv;
           this.genres = tv.genres;
@@ -59,7 +59,7 @@ export class TvDetailComponent implements OnInit {
           this.tvVideos = response.results.slice(0, 1) || [];
         });
       },
-      error => this._errorMessage = <any>error)
+      error => this._errorMessage = <any>error);
   }
 
   goToActor(id: number) {

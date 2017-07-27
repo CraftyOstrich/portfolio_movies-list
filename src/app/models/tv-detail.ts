@@ -1,8 +1,8 @@
-import {Creator} from "./creator";
-import {Genre} from "./genre";
-import {Company} from "./production-companie";
-import {Season} from "./season";
-import {Network} from "./network";
+import {Creator} from './creator';
+import {Genre} from './genre';
+import {Company} from './production-companie';
+import {Season} from './season';
+import {Network} from './network';
 
 export interface ITvDetail {
   backdrop_path: string;

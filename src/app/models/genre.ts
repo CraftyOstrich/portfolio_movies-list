@@ -1,6 +1,6 @@
 export interface IGenre {
   id: number;
-  name: string
+  name: string;
 }
 
 export class Genre implements IGenre {

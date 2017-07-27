@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from "@angular/http";
+import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import { Observable } from "rxjs";
-import { User } from "../../models/user";
-import { AuthService } from "./auth.service";
+import { Observable } from 'rxjs/rx';
+import { User } from '../../models/user';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class LoginService {
-  private _userUrl = "assets/api/users.json";
+  private _userUrl = 'assets/api/users.json';
   private _users: User[] = [];
   private _errorMessage: string;
 
@@ -34,10 +34,10 @@ export class LoginService {
         this._authService.authUser(signedUser);
         return Observable.of(true);
       } else {
-        return Observable.throw('Wrong password!')
+        return Observable.throw('Wrong password!');
       }
     } else {
-      return Observable.throw("User isn't found!");
+      return Observable.throw(`User isn't found!`);
     }
   }
 

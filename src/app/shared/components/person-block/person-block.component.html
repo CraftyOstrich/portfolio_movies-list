@@ -1,7 +1,7 @@
 <div class="person">
   <div class="person__card">
     <div class="person__profile">
-      <a (click)="onSelect(person.id)" film-show class="person__img-block">
+      <a (click)="onSelect(person.id)" appFilmShow class="person__img-block">
         <img *ngIf="!!person.profile_path"
              src='https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ person.profile_path }}' [alt]="person.name">
         <div *ngIf="!person.profile_path" class="glyphicon glyphicon-user person-no_image"></div>

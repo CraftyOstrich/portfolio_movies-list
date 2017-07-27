@@ -1,6 +1,6 @@
 export interface ICompany {
   id: number;
-  name: string
+  name: string;
 }
 
 export class Company implements ICompany {

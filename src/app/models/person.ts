@@ -1,5 +1,5 @@
-import {Movie} from "./movie";
-import {Tv} from "./tv";
+import { Movie } from './movie';
+import { Tv } from './tv';
 
 export interface IPerson {
   popularity: number;
@@ -18,7 +18,7 @@ export class Person implements IPerson {
   public media_type: string;
   public known_for: (Movie | Tv)[];
 
-  constructor (person: Person) {
+  constructor(person: Person) {
     this.popularity = person.popularity;
     this.id = person.id;
     this.profile_path = person.profile_path;

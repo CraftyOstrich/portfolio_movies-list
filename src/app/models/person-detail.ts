@@ -1,7 +1,7 @@
-import {MovieCast, TvCast} from "./cast";
-import {MovieCrew, TvCrew} from "./crew";
+import { MovieCast, TvCast } from './cast';
+import { MovieCrew, TvCrew } from './crew';
 
-export interface IPersonDetail{
+export interface IPersonDetail {
   adult: boolean;
   also_known_as: string[];
   biography: string;
@@ -20,13 +20,14 @@ export interface IPersonDetail{
 export class PersonJobs {
   cast: (MovieCast | TvCast)[];
   crew: (MovieCrew | TvCrew)[];
+
   constructor(response: any) {
     try {
       this.cast = response.cast.map((item: any) => {
         if (item.media_type === 'movie') {
           return new MovieCast(item);
         } else if (item.media_type === 'tv') {
-          return new TvCast(item)
+          return new TvCast(item);
         }
         return null;
       });
@@ -34,7 +35,7 @@ export class PersonJobs {
         if (item.media_type === 'movie') {
           return new MovieCrew(item);
         } else if (item.media_type === 'tv') {
-          return new TvCrew(item)
+          return new TvCrew(item);
         }
         return null;
       });
@@ -42,7 +43,6 @@ export class PersonJobs {
       throw err;
     }
   }
-
 
   getCastByType(mediaType: string): (MovieCast | TvCast)[] {
     if (!mediaType && !this.cast) {
@@ -75,9 +75,7 @@ export class PersonDetail implements IPersonDetail {
   public profile_path: string;
   public jobs: PersonJobs;
 
-
-
-  constructor (person: IPersonDetail) {
+  constructor(person: IPersonDetail) {
     this.adult = person.adult;
     this.also_known_as = person.also_known_as;
     this.biography = person.biography;

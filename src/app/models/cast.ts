@@ -13,7 +13,7 @@ export class MovieCast extends Cast {
   public title: string;
   public year: number;
 
-  constructor (movie: MovieCast) {
+  constructor(movie: MovieCast) {
     super();
     this.character = movie.character;
     this.credit_id = movie.credit_id;
@@ -24,18 +24,18 @@ export class MovieCast extends Cast {
     this.original_title = movie.original_title;
     this.release_date = movie.release_date;
     this.title = movie.title;
-    this.year = (movie.release_date) ? +movie.release_date.slice(0, 4): null;
+    this.year = (movie.release_date) ? +movie.release_date.slice(0, 4) : null;
   }
 }
 
 export class TvCast extends Cast {
   public episode_count: number;
-  public first_air_date : string;
+  public first_air_date: string;
   public name: string;
   public original_name: string;
   public year: number;
 
-  constructor (tv: TvCast) {
+  constructor(tv: TvCast) {
     super();
     this.character = tv.character;
     this.credit_id = tv.credit_id;
@@ -52,7 +52,7 @@ export class TvCast extends Cast {
 
 export class AllCast extends Cast {
   public episode_count?: number;
-  public first_air_date? : string;
+  public first_air_date?: string;
   public name?: string;
   public original_name?: string;
   public adult?: boolean;
@@ -60,7 +60,7 @@ export class AllCast extends Cast {
   public release_date?: string;
   public title?: string;
 
-  constructor (work: AllCast) {
+  constructor(work: AllCast) {
     super();
     this.character = work.character;
     this.credit_id = work.credit_id;

@@ -1,9 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Observable, Subject } from "rxjs";
-import { Genre } from "../../../models/genre";
-import { SearchService } from "../../services/search.service";
-import { Keyword } from "../../../models/keyword";
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Genre } from '../../../models/genre';
+import { SearchService } from '../../services/search.service';
+import { Keyword } from '../../../models/keyword';
 import { API_CONFIG } from '../../../app-config';
+import { ActivatedRoute, Params } from '@angular/router';
 
 export class FilterOptions {
   private _year = {
@@ -70,15 +72,13 @@ export class FilterOptions {
     this.yearsList = setYears();
   }
 
-  onOptionsChange() {
-    let href = window.location.href.slice(31);
-    let options: string[] = [];
-    let genresValueLength: number = this._genres.value.length;
+  onOptionsChange(currentUrl?: string) {
+    const options: string[] = [];
+    const genresValueLength: number = this._genres.value.length;
     if (this._year.value) {
-      if (href === 'movie') {
+      if (currentUrl === 'movie') {
         options.push(`${this._year.fieldNameMovie}=${this._year.value}`);
-      }
-      else if (href === 'tv') {
+      } else if (currentUrl === 'tv') {
         options.push(`${this._year.fieldNameTV}=${this._year.value}`);
       }
     }
@@ -99,16 +99,15 @@ export class FilterOptions {
       }
       options.push(`${this._keywords.fieldName}=${keywords}`);
     }
-
     if (options.length) {
-      this.optionsUrl.next(options.join('&'))
+      this.optionsUrl.next(options.join('&'));
     }
   }
 
-  onYearChange(year) {
+  onYearChange(year, currentUrl) {
     if (year) {
       this._year.value = year;
-      this.onOptionsChange();
+      this.onOptionsChange(currentUrl);
     }
   }
 
@@ -170,24 +169,29 @@ export class SearchComponent implements OnInit {
   @Output() onFilterChange: EventEmitter<string> = new EventEmitter();
   @Input() searchUrl: string;
   filterOptions: any;
-  keywordsSearch: string = '';
+  keywordsSearch = '';
   keywordsList: Keyword[] = [];
-  displayGenres: boolean = false;
-  displayKeywords: boolean = false;
+  displayGenres = false;
+  displayKeywords = false;
+  currentUrl = '';
 
   private _errorMessage: string;
 
-  constructor(private _searchService: SearchService) {
+  constructor(private _searchService: SearchService,
+              private _route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this._route.params.subscribe((params: Params) => {
+      this.currentUrl = params.type;
+    });
     this.filterOptions = new FilterOptions();
     this.filterOptions.optionsChange.subscribe((url: string) => {
       this.onFilterChange.emit(url);
     });
     this._searchService.getGenres(this.searchUrl)
       .subscribe(response => {
-          let genres = response.genres || [];
+          const genres = response.genres || [];
           this.filterOptions.setGenres(genres);
         },
         error => this._errorMessage = <any>error);
@@ -226,7 +230,7 @@ export class SearchComponent implements OnInit {
 }
 
 function setYears() {
-  let years = [];
+  const years = [];
   for (let i = 2017; i > 1899; i--) {
     years.push(i);
   }

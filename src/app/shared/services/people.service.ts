@@ -1,7 +1,7 @@
-import { Http, Response } from "@angular/http";
-import { Injectable } from "@angular/core";
-import { API_CONFIG } from "../../app-config";
-import { Observable } from "rxjs";
+import { Http, Response } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { API_CONFIG } from '../../app-config';
+import { Observable } from 'rxjs/rx';
 
 @Injectable()
 export class PeopleService {
@@ -40,10 +40,11 @@ export class PeopleService {
 
   private _getRequestUrl(link: string, id: number, url?: string) {
     if (id && url) {
-      return API_CONFIG.URL + link + id + url + API_CONFIG.KEY
+      return API_CONFIG.URL + link + id + url + API_CONFIG.KEY;
     } else if (id) {
-      return API_CONFIG.URL + link + id + API_CONFIG.KEY
-    } else
-      return API_CONFIG.URL + link + API_CONFIG.KEY
+      return API_CONFIG.URL + link + id + API_CONFIG.KEY;
+    } else {
+      return API_CONFIG.URL + link + API_CONFIG.KEY;
+    }
   }
 }

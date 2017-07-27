@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Creator } from "../../../models/creator";
+import { Creator } from '../../../models/creator';
 import { Router } from '@angular/router';
 
 @Component({

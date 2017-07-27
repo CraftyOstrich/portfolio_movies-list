@@ -1,7 +1,7 @@
-import { Component } from "@angular/core";
-import { LoginService } from "../../services";
-import { FormGroup } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Component } from '@angular/core';
+import { LoginService } from '../../services';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 })
 
 export class LoginComponent {
-  private _errorMessage: string = '';
+  private _errorMessage = '';
 
   constructor(private _loginService: LoginService,
               private _router: Router) {
@@ -30,9 +30,9 @@ export class LoginComponent {
           (error) => {
             this._errorMessage = error;
           }
-        )
+        );
     } else {
-      alert('This form is invalid!')
+      alert('This form is invalid!');
     }
   }
 }

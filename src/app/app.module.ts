@@ -4,24 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { DiscoverComponent } from './components/discover/discover.component';
-import { AppRouterModule } from "./app-routing.module";
-import { MoviesComponent } from './components/movies/movies.component';
-import { SharedModule } from "./shared/shared.module";
-import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
-import { PeopleComponent } from './components/people/people.component';
-import { TvsComponent } from './components/tvs/tvs.component';
-import { TvDetailComponent } from './components/tv-detail/tv-detail.component';
+import { AppRouterModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+import { COMPONENTS } from './components/index';
 
 @NgModule({
   declarations: [
+    ...COMPONENTS,
     AppComponent,
-    DiscoverComponent,
-    MoviesComponent,
-    MovieDetailComponent,
-    PeopleComponent,
-    TvsComponent,
-    TvDetailComponent
   ],
   imports: [
     BrowserModule,

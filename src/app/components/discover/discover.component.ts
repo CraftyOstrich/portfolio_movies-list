@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from "../../shared/services/movies.service";
-import { Movie } from "../../models/movie";
-import { Tv } from "../../models/tv";
-import { SearchService } from "../../shared/services/search.service";
-import { Genre } from "../../models/genre";
+import { MoviesService } from '../../shared/services/movies.service';
+import { Movie } from '../../models/movie';
+import { Tv } from '../../models/tv';
+import { SearchService } from '../../shared/services/search.service';
+import { Genre } from '../../models/genre';
 import { ActivatedRoute, Params } from '@angular/router';
 import { API_CONFIG } from '../../app-config';
 
@@ -17,11 +17,11 @@ export class DiscoverComponent implements OnInit {
   videos: (Movie | Tv)[];
   genres: Genre[];
   pagesNumber: number;
-  currentPage: number = 1;
+  currentPage = 1;
   currentUrlGenres: string = API_CONFIG.MOVIES_GENRES;
 
   private _currentUrl: string = API_CONFIG.DISCOVER_MOVIES;
-  private _optionsUrl: string = '';
+  private _optionsUrl = '';
   private _errorMessage: string;
 
   constructor(private _moviesService: MoviesService,
@@ -30,9 +30,11 @@ export class DiscoverComponent implements OnInit {
   }
 
   ngOnInit() {
-    //console.log(this._route.snapshot);
+    // console.log(this._route.snapshot);
+
     this._route.params.subscribe((params: Params) => {
-      // init();
+
+       // init();
       this.currentPage = 1;
       if (params.type === 'movie') {
         this._currentUrl = API_CONFIG.DISCOVER_MOVIES;
@@ -41,7 +43,8 @@ export class DiscoverComponent implements OnInit {
         this._currentUrl = API_CONFIG.DISCOVER_TVS;
         this.currentUrlGenres = API_CONFIG.TVS_GENRES;
       }
-      //console.log(this._currentUrl);
+
+       // console.log(this._currentUrl);
       this.getContent(this._currentUrl, this.currentPage);
     });
   }

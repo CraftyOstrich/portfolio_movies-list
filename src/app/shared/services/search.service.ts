@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from "@angular/http";
-import { Observable } from "rxjs";
-import { API_CONFIG } from "../../app-config";
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { API_CONFIG } from '../../app-config';
 
 @Injectable()
 export class SearchService {
@@ -38,18 +38,18 @@ export class SearchService {
   }
 
   private _getRequestUrl(link: string) {
-    return API_CONFIG.URL + link + API_CONFIG.KEY
+    return API_CONFIG.URL + link + API_CONFIG.KEY;
   }
 
   private _getSortByUrl(link: string, page: number, sort: string) {
     if (sort) {
-      return API_CONFIG.URL + link + API_CONFIG.KEY + API_CONFIG.PAGE + page + sort
+      return API_CONFIG.URL + link + API_CONFIG.KEY + API_CONFIG.PAGE + page + sort;
     }
   }
 
   private _getRequestSearchUrl(link: string, keyword: string) {
     if (link && keyword) {
-      return API_CONFIG.URL + link + API_CONFIG.KEY + API_CONFIG.QUERY + keyword + API_CONFIG.FIRST_PAGE
+      return API_CONFIG.URL + link + API_CONFIG.KEY + API_CONFIG.QUERY + keyword + API_CONFIG.FIRST_PAGE;
     }
   }
 

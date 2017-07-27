@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
-import { INavItem, NavItems } from "../../../models/navbar";
-import { Movie } from "../../../models/movie";
-import { Tv } from "../../../models/tv";
-import { Person } from "../../../models/person";
-import { SearchService } from "../../services/search.service";
-import { Router } from "@angular/router";
-import { LoginService } from "../../services/login.service";
-import { AuthService } from "../../services/auth.service";
+import { Component } from '@angular/core';
+import { INavItem, NavItems } from '../../../models/navbar';
+import { Movie } from '../../../models/movie';
+import { Tv } from '../../../models/tv';
+import { Person } from '../../../models/person';
+import { SearchService } from '../../services/search.service';
+import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
+import { AuthService } from '../../services/auth.service';
 import { API_CONFIG } from '../../../app-config';
 
 @Component({
@@ -18,11 +18,11 @@ import { API_CONFIG } from '../../../app-config';
 export class HeaderComponent {
   navbar: INavItem[] = NavItems;
   searchList: (Movie | Tv | Person)[];
-  searchWord: string = '';
-  hiddenSearch: boolean = true;
-  hiddenNav: boolean = false;
-  hiddenMobileNav: boolean = false;
-  displaySearchResults: boolean = false;
+  searchWord = '';
+  hiddenSearch = true;
+  hiddenNav = false;
+  hiddenMobileNav = false;
+  displaySearchResults = false;
   private _errorMessage: string;
 
   constructor(private _searchService: SearchService, private _router: Router,
@@ -47,9 +47,9 @@ export class HeaderComponent {
 
   goTo(item) {
     if (!item.type) {
-      this._router.navigate([item.link])
+      this._router.navigate([item.link]);
     } else {
-      this._router.navigate([item.link, item.type])
+      this._router.navigate([item.link, item.type]);
     }
   }
 

@@ -14,8 +14,7 @@ export class MovieCrew extends Crew {
   public title: string;
   public year: number;
 
-
-  constructor (movie: MovieCrew) {
+  constructor(movie: MovieCrew) {
     super();
     this.department = movie.department;
     this.credit_id = movie.credit_id;
@@ -27,18 +26,18 @@ export class MovieCrew extends Crew {
     this.release_date = movie.release_date;
     this.title = movie.title;
     this.media_type = movie.media_type;
-    this.year = (movie.release_date) ? +movie.release_date.slice(0, 4): null;
+    this.year = (movie.release_date) ? +movie.release_date.slice(0, 4) : null;
   }
 }
 
 export class TvCrew extends Crew {
   public episode_count: number;
-  public first_air_date : string;
+  public first_air_date: string;
   public name: string;
   public original_name: string;
   public year: number;
 
-  constructor (tv: TvCrew) {
+  constructor(tv: TvCrew) {
     super();
     this.credit_id = tv.credit_id;
     this.id = tv.id;

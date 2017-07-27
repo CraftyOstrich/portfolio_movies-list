@@ -1,12 +1,12 @@
-import {Injectable} from "@angular/core";
-import {Http, Response} from "@angular/http";
-import {Observable} from "rxjs/Observable";
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import {API_CONFIG} from "../../app-config";
+import {API_CONFIG} from '../../app-config';
 
 @Injectable()
 export class MoviesService {
@@ -67,11 +67,12 @@ export class MoviesService {
 
   private _getRequestUrl(link: string, id: number, url?: string) {
     if (id && url) {
-      return API_CONFIG.URL + link + id + url + API_CONFIG.KEY
+      return API_CONFIG.URL + link + id + url + API_CONFIG.KEY;
     } else if (id) {
-      return API_CONFIG.URL + link + id + API_CONFIG.KEY
-    } else
+      return API_CONFIG.URL + link + id + API_CONFIG.KEY;
+    } else {
       return API_CONFIG.URL + link + API_CONFIG.KEY;
+    }
   }
 
 }

@@ -2,7 +2,7 @@ export interface ILanguage {
   iso_639_1: string;
   name: string;
 }
-export class Language implements ILanguage{
+export class Language implements ILanguage {
   public iso_639_1: string;
   public name: string;
 

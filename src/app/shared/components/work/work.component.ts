@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MovieCast, TvCast } from "../../../models/cast";
-import { PersonJobs } from "../../../models/person-detail";
-import { MovieCrew, TvCrew } from "../../../models/crew";
-import { Router } from "@angular/router";
+import { MovieCast, TvCast } from '../../../models/cast';
+import { PersonJobs } from '../../../models/person-detail';
+import { MovieCrew, TvCrew } from '../../../models/crew';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-work',
@@ -13,11 +13,11 @@ export class WorkComponent implements OnInit {
   @Input() jobs: PersonJobs;
   cast: (MovieCast | TvCast)[];
   crew: (MovieCrew | TvCrew)[];
-  showMovie: string = 'movie';
-  showSerial: string = 'tv';
-  currentMediaType: string = 'movie';
+  showMovie = 'movie';
+  showSerial = 'tv';
+  currentMediaType = 'movie';
 
-  private _currentUrl: string = '';
+  private _currentUrl = '';
 
   constructor(private _router: Router) {
   }

@@ -20,7 +20,7 @@ export const NavItems = <INavItem[]>
         {
           id: 1.1,
           name: 'Movie',
-          link:'/discover',
+          link: '/discover',
           type: 'movie'
         },
         {
@@ -33,11 +33,11 @@ export const NavItems = <INavItem[]>
     },
     {
       id: 2,
-        collapsedChildren: false,
-        name: 'Movies',
-        link: '/movie',
-        type: 'popular',
-        children: [
+      collapsedChildren: false,
+      name: 'Movies',
+      link: '/movie',
+      type: 'popular',
+      children: [
         {
           id: 2.1,
           name: 'Popular',
@@ -62,39 +62,39 @@ export const NavItems = <INavItem[]>
           link: '/movie',
           type: 'now_playing',
         }
-        ]
-     },
-      {
+      ]
+    },
+    {
       id: 3,
       name: 'Tvs',
       collapsedChildren: false,
       link: '/tv',
       type: 'popular',
       children: [
-      {
-        id: 3.1,
-        name: 'Popular',
-        link: '/tv',
-        type: 'popular'
-      },
-      {
-        id: 3.2,
-        name: 'Top',
-        link: '/tv',
-        type: 'top_rated'
-      },
-      {
-        id: 3.3,
-        name: 'On TV',
-        link: '/tv',
-        type: 'on_the_air'
-      },
-      {
-        id: 3.4,
-        name: 'Today on TV',
-        link: '/tv',
-        type: 'airing_today'
-      }
+        {
+          id: 3.1,
+          name: 'Popular',
+          link: '/tv',
+          type: 'popular'
+        },
+        {
+          id: 3.2,
+          name: 'Top',
+          link: '/tv',
+          type: 'top_rated'
+        },
+        {
+          id: 3.3,
+          name: 'On TV',
+          link: '/tv',
+          type: 'on_the_air'
+        },
+        {
+          id: 3.4,
+          name: 'Today on TV',
+          link: '/tv',
+          type: 'airing_today'
+        }
       ]
     },
     {
@@ -103,12 +103,12 @@ export const NavItems = <INavItem[]>
       collapsedChildren: false,
       link: '/person',
       children: [
-      {
-        id: 4.1,
-        name: 'Celebrities',
-        link: '/person/popular'
-      }
-    ]
+        {
+          id: 4.1,
+          name: 'Celebrities',
+          link: '/person/popular'
+        }
+      ]
     },
   ];
 

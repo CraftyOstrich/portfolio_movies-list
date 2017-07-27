@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {User} from "../../models/user";
-import {Router} from "@angular/router";
+import {User} from '../../models/user';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -11,7 +11,7 @@ export class AuthService {
     if (savedUser) {
       const parsedUser = JSON.parse(savedUser);
       const signedUser = new User(parsedUser.login, parsedUser.email, parsedUser.password);
-      this.authUser(signedUser)
+      this.authUser(signedUser);
     }
   }
 

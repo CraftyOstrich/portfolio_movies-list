@@ -1,7 +1,7 @@
-import {Genre} from "./genre";
-import {Company} from "./production-companie";
-import {Country} from "./production-country";
-import {Language} from "./language";
+import { Genre } from './genre';
+import { Company } from './production-companie';
+import { Country } from './production-country';
+import { Language } from './language';
 export interface IMovieDetail {
   backdrop_path: string;
   adult: boolean;
@@ -13,9 +13,9 @@ export interface IMovieDetail {
   imdb_id: string;
   original_language: string;
   original_title: string;
-  overview: string
+  overview: string;
   popularity: number;
-  poster_path:string;
+  poster_path: string;
   production_companies: Company[];
   production_countries: Country[];
   release_date: string;
@@ -30,7 +30,7 @@ export interface IMovieDetail {
   vote_count: number;
 }
 
-export class MovieDetail implements IMovieDetail{
+export class MovieDetail implements IMovieDetail {
   public backdrop_path: string;
   public adult: boolean;
   public belongs_to_collection: {};
@@ -41,9 +41,9 @@ export class MovieDetail implements IMovieDetail{
   public imdb_id: string;
   public original_language: string;
   public original_title: string;
-  public overview: string
+  public overview: string;
   public popularity: number;
-  public poster_path:string;
+  public poster_path: string;
   public production_companies: Company[];
   public production_countries: Country[];
   public release_date: string;
@@ -57,8 +57,7 @@ export class MovieDetail implements IMovieDetail{
   public vote_average: number;
   public vote_count: number;
 
-
-  constructor (movie:  MovieDetail) {
+  constructor(movie: MovieDetail) {
     this.backdrop_path = movie.backdrop_path;
     this.adult = movie.adult;
     this.belongs_to_collection = movie.belongs_to_collection;

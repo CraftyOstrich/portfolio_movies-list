@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from "../../models/movie";
-import { MoviesService } from "../../shared/services/movies.service";
+import { Movie } from '../../models/movie';
+import { MoviesService } from '../../shared/services/movies.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { API_CONFIG } from '../../app-config';
 
@@ -12,7 +12,7 @@ import { API_CONFIG } from '../../app-config';
 export class MoviesComponent implements OnInit {
   videos: Movie[];
   pagesNumber: number;
-  currentPage: number = 1;
+  currentPage = 1;
 
   private _currentUrl: string = API_CONFIG.MOVIES_POPULAR;
   private _errorMessage: string;
@@ -27,7 +27,7 @@ export class MoviesComponent implements OnInit {
         if (params.type) {
           this._currentUrl = '/movie/' + params.type;
         }
-        this.getMovies(this._currentUrl, this.currentPage)
+        this.getMovies(this._currentUrl, this.currentPage);
       },
       error => this._errorMessage = <any>error
     );
@@ -36,7 +36,7 @@ export class MoviesComponent implements OnInit {
   onPageChange(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
-      this.getMovies(this._currentUrl, this.currentPage)
+      this.getMovies(this._currentUrl, this.currentPage);
     }
   }
 

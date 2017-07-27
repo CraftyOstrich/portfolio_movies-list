@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from "../../shared/services/movies.service";
-import { ActivatedRoute, Params, Router } from "@angular/router";
-import { MovieDetail } from "../../models/movie-detail";
-import { Genre } from "../../models/genre";
-import { Movie } from "../../models/movie";
-import { Video } from "../../models/video";
-import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
-import { Character } from "../../models/character";
-import { Creator } from "../../models/creator";
-import { Keyword } from "../../models/keyword";
+import { MoviesService } from '../../shared/services/movies.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { MovieDetail } from '../../models/movie-detail';
+import { Genre } from '../../models/genre';
+import { Movie } from '../../models/movie';
+import { Video } from '../../models/video';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Character } from '../../models/character';
+import { Creator } from '../../models/creator';
+import { Keyword } from '../../models/keyword';
 import { API_CONFIG } from '../../app-config';
 
 @Component({
@@ -25,7 +25,7 @@ export class MovieDetailComponent implements OnInit {
   movieKeywords: Keyword[] = [];
   genres: Genre[];
 
-  private _currentLink: string = '/movie/';
+  private _currentLink = '/movie/';
   private _errorMessage: string;
 
   constructor(private _route: ActivatedRoute,
@@ -36,7 +36,7 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit() {
     this._route.params.subscribe((params: Params) => {
-        let id = +params['id'];
+        const id = +params['id'];
         this._moviesService.getMovie(this._currentLink, id).subscribe((movie: MovieDetail) => {
           this.movie = movie;
           this.genres = movie.genres;
