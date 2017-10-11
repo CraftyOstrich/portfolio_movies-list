@@ -11,13 +11,26 @@ import { API_CONFIG } from '../../app-config';
   styleUrls: ['person-detail.component.scss']
 })
 export class PersonDetailComponent implements OnInit {
-  person: PersonDetail;
-  personGender = '';
-
+  /**
+   * Current person
+   * @type {PersonDetail}
+   */
+  public person: PersonDetail;
+  /**
+   * Gender of current person
+   * @type {string}
+   */
+  public personGender = '';
+  /**
+   * Part of current link
+   * @type {string}
+   * @private
+   */
   private _currentLink = '/person/';
 
   constructor(private _route: ActivatedRoute,
               private _peopleService: PeopleService) { }
+
 
   ngOnInit() {
     this._route.params.subscribe((params: Params) => {
@@ -36,6 +49,12 @@ export class PersonDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * Determine gender of person
+   * @param gender
+   * @returns {any}
+   * @private
+   */
   private _determineGender (gender: number) {
     if (gender) {
       return gender === 1 ? 'female' : 'male';

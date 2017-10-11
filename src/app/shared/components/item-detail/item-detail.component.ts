@@ -8,13 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['item-detail.component.scss']
 })
 export class ItemDetailComponent {
-  @Input() item: any;
-  @Input() creators: Creator[];
+  /**
+   * Item (movie or tv)
+   */
+  @Input() public item: any;
+  /**
+   * Creators of item
+   */
+  @Input() public creators: Creator[];
 
   constructor(private _router: Router) {
   }
 
-  getYear(item: any) {
+  /**
+   * Get year creating
+   * @param item
+   * @returns {any}
+   */
+  public getYear(item: any) {
     if (item.release_date) {
       return item.release_date.slice(0, 4);
     } else if (item.first_air_date) {
@@ -24,7 +35,11 @@ export class ItemDetailComponent {
     }
   }
 
-  goToPerson(id: number) {
+  /**
+   * Navigate to person
+   * @param id
+   */
+  public goToPerson(id: number) {
     this._router.navigate(['person', id]);
   }
 }

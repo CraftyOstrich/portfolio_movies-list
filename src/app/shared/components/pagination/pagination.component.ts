@@ -6,14 +6,28 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent {
-  @Input() pagesNumber: number;
-  @Input() currentPage: number;
-  @Output() onPageChange: EventEmitter<number> = new EventEmitter();
+  /**
+   * Total number of pages
+   */
+  @Input() public pagesNumber: number;
+  /**
+   * Current page
+   */
+  @Input() public currentPage: number;
+  /**
+   * On page was changed
+   * @type {EventEmitter}
+   */
+  @Output() public onPageChange: EventEmitter<number> = new EventEmitter();
 
   constructor() {
   }
 
-  goTo(pageNumber) {
+  /**
+   * Change page
+   * @param pageNumber
+   */
+  public goTo(pageNumber) {
     if (pageNumber > 1000) {
       pageNumber = 1000;
     }

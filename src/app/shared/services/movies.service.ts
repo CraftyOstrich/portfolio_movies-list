@@ -13,52 +13,111 @@ export class MoviesService {
   constructor(private _http: Http) {
   }
 
-  getContent(link, page): Observable<any> {
+  /**
+   * Get content
+   * @param link
+   * @param page
+   * @returns {Observable<R|T>}
+   */
+  public getContent(link, page): Observable<any> {
   return this._http.get(this._getRequestPageUrl(link, page))
     .map((response: Response) => response.json())
     .catch(this._handleError);
 }
 
-  getMovies(link, page): Observable<any> {
+  /**
+   * Get movies list
+   * @param link
+   * @param page
+   * @returns {Observable<R|T>}
+   */
+  public getMovies(link, page): Observable<any> {
     return this._http.get(this._getRequestPageUrl(link, page))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getMovie(link, id): Observable<any> {
+  /**
+   * Get movie
+   * @param link
+   * @param id
+   * @returns {Observable<R|T>}
+   */
+  public getMovie(link, id): Observable<any> {
     return this._http.get(this._getRequestUrl(link, id))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getSimilarMovies(link, id, url) {
+  /**
+   * Get similar movies list
+   * @param link
+   * @param id
+   * @param url
+   * @returns {Observable<R|T>}
+   */
+  public getSimilarMovies(link, id, url) {
+    return this._http.get(this._getRequestUrl(link, id, url))
+      .map((response: Response) => response.json())
+      .catch(this._handleError);
+    }
+
+  /**
+   * Get movie's videos
+   * @param link
+   * @param id
+   * @param url
+   * @returns {Observable<R|T>}
+   */
+  public getVideos(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getVideos(link, id, url) {
+  /**
+   * Get people of movie
+   * @param link
+   * @param id
+   * @param url
+   * @returns {Observable<R|T>}
+   */
+  public getPeople(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getPeople(link, id, url) {
+  /**
+   * Get keywords
+   * @param link
+   * @param id
+   * @param url
+   * @returns {Observable<R|T>}
+   */
+  public getKeywords(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getKeywords(link, id, url) {
-    return this._http.get(this._getRequestUrl(link, id, url))
-      .map((response: Response) => response.json())
-      .catch(this._handleError);
-  }
-
+  /**
+   * Catch error
+   * @param error
+   * @returns {any}
+   * @private
+   */
   private _handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error');
   }
 
+  /**
+   * Get request url
+   * @param link
+   * @param page
+   * @returns {string}
+   * @private
+   */
   private _getRequestPageUrl(link: string, page: number) {
     if (link && page) {
       return API_CONFIG.URL + link + API_CONFIG.KEY + API_CONFIG.PAGE + page;

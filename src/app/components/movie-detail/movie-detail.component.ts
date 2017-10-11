@@ -17,14 +17,46 @@ import { API_CONFIG } from '../../app-config';
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit {
-  movie: MovieDetail;
-  moviesSimilar: Movie[] = [];
-  movieVideos: Video[] = [];
-  movieCharacters: Character[] = [];
-  movieCreators: Creator[] = [];
-  movieKeywords: Keyword[] = [];
-  genres: Genre[];
-
+  /**
+   * Current movie
+   * @type {MovieDetail}
+   */
+  public movie: MovieDetail;
+  /**
+   * Similiar movie's list to current movie
+   * @type {Array}
+   */
+  public moviesSimilar: Movie[] = [];
+  /**
+   * Videos list of current movie
+   * @type {Array}
+   */
+  public movieVideos: Video[] = [];
+  /**
+   * People were filmed in this movie
+   * @type {Array}
+   */
+  public movieCharacters: Character[] = [];
+  /**
+   * People, who took part in this movie creation
+   * @type {Array}
+   */
+  public movieCreators: Creator[] = [];
+  /**
+   * Movie's keywords
+   * @type {Array}
+   */
+  public movieKeywords: Keyword[] = [];
+  /**
+   * Genres of current movie
+   * @type {Genre[]}
+   */
+  public genres: Genre[];
+  /**
+   * Part of path to movie details page
+   * @type {string}
+   * @private
+   */
   private _currentLink = '/movie/';
   private _errorMessage: string;
 
@@ -34,6 +66,11 @@ export class MovieDetailComponent implements OnInit {
               private _sanitizer: DomSanitizer) {
   }
 
+  /**
+   * On page init
+   * Get info about movie from API
+   * (genres, keywords, characters, creators, similar movies, videos)
+   */
   ngOnInit() {
     this._route.params.subscribe((params: Params) => {
         const id = +params['id'];
@@ -58,15 +95,28 @@ export class MovieDetailComponent implements OnInit {
       error => this._errorMessage = <any>error);
   }
 
-  goToActor(id: number) {
+  /**
+   * Navigate to person that filmed in this movie
+   * @param id
+   */
+  public goToActor(id: number) {
     this._router.navigate(['person', id]);
   }
 
-  goToSimilar(id: number) {
+  /**
+   * Navigate to similar movie
+   * @param id
+   */
+  public goToSimilar(id: number) {
     this._router.navigate(['movie/detail', id]);
   }
 
-  sanitizeUrl(url: string): SafeResourceUrl {
+  /**
+   * Sage getting video from third-party resource
+   * @param url
+   * @returns {SafeResourceUrl}
+   */
+  public sanitizeUrl(url: string): SafeResourceUrl {
     return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + url);
   }
 }

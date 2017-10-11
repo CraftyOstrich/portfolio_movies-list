@@ -16,20 +16,58 @@ import { API_CONFIG } from '../../../app-config';
   styleUrls: ['header.component.css']
 })
 export class HeaderComponent {
-  navbar: INavItem[] = NavItems;
-  searchList: (Movie | Tv | Person)[];
-  searchWord = '';
-  hiddenSearch = true;
-  hiddenNav = false;
-  hiddenMobileNav = false;
-  displaySearchResults = false;
+  /**
+   * Array of header menu navigation links
+   * @type {INavItem[]}
+   */
+  protected navbar: INavItem[] = NavItems;
+  /**
+   * Result array of search request
+   * @type {(Movie | Tv | Person)[]}
+   */
+  protected searchList: (Movie | Tv | Person)[];
+  /**
+   * Search keyword
+   * @type {string}
+   */
+  protected searchWord = '';
+  /**
+   * Visibility of global search field
+   * @type {boolean}
+   */
+  protected hiddenSearch = true;
+  /**
+   * Visibility of navigation
+   * @type {boolean}
+   */
+  protected hiddenNav = false;
+  /**
+   * Visibility navigation for mobile version
+   * @type {boolean}
+   */
+  protected hiddenMobileNav = false;
+  /**
+   * Visibility results of global search
+   * @type {boolean}
+   */
+  protected displaySearchResults = false;
+  /**
+   * Error message
+   * @type {string}
+   */
   private _errorMessage: string;
 
-  constructor(private _searchService: SearchService, private _router: Router,
-              public loginService: LoginService, public authService: AuthService) {
+  constructor(private _searchService: SearchService,
+              private _router: Router,
+              public loginService: LoginService,
+              public authService: AuthService) {
   }
 
-  loadSearchList(event) {
+  /**
+   * Load search list, when user type keyword
+   * @param event
+   */
+  protected loadSearchList(event) {
     if (event) {
       this._searchService.getSearchList(API_CONFIG.SEARCH_LIST, this.searchWord)
         .subscribe(response => this.searchList = response.results || [],
@@ -40,12 +78,21 @@ export class HeaderComponent {
     }
   }
 
-  goToSearchItem(type: string, id: number) {
+  /**
+   * Navigate to search item
+   * @param type (type of search: movie, tv or person)
+   * @param id
+   */
+  protected goToSearchItem(type: string, id: number) {
     this._router.navigate(['/' + type, id]);
     this.displaySearchResults = !this.displaySearchResults;
   }
 
-  goTo(item) {
+  /**
+   * Navigate to page
+   * @param item
+   */
+  protected goTo(item) {
     if (!item.type) {
       this._router.navigate([item.link]);
     } else {
@@ -53,15 +100,23 @@ export class HeaderComponent {
     }
   }
 
-  dropDownMobileList() {
+  /**
+   * Open navigation menu  (mobile version)
+   */
+  protected dropDownMobileList() {
     this.hiddenMobileNav = !this.hiddenMobileNav;
   }
 
+  /**
+   * Show global search list
+   */
   showSearchField() {
     this.hiddenSearch = false;
     this.hiddenNav = true;
   }
-
+  /**
+   * Show global search list
+   */
   closeSearchField() {
     this.hiddenSearch = true;
     this.hiddenNav = false;

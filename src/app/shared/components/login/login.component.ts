@@ -10,13 +10,22 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
+  /**
+   * Error message
+   * @type {string}
+   * @private
+   */
   private _errorMessage = '';
 
   constructor(private _loginService: LoginService,
               private _router: Router) {
   }
 
-  signIn(form: FormGroup) {
+  /**
+   * Sign in
+   * @param form
+   */
+  public signIn(form: FormGroup) {
     if (!form.invalid) {
       const userCredentials = {email: form.value.email, password: form.value.password};
       this._loginService

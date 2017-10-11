@@ -8,12 +8,19 @@ import { Person } from '../../../models/person';
   styleUrls: ['person-block.component.scss']
 })
 export class PersonBlockComponent {
-  @Input() person: Person;
+  /**
+   * Person
+   */
+  @Input() public person: Person;
 
   constructor(private _router: Router) {
   }
 
-  onSelect(id) {
+  /**
+   * Navigate to person profile
+   * @param id
+   */
+  public onSelect(id) {
     this._router.navigate(['/person', id]);
   }
 

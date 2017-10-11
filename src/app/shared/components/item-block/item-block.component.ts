@@ -7,8 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./item-block.component.scss']
 })
 export class ItemBlockComponent implements OnInit {
-  @Input() item: any;
-  itemYear: string;
+  /**
+   * Item (movie or tv)
+   */
+  @Input() public item: any;
+  /**
+   * Item creating year
+   */
+  public itemYear: string;
 
   constructor(private _router: Router) {
   }
@@ -23,7 +29,12 @@ export class ItemBlockComponent implements OnInit {
     }
   }
 
-  goTo(id: number, title: string) {
+  /**
+   * Navigate to movie or tv
+   * @param id
+   * @param title
+   */
+  public goTo(id: number, title: string) {
     if (title) {
       this._router.navigate(['movie/detail', id]);
     } else {

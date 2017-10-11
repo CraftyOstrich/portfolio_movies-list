@@ -18,16 +18,55 @@ import { API_CONFIG } from '../../app-config';
   styleUrls: ['./tv-detail.component.scss']
 })
 export class TvDetailComponent implements OnInit {
-  tv: TvDetail;
-  genres: Genre[];
-  tvSimilar: Tv[] = [];
-  tvVideos: Video[] = [];
-  tvCharacters: Character[] = [];
-  tvCreators: Creator[] = [];
-  tvKeywords: Keyword[] = [];
-  tvNetworks: Network[] = [];
-
+  /**
+   * Current tv
+   * @type {TvDetail}
+   */
+  public tv: TvDetail;
+  /**
+   * Current tv's genres
+   * @type {Genre[]}
+   */
+  public genres: Genre[];
+  /**
+   * Similar to current tv
+   * @type {Array}
+   */
+  public tvSimilar: Tv[] = [];
+  /**
+   * Videos for current tv
+   * @type {Array}
+   */
+  public tvVideos: Video[] = [];
+  /**
+   * Current tv's characters
+   * @type {Array}
+   */
+  public tvCharacters: Character[] = [];
+  /**
+   * Current tv's creators
+   * @type {Array}
+   */
+  public tvCreators: Creator[] = [];
+  /**
+   * Current tv's keywords
+   * @type {Array}
+   */
+  public tvKeywords: Keyword[] = [];
+  /**
+   * Current tv's networks
+   * @type {Array}
+   */
+  public tvNetworks: Network[] = [];
+  /**
+   * Part of current page's link
+   * @type {string}
+   * @private
+   */
   private _currentLink = '/tv/';
+  /**
+   * Error message
+   */
   private _errorMessage: string;
 
   constructor(private _route: ActivatedRoute,
@@ -62,15 +101,28 @@ export class TvDetailComponent implements OnInit {
       error => this._errorMessage = <any>error);
   }
 
-  goToActor(id: number) {
+  /**
+   * Navigate to actor
+   * @param id
+   */
+  public goToActor(id: number) {
     this._router.navigate(['person', id]);
   }
 
-  goToSimilar(id: number) {
+  /**
+   * Navigate to similar tv
+   * @param id
+   */
+  public goToSimilar(id: number) {
     this._router.navigate(['tv/detail', id]);
   }
 
-  sanitizeUrl(url: string): SafeResourceUrl {
+  /**
+   * Sanitize video url
+   * @param url
+   * @returns {SafeResourceUrl}
+   */
+  public sanitizeUrl(url: string): SafeResourceUrl {
     return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + url);
   }
 }

@@ -10,8 +10,21 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class LoginService {
+  /**
+   * Url of signed user
+   * @type {string}
+   * @private
+   */
   private _userUrl = 'assets/api/users.json';
+  /**
+   * Users list
+   * @type {Array}
+   * @private
+   */
   private _users: User[] = [];
+  /**
+   * Error message
+   */
   private _errorMessage: string;
 
   constructor(private _http: Http, private _authService: AuthService) {
@@ -20,13 +33,22 @@ export class LoginService {
         error => this._errorMessage = <any>error);
   }
 
-  getUsers(): Observable<any> {
+  /**
+   * Get signed user list
+   * @returns {Observable<R|T>}
+   */
+  public getUsers(): Observable<any> {
     return this._http.get(this._userUrl)
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  signIn(userCredentials: { email: string, password: string }): Observable<any> {
+  /**
+   * Sign in
+   * @param userCredentials
+   * @returns {any}
+   */
+  public signIn(userCredentials: { email: string, password: string }): Observable<any> {
     const found = this._users.find((us: User) => us.email === userCredentials.email);
     if (found) {
       if (found.password === userCredentials.password) {
@@ -41,10 +63,19 @@ export class LoginService {
     }
   }
 
-  signOut() {
+  /**
+   * Sign out
+   */
+  public signOut() {
     this._authService.logOut();
   }
 
+  /**
+   * Catch error
+   * @param error
+   * @returns {any}
+   * @private
+   */
   private _handleError(error: Response) {
     console.log(error);
     return Observable.throw(error.json().error || 'Server error');

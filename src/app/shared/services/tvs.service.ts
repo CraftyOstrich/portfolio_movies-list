@@ -8,42 +8,88 @@ export class TvsService {
   constructor(private _http: Http) {
   }
 
-  getSerials(link, page): Observable<any> {
+  /**
+   * Get tvs list
+   * @param link
+   * @param page
+   * @returns {Observable<R|T>}
+   */
+  public getSerials(link, page): Observable<any> {
     return this._http.get(this._getRequestPageUrl(link, page))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getSerial(route, id): Observable<any> {
+  /**
+   * Get tv
+   * @param route
+   * @param id
+   * @returns {Observable<R|T>}
+   */
+  public getSerial(route, id): Observable<any> {
     return this._http.get(this._getRequestUrl(route, id))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getSimilarSerials(link, id, url) {
+  /**
+   * Get similat tv's list
+   * @param link
+   * @param id
+   * @param url
+   * @returns {Observable<R|T>}
+   */
+  public getSimilarSerials(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getVideos(link, id, url) {
+  /**
+   * Get tv's list
+   * @param link
+   * @param id
+   * @param url
+   * @returns {Observable<R|T>}
+   */
+  public getVideos(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getPeople(link, id, url) {
+  /**
+   * Get people of tv
+   * @param link
+   * @param id
+   * @param url
+   * @returns {Observable<R|T>}
+   */
+  public getPeople(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getKeywords(link, id, url) {
+  /**
+   * Get tv's keywords
+   * @param link
+   * @param id
+   * @param url
+   * @returns {Observable<R|T>}
+   */
+  public getKeywords(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
+  /**
+   * Catch error
+   * @param error
+   * @returns {any}
+   * @private
+   */
   private _handleError(error: Response) {
     console.log(error);
     return Observable.throw(error.json().error || 'Server error');

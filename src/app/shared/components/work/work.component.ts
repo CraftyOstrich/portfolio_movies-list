@@ -10,13 +10,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./work.component.scss']
 })
 export class WorkComponent implements OnInit {
-  @Input() jobs: PersonJobs;
-  cast: (MovieCast | TvCast)[];
-  crew: (MovieCrew | TvCrew)[];
-  showMovie = 'movie';
-  showSerial = 'tv';
-  currentMediaType = 'movie';
-
+  /**
+   * Person jobs
+   */
+  @Input() public jobs: PersonJobs;
+  /**
+   * Movies and tvs list, where person was filmed
+   */
+  public cast: (MovieCast | TvCast)[];
+  /**
+   * Movies and tvs list, which person was filmed
+   */
+  public crew: (MovieCrew | TvCrew)[];
+  /**
+   * On change type of show works on movie
+   * @type {string}
+   */
+  public showMovie = 'movie';
+  /**
+   * On change type of show works on tv
+   * @type {string}
+   */
+  public showSerial = 'tv';
+  /**
+   * Current type of show works
+   * @type {string}
+   */
+  public currentMediaType = 'movie';
+  /**
+   * Current url
+   * @type {string}
+   * @private
+   */
   private _currentUrl = '';
 
   constructor(private _router: Router) {
@@ -26,14 +51,22 @@ export class WorkComponent implements OnInit {
     this.onTypeChange(this.currentMediaType);
   }
 
-  onTypeChange(mediaType: string) {
+  /**
+   * On type change
+   * @param mediaType
+   */
+  public onTypeChange(mediaType: string) {
     this.cast = this.jobs.getCastByType(mediaType);
     this.crew = this.jobs.getCrewByType(mediaType);
     this.currentMediaType = mediaType;
     this._currentUrl = mediaType + '/detail';
   }
 
-  goToWork(id: number) {
+  /**
+   * navigate to movie or tv
+   * @param id
+   */
+  public goToWork(id: number) {
     this._router.navigate([this._currentUrl, id]);
   }
 }

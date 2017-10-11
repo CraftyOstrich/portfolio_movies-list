@@ -9,29 +9,61 @@ export class PeopleService {
   constructor(private _http: Http) {
   }
 
-  getPeople(link, page): Observable<any> {
+  /**
+   * Get people list
+   * @param link
+   * @param page
+   * @returns {Observable<R|T>}
+   */
+  public getPeople(link, page): Observable<any> {
     return this._http.get(this._getRequestPageUrl(link, page))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getPerson(link, id): Observable<any> {
+  /**
+   * Get person
+   * @param link
+   * @param id
+   * @returns {Observable<R|T>}
+   */
+  public getPerson(link, id): Observable<any> {
     return this._http.get(this._getRequestUrl(link, id))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
-  getAllWorks(link, id, url): Observable<any> {
+  /**
+   * Get all person's work
+   * @param link
+   * @param id
+   * @param url
+   * @returns {Observable<R|T>}
+   */
+  public getAllWorks(link, id, url): Observable<any> {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
       .catch(this._handleError);
   }
 
+  /**
+   * Catch error
+   * @param error
+   * @returns {any}
+   * @private
+   */
   private _handleError(error: Response) {
     console.log(error);
     return Observable.throw(error.json().error || 'Server error');
   }
 
+  /**
+   * Get request url
+   * @param link
+   * @param page
+   * @returns {string}
+   * @private
+   */
   private _getRequestPageUrl(link: string, page: number) {
     if (link && page) {
       return API_CONFIG.URL + link + API_CONFIG.KEY + API_CONFIG.PAGE + page;

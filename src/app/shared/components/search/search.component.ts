@@ -8,26 +8,53 @@ import { API_CONFIG } from '../../../app-config';
 import { ActivatedRoute, Params } from '@angular/router';
 
 export class FilterOptions {
+  /**
+   * Year filter
+   * @type {{fieldNameMovie: string; fieldNameTV: string; value: number}}
+   * @private
+   */
   private _year = {
     fieldNameMovie: 'primary_release_year',
     fieldNameTV: 'first_air_date_year',
     value: <number>null
   };
+  /**
+   * Sort by sortByList
+   * @type {{fieldName: string; value: string}}
+   * @private
+   */
   private _sortBy = {
     fieldName: 'sort_by',
     value: <string>null
   };
+  /**
+   * Genres filter
+   * @type {{fieldName: string; value: Genre[]}}
+   * @private
+   */
   private _genres = {
     fieldName: 'with_genres',
     value: <Genre[]>[]
   };
+  /**
+   * Search by keywords
+   * @type {{fieldName: string; value: Keyword[]}}
+   * @private
+   */
   private _keywords = {
     fieldName: 'with_keywords',
     value: <Keyword[]>[]
   };
-
-  yearsList: number[] = [];
-  sortByList = [
+  /**
+   * List of year
+   * @type {Array}
+   */
+  public yearsList: number[] = [];
+  /**
+   * Sort list items
+   * @type {[{select: string; urlSortBy: string}]}
+   */
+  public sortByList = [
     {
       select: 'Choose sort by...',
       urlSortBy: '',
@@ -65,14 +92,25 @@ export class FilterOptions {
       urlSortBy: 'original_title.desc',
     },
   ];
-  genresList: Genre[];
-  optionsUrl: Subject<string> = new Subject();
+  /**
+   * Genres list
+   */
+  public genresList: Genre[];
+  /**
+   * Url for filter request
+   * @type {Subject}
+   */
+  public optionsUrl: Subject<string> = new Subject();
 
   constructor() {
     this.yearsList = setYears();
   }
 
-  onOptionsChange(currentUrl?: string) {
+  /**
+   * On options filter was changed
+   * @param currentUrl
+   */
+  public onOptionsChange(currentUrl?: string) {
     const options: string[] = [];
     const genresValueLength: number = this._genres.value.length;
     if (this._year.value) {
@@ -104,19 +142,32 @@ export class FilterOptions {
     }
   }
 
-  onYearChange(year, currentUrl) {
+  /**
+   * On year filter was changed
+   * @param year
+   * @param currentUrl
+   */
+  public onYearChange(year, currentUrl) {
     if (year) {
       this._year.value = year;
       this.onOptionsChange(currentUrl);
     }
   }
 
-  onSortChange(sortBy) {
+  /**
+   * On sort by filter was changed
+   * @param sortBy
+   */
+  public onSortChange(sortBy) {
     this._sortBy.value = sortBy;
     this.onOptionsChange();
   }
 
-  onGenreSelect(genre: Genre) {
+  /**
+   * On genre was selected
+   * @param genre
+   */
+  public onGenreSelect(genre: Genre) {
     const found = this._genres.value.findIndex((g: Genre) => g.id === genre.id) > -1;
     if (!found) {
       this._genres.value.push(genre);
@@ -124,7 +175,11 @@ export class FilterOptions {
     this.onOptionsChange();
   }
 
-  onGenreRemove(id: number) {
+  /**
+   * On genre's filter was removed
+   * @param id
+   */
+  public onGenreRemove(id: number) {
     const foundIndex = this._genres.value.findIndex((genre: Genre) => genre.id === id);
     if (foundIndex > -1) {
       this._genres.value.splice(foundIndex, 1);
@@ -132,7 +187,11 @@ export class FilterOptions {
     this.onOptionsChange();
   }
 
-  onKeywordSelect(keyword: Keyword) {
+  /**
+   * On keyword was selected
+   * @param keyword
+   */
+  public onKeywordSelect(keyword: Keyword) {
     const found = this._keywords.value.findIndex((k: Keyword) => k.id === keyword.id) > -1;
     if (!found) {
       this._keywords.value.push(keyword);
@@ -140,7 +199,10 @@ export class FilterOptions {
     this.onOptionsChange();
   }
 
-  onKeywordRemove(id: number) {
+  /**
+   * On keyword was removed
+   */
+  public onKeywordRemove(id: number) {
     const foundIndex = this._keywords.value.findIndex((k: Keyword) => k.id === id);
     if (foundIndex > -1) {
       this._keywords.value.splice(foundIndex, 1);
@@ -148,13 +210,21 @@ export class FilterOptions {
     this.onOptionsChange();
   }
 
+  /**
+   * When filter options was changed
+   * @returns {Observable<string>}
+   */
   get optionsChange(): Observable<string> {
     if (this.optionsUrl) {
       return this.optionsUrl.asObservable();
     }
   }
 
-  setGenres(genres) {
+  /**
+   * Set genre list
+   * @param genres
+   */
+  public setGenres(genres) {
     this.genresList = genres;
   }
 }
@@ -166,15 +236,47 @@ export class FilterOptions {
 })
 
 export class SearchComponent implements OnInit {
-  @Output() onFilterChange: EventEmitter<string> = new EventEmitter();
-  @Input() searchUrl: string;
-  filterOptions: any;
-  keywordsSearch = '';
-  keywordsList: Keyword[] = [];
-  displayGenres = false;
-  displayKeywords = false;
-  currentUrl = '';
-
+  /**
+   * When filter option was changed
+   * @type {EventEmitter}
+   */
+  @Output() public onFilterChange: EventEmitter<string> = new EventEmitter();
+  /**
+   * Search url for request
+   */
+  @Input() public searchUrl: string;
+  /**
+   * Filter options
+   */
+  public filterOptions: any;
+  /**
+   * Search keyword
+   * @type {string}
+   */
+  public keywordsSearch = '';
+  /**
+   * Keywords search list
+   * @type {Array}
+   */
+  public keywordsList: Keyword[] = [];
+  /**
+   * Display genres list
+   * @type {boolean}
+   */
+  public displayGenres = false;
+  /**
+   * Display keywords list
+   * @type {boolean}
+   */
+  public displayKeywords = false;
+  /**
+   * Current url
+   * @type {string}
+   */
+  public currentUrl = '';
+  /**
+   * Error message
+   */
   private _errorMessage: string;
 
   constructor(private _searchService: SearchService,
@@ -197,11 +299,18 @@ export class SearchComponent implements OnInit {
         error => this._errorMessage = <any>error);
   }
 
-  displayGenreList() {
+  /**
+   * Display genres list
+   */
+  public displayGenreList() {
     this.displayGenres = !this.displayGenres;
   }
 
-  loadKeywordsList(event) {
+  /**
+   * Load keyword list
+   * @param event
+   */
+  public loadKeywordsList(event) {
     if (event) {
       this._searchService.getKeywords(API_CONFIG.KEYWORDS_LIST, this.keywordsSearch)
         .subscribe(response =>
@@ -213,14 +322,22 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  selectGenre(item: Genre) {
+  /**
+   * On genre selected
+   * @param item
+   */
+  public selectGenre(item: Genre) {
     this.displayGenres = !this.displayGenres;
     if (item) {
       this.filterOptions.onGenreSelect(item);
     }
   }
 
-  selectKeyword(keyword: Keyword) {
+  /**
+   * On keyword selected
+   * @param keyword
+   */
+  public selectKeyword(keyword: Keyword) {
     this.displayKeywords = !this.displayKeywords;
     if (keyword) {
       this.filterOptions.onKeywordSelect(keyword);

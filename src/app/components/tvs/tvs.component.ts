@@ -10,10 +10,30 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./tvs.component.scss']
 })
 export class TvsComponent implements OnInit {
-  tvs: Tv[];
-  pagesNumber: number;
-  currentPage = 1;
+  /**
+   * List of tvs
+   * @type {Tv[]}
+   */
+  public tvs: Tv[];
+  /**
+   * Number of page results
+   * @type {number}
+   */
+  public pagesNumber: number;
+  /**
+   * Current page (default = 1)
+   * @type {number}
+   */
+  public currentPage = 1;
+  /**
+   * Current page url
+   * @type {string}
+   * @private
+   */
   private _currentUrl: string = API_CONFIG.TVS_POPULAR;
+  /**
+   * Error message
+   */
   private _errorMessage: string;
 
   constructor(private _tvsService: TvsService,
@@ -32,13 +52,22 @@ export class TvsComponent implements OnInit {
     );
   }
 
-  onPageChange(currentPage: number) {
+  /**
+   * Omn change page
+   * @param currentPage
+   */
+  public onPageChange(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
       this.getTvs(this._currentUrl, this.currentPage);
     }
   }
 
+  /**
+   * Get tvs list
+   * @param url
+   * @param page
+   */
   private getTvs(url, page) {
     this._tvsService.getSerials(url, page)
       .subscribe(response => {

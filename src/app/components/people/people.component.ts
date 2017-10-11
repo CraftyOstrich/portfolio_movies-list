@@ -9,31 +9,60 @@ import { API_CONFIG } from '../../app-config';
   styleUrls: ['./people.component.scss']
 })
 export class PeopleComponent implements OnInit {
-  people: Person[];
-  pagesNumber: number;
-  currentPage = 1;
+  /**
+   * List of people
+   * @type {Person[]}
+   */
+  public people: Person[];
+  /**
+   * Total number of result pages
+   * @type {number}
+   */
+  public pagesNumber: number;
+  /**
+   * Current page
+   * @type {number}
+   */
+  public currentPage = 1;
+  /**
+   * Error message
+   */
   private _errorMessage: string;
 
   constructor(private _peopleService: PeopleService) {
   }
 
+  /**
+   * On init
+   * Get popular people list
+   */
   ngOnInit() {
-    this.getPeople(API_CONFIG.PEOPLE_POPULAR, this.currentPage);
+    this._getPeople(API_CONFIG.PEOPLE_POPULAR, this.currentPage);
   }
 
-  onPageChange(currentPage: number) {
+  /**
+   * Get current page and people list when page changed
+   * @param currentPage
+   */
+  public onPageChange(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
-      this.getPeople(API_CONFIG.PEOPLE_POPULAR, this.currentPage);
+      this._getPeople(API_CONFIG.PEOPLE_POPULAR, this.currentPage);
     }
   }
 
-  private getPeople(link: string, page: number) {
+  /**
+   * Get people list and total number result pages
+   * @param link
+   * @param page
+   * @private
+   */
+  private _getPeople(link: string, page: number) {
     this._peopleService.getPeople(link, page)
       .subscribe(response => {
           this.people = response.results || [];
           this.pagesNumber = response.total_pages;
         },
-        error => this._errorMessage = <any>error);
+         error => this._errorMessage = <any>error);
   }
 }
