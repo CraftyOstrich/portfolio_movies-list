@@ -1,10 +1,11 @@
 <div class="container discover">
-  <h2 class="discover__title">Discover new movies and series</h2>
-  <app-search [searchUrl]="currentUrlGenres" (onFilterChange)="onFilterChange($event)"></app-search>
-  <div class="row discover__content">
-    <div *ngFor="let item of videos" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-      <app-item-block [item]="item" ></app-item-block>
+    <h2 class="discover__title">Discover new movies and series</h2>
+    <app-search [searchUrl]="currentUrlGenres" (onFilterChange)="onFilterChange($event)"></app-search>
+    <div class="row discover__content">
+        <div *ngFor="let item of videos" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <app-item-block [item]="item"></app-item-block>
+        </div>
+        <app-pagination [pagesNumber]="pagesNumber" [currentPage]="currentPage"
+                        (onPageChange)="onPageChange($event)"></app-pagination>
     </div>
-    <app-pagination [pagesNumber]="pagesNumber" [currentPage]="currentPage" (onPageChange)="onPageChange($event)"></app-pagination>
-  </div>
 </div>

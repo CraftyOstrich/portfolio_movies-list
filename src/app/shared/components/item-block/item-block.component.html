@@ -17,9 +17,8 @@
             </span>
       </p>
       <p class="flex_between">
-        <span class="glyphicon glyphicon-calendar" *ngIf="itemYear">{{ itemYear }}</span>
-        <span class="text_short item-genres"></span>
-        <!--<span> {{(_moviesService.getGenres(movie.genre_ids) | async) }} </span>-->
+        <span class="glyphicon glyphicon-calendar" *ngIf="item.release_year">{{ item.release_year }}</span>
+        <span class="text_short item-genres" [title]="item.genres.join(', ')"> {{ item.genres.join(', ') }} </span>
       </p>
       <p class="item-description">
         {{ item.overview || 'No overview found.'}}

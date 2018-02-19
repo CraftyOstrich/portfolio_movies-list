@@ -5,12 +5,16 @@ import { Tv } from '../../models/tv';
 import { SearchService } from '../../shared/services/search.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { API_CONFIG } from '../../app-config';
+import { GeneralType } from '../../shared/constants/generalData';
+import { GenresService } from '../../shared/services/genres.service';
+import { Genre } from '../../models/genre';
+import { TvsService } from '../../shared/services/tvs.service';
 
-@Component({
+@Component( {
   selector: 'app-overview',
   templateUrl: 'discover.component.html',
-  styleUrls: ['discover.component.scss']
-})
+  styleUrls: [ 'discover.component.scss' ]
+} )
 
 export class DiscoverComponent implements OnInit {
   /**
@@ -38,7 +42,7 @@ export class DiscoverComponent implements OnInit {
    * @type {string}
    * @private
    */
-  private _currentUrl: string = API_CONFIG.DISCOVER_MOVIES;
+  private _currentUrl: string = '';
   /**
    * Filter options
    * @type {string}
@@ -50,34 +54,36 @@ export class DiscoverComponent implements OnInit {
    */
   private _errorMessage: string;
 
-  constructor(private _moviesService: MoviesService,
-              private _searchService: SearchService,
-              private _route: ActivatedRoute) {
+  constructor ( private _genreService: GenresService,
+                private _moviesService: MoviesService,
+                private _tvsService: TvsService,
+                private _searchService: SearchService,
+                private _route: ActivatedRoute ) {
   }
 
-  ngOnInit() {
-    this._route.params.subscribe((params: Params) => {
+  ngOnInit () {
+    this._route.params.subscribe( ( params: Params ) => {
       this.currentPage = 1;
-      if (params.type === 'movie') {
+      this.videos = [];
+      if ( GeneralType.MOVIE === params.type ) {
         this._currentUrl = API_CONFIG.DISCOVER_MOVIES;
-        this.currentUrlGenres = API_CONFIG.MOVIES_GENRES;
-      } else if (params.type === 'tv') {
+        this._getContent( API_CONFIG.DISCOVER_MOVIES, this.currentPage );
+      } else if ( GeneralType.TV === params.type ) {
         this._currentUrl = API_CONFIG.DISCOVER_TVS;
-        this.currentUrlGenres = API_CONFIG.TVS_GENRES;
+        this._getContent( API_CONFIG.DISCOVER_TVS, this.currentPage );
       }
-      this._getContent(this._currentUrl, this.currentPage);
-    });
+    } );
   }
 
   /**
    * Return result, when filter value change
    * @param _optionsUrl
    */
-  public onFilterChange(_optionsUrl: string) {
+  public onFilterChange ( _optionsUrl: string ) {
     this.currentPage = 1;
-    if (_optionsUrl) {
+    if ( _optionsUrl ) {
       this._optionsUrl = _optionsUrl;
-      this._getFilterContent(this._currentUrl, this.currentPage, '&' + _optionsUrl);
+      this._getFilterContent( this._currentUrl, this.currentPage, '&' + _optionsUrl );
     }
   }
 
@@ -85,13 +91,13 @@ export class DiscoverComponent implements OnInit {
    * Return content, when page is changed
    * @param currentPage
    */
-  public onPageChange(currentPage: number) {
-    if (this.currentPage !== currentPage) {
+  public onPageChange ( currentPage: number ) {
+    if ( this.currentPage !== currentPage ) {
       this.currentPage = currentPage;
-      if (this._optionsUrl) {
-        this._getFilterContent(this._currentUrl, this.currentPage, '&' + this._optionsUrl);
+      if ( this._optionsUrl ) {
+        this._getFilterContent( this._currentUrl, this.currentPage, '&' + this._optionsUrl );
       } else {
-        this._getContent(this._currentUrl, this.currentPage);
+        this._getContent( this._currentUrl, this.currentPage );
       }
     }
   }
@@ -102,13 +108,47 @@ export class DiscoverComponent implements OnInit {
    * @param page
    * @private
    */
-  private _getContent(link: string, page: number) {
-    this._moviesService.getContent(link, page)
-      .subscribe(response => {
-          this.videos = response.results || [];
-          this.pagesNumber = response.total_pages;
-        },
-        error => this._errorMessage = <any>error);
+  private _getContent ( link: string, page: number ) {
+    if ( API_CONFIG.DISCOVER_MOVIES === link ) {
+      this._moviesService.getContent( link, page )
+          .subscribe( response => {
+                if ( response.results.length ) {
+                  for ( let i = 0; i < response.results.length; i++ ) {
+                    const genres = response.results[ i ].genre_ids.reduce( ( result, genreId ) => {
+                      const item = this._genreService.genres[ GeneralType.MOVIE ].find( ( g: Genre ) => +g.id === +genreId );
+                      if ( item && item.name ) {
+                        result.push( item.name.toLowerCase() );
+                      }
+                      return result;
+                    }, [] );
+                    let movie = new Movie( response.results[ i ], genres );
+                    this.videos.push( movie )
+                  }
+                  this.pagesNumber = response.total_pages;
+                }
+              },
+              error => this._errorMessage = <any>error );
+    } else if ( API_CONFIG.DISCOVER_TVS === link ) {
+      this._tvsService.getContent( link, page )
+          .subscribe( response => {
+                if ( response.results.length ) {
+                  for ( let i = 0; i < response.results.length; i++ ) {
+                    const genres = response.results[ i ].genre_ids.reduce( ( result, genreId ) => {
+                      const item = this._genreService.genres[ GeneralType.TV ].find( ( g: Genre ) => +g.id === +genreId );
+                      if ( item && item.name ) {
+                        result.push( item.name.toLowerCase() );
+                      }
+                      return result;
+                    }, [] );
+                    let tv = new Tv( response.results[ i ], genres );
+                    this.videos.push( tv )
+                  }
+                  this.pagesNumber = response.total_pages;
+                }
+              },
+              error => this._errorMessage = <any>error );
+    }
+
   }
 
   /**
@@ -118,12 +158,12 @@ export class DiscoverComponent implements OnInit {
    * @param options
    * @private
    */
-  private _getFilterContent(link: string, page: number, options: string) {
-    this._searchService.getFilterContent(link, page, options)
-      .subscribe(response => {
-          this.videos = response.results || [];
-          this.pagesNumber = response.total_pages;
-        },
-        error => this._errorMessage = <any>error);
+  private _getFilterContent ( link: string, page: number, options: string ) {
+    this._searchService.getFilterContent( link, page, options )
+        .subscribe( response => {
+              this.videos = response.results || [];
+              this.pagesNumber = response.total_pages;
+            },
+            error => this._errorMessage = <any>error );
   }
 }

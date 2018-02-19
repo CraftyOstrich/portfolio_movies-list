@@ -2,11 +2,13 @@ import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { API_CONFIG } from '../../app-config';
 import { Observable } from 'rxjs/Observable';
+import { ErrorService } from './error.service';
 
 @Injectable()
 export class PeopleService {
 
-  constructor(private _http: Http) {
+  constructor(private _http: Http,
+              private _errService: ErrorService) {
   }
 
   /**
@@ -18,7 +20,7 @@ export class PeopleService {
   public getPeople(link, page): Observable<any> {
     return this._http.get(this._getRequestPageUrl(link, page))
       .map((response: Response) => response.json())
-      .catch(this._handleError);
+      .catch(this._errService.handleError);
   }
 
   /**
@@ -30,7 +32,7 @@ export class PeopleService {
   public getPerson(link, id): Observable<any> {
     return this._http.get(this._getRequestUrl(link, id))
       .map((response: Response) => response.json())
-      .catch(this._handleError);
+      .catch(this._errService.handleError);
   }
 
   /**
@@ -43,19 +45,9 @@ export class PeopleService {
   public getAllWorks(link, id, url): Observable<any> {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
-      .catch(this._handleError);
+      .catch(this._errService.handleError);
   }
 
-  /**
-   * Catch error
-   * @param error
-   * @returns {any}
-   * @private
-   */
-  private _handleError(error: Response) {
-    console.log(error);
-    return Observable.throw(error.json().error || 'Server error');
-  }
 
   /**
    * Get request url

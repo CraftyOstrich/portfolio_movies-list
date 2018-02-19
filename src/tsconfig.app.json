@@ -2,10 +2,19 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
+    "experimentalDecorators": true,
     "module": "es2015",
     "baseUrl": "",
     "types": []
   },
+  "include": [
+    "typings/thera/thera.d.ts",
+    "typings/browser.d.ts",
+    "typings/main.d.ts",
+    "typings/meteor.d.ts",
+    "typings/meteor_server.d.ts",
+    "your_app_directory/**/*"
+  ],
   "exclude": [
     "test.ts",
     "**/*.spec.ts"

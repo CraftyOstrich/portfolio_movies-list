@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -7,11 +7,12 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import {API_CONFIG} from '../../app-config';
+import { ErrorService } from './error.service';
 
 @Injectable()
 export class MoviesService {
-  constructor(private _http: Http) {
-  }
+  constructor(private _http: Http,
+              private _errService: ErrorService) {}
 
   /**
    * Get content
@@ -22,7 +23,7 @@ export class MoviesService {
   public getContent(link, page): Observable<any> {
   return this._http.get(this._getRequestPageUrl(link, page))
     .map((response: Response) => response.json())
-    .catch(this._handleError);
+    .catch(this._errService.handleError);
 }
 
   /**
@@ -34,7 +35,7 @@ export class MoviesService {
   public getMovies(link, page): Observable<any> {
     return this._http.get(this._getRequestPageUrl(link, page))
       .map((response: Response) => response.json())
-      .catch(this._handleError);
+      .catch(this._errService.handleError);
   }
 
   /**
@@ -46,7 +47,7 @@ export class MoviesService {
   public getMovie(link, id): Observable<any> {
     return this._http.get(this._getRequestUrl(link, id))
       .map((response: Response) => response.json())
-      .catch(this._handleError);
+      .catch(this._errService.handleError);
   }
 
   /**
@@ -59,7 +60,7 @@ export class MoviesService {
   public getSimilarMovies(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
-      .catch(this._handleError);
+      .catch(this._errService.handleError);
     }
 
   /**
@@ -72,7 +73,7 @@ export class MoviesService {
   public getVideos(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
-      .catch(this._handleError);
+      .catch(this._errService.handleError);
   }
 
   /**
@@ -85,7 +86,7 @@ export class MoviesService {
   public getPeople(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
-      .catch(this._handleError);
+      .catch(this._errService.handleError);
   }
 
   /**
@@ -98,17 +99,7 @@ export class MoviesService {
   public getKeywords(link, id, url) {
     return this._http.get(this._getRequestUrl(link, id, url))
       .map((response: Response) => response.json())
-      .catch(this._handleError);
-  }
-
-  /**
-   * Catch error
-   * @param error
-   * @returns {any}
-   * @private
-   */
-  private _handleError(error: Response) {
-    return Observable.throw(error.json().error || 'Server error');
+      .catch(this._errService.handleError);
   }
 
   /**
